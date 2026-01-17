@@ -97,7 +97,7 @@ export default function BusinessHours() {
 
                     <div className="mt-12 pt-8 border-t border-zinc-800 text-center">
                         <p className="text-zinc-500 text-sm">
-                            * O svátcích může být otevírací doba upravena. Sledujte prosím náš <span className="text-red-600 font-bold">Facebook</span>.
+                            * O svátcích může být otevírací doba upravena. Sledujte prosím náš <span className="text-red-600 font-bold hover:bg-red-100 rounded-xl"><a href="https://www.facebook.com/profile.php?id=100057360913960&locale=cs_CZ"> Facebook</a> </span>.
                         </p>
                     </div>
                 </div>

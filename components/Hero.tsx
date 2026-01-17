@@ -13,7 +13,7 @@ export default function BulldogGymHero() {
             ctaButton={{
                 label: "Otevírací doba",
                 onClick: () => console.log("Otevírací doba"),
-                href: "/#kontakt",
+                href: "/#oteviraci-doba",
             }}
             title="Tvůj limit je v hlavě. Překonej ho u nás."
             subtitle="Největší posilovna v Mostě na ploše 1000 m². Špičkové vybavení značek Cybex a Nautilus, profesionální trenéři a komunita, která tě nenechá přestat."

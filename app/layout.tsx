@@ -25,15 +25,13 @@ export default function RootLayout({
         AOS.init({
             duration: 1000,
             once: true,
-            easing: 'ease-out-quad', // Trochu plynulejší pohyb
+            easing: 'ease-out-quad',
         });
     }, []);
 
     return (
-        <html lang="cs">
-        <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+        <html lang="cs" className="scroll-smooth">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
         </body>
         </html>
