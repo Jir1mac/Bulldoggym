@@ -93,7 +93,7 @@ export function PulseFitHero({
     return (
         <section
             className={cn(
-                "relative w-full min-h-screen flex flex-col overflow-hidden",
+                "relative w-full min-h-screen flex flex-col overflow-hidden pt-[100px]",
                 className
             )}
             style={{
@@ -102,15 +102,14 @@ export function PulseFitHero({
             role="banner"
             aria-label="Hero section"
         >
-            {/* Header */}
             <motion.header
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="relative z-20 flex flex-row justify-between items-center px-8 lg:px-16"
+                className="fixed top-0 left-0 w-full z-50 flex flex-row justify-between items-center px-8 lg:px-16 bg-white/80 backdrop-blur-md"
                 style={{
-                    paddingTop: "32px",
-                    paddingBottom: "32px",
+                    paddingTop: "20px",
+                    paddingBottom: "20px",
                 }}
             >
                 <div
@@ -145,12 +144,11 @@ export function PulseFitHero({
 
                         const commonProps = {
                             onClick: item.onClick,
-                            className: "flex flex-row items-center gap-1 hover:opacity-70 transition-opacity cursor-pointer",
+                            className: "flex flex-row items-center gap-1 text-gray-600 hover:text-red-600 transition-colors cursor-pointer",
                             style: {
                                 fontFamily: "Inter, sans-serif",
                                 fontSize: "16px",
                                 fontWeight: 400,
-                                color: "#4a5568",
                             } as React.CSSProperties,
                         };
 

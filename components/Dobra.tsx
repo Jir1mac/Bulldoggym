@@ -20,7 +20,7 @@ const DAY_CLASS_DEFAULT = "text-black";
 
 const HOUR_CLASS_BASE = "text-xl font-black tracking-tighter";
 const HOUR_CLASS_TODAY = "text-red-600";
-const HOUR_CLASS_DEFAULT = "text-white";
+const HOUR_CLASS_DEFAULT = "text-black";
 
 export default function BusinessHours() {
     const today = new Intl.DateTimeFormat('cs-CZ', { weekday: 'long' }).format(new Date());
