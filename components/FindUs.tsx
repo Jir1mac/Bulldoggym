@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Youtube, Facebook, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/button';
 
 export default function FindUs() {
@@ -71,17 +71,17 @@ export default function FindUs() {
                         <div className="flex space-x-4" data-aos="zoom-in" data-aos-delay="600">
                             <Button variant="ghost" size="icon" asChild className="cursor-pointer">
                                 <a href="https://www.youtube.com/@BulldogGymMost" target="_blank" rel="noopener noreferrer" aria-label="YouTube Bulldog Gym">
-                                    <Youtube className="text-zinc-400 hover:text-red-600 transition-colors" size={28} />
+                                    <span className="text-zinc-400 hover:text-red-600">YouTube</span>
                                 </a>
                             </Button>
                             <Button variant="ghost" size="icon" asChild className="cursor-pointer">
                                 <a href="https://www.facebook.com/profile.php?id=100057360913960&locale=cs_CZ" target="_blank" rel="noopener noreferrer" aria-label="Facebook Bulldog Gym">
-                                    <Facebook className="text-zinc-400 hover:text-red-600 transition-colors" size={28} />
+                                    <span className="text-zinc-400 hover:text-red-600">Facebook</span>
                                 </a>
                             </Button>
                             <Button variant="ghost" size="icon" asChild className="cursor-pointer">
                                 <a href="https://www.instagram.com/bulldoggym.most/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Bulldog Gym">
-                                    <Instagram className="text-zinc-400 hover:text-red-600 transition-colors" size={28} />
+                                    <span className="text-zinc-400 hover:text-red-600">Instagram</span>
                                 </a>
                             </Button>
                         </div>

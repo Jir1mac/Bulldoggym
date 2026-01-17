@@ -20,7 +20,7 @@ export default function About() {
                                 Na ploše přes <strong>1000 m²</strong> najdeš vybavení světové úrovně, které nikde jinde v regionu nepotkáš.
                             </p>
                             <p>
-                                Náš koncept "Made in USA" přináší stroje značek Cybex, Nautilus a Hoist, které jsou špičkou v oboru.
+                                Náš koncept &quot;Made in USA&quot; přináší stroje značek Cybex, Nautilus a Hoist, které jsou špičkou v oboru.
                                 Ať už jsi začátečník nebo profesionální sportovec, v Bulldog Gymu najdeš vše potřebné pro svůj posun.
                             </p>
                         </div>
@@ -64,7 +64,7 @@ export default function About() {
                         >
                             <HandHeart className="text-red-600 mb-4" size={38} />
                             <h4 className="text-black font-bold text-xl mb-2">Masáže</h4>
-                            <p className="text-zinc-500 text-sm">Také si u nás můžete dopřád odpočinek v podobě masáže nebo rázové vlny. <a className="hover:text-red-700 text-red-500" href="https://most-masaze.cz/">Více informací</a> </p>
+                            <p className="text-zinc-500 text-sm">Také si u nás můžete dopřát odpočinek v podobě masáže nebo rázové vlny. <a className="hover:text-red-700 text-red-500" href="https://most-masaze.cz/">Více informací</a> </p>
                         </div>
                     </div>
 

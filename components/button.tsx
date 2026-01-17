@@ -43,12 +43,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant, size, asChild = false, ...props }, ref) => {
         const Comp = asChild ? Slot : "button"
         // prevent accidental propagation of a `key` property when callers spread objects that include it
-        const { key: _key, ...rest } = props as Record<string, unknown>
+        const { key: _unusedKey, ...rest } = props as Record<string, unknown>
+        void _unusedKey
+        const restProps = rest as unknown as React.ButtonHTMLAttributes<HTMLButtonElement>
         return (
             <Comp
                 className={cn(buttonVariants({ variant, size, className }))}
                 ref={ref}
-                {...(rest as any)}
+                {...restProps}
             />
         )
     }
