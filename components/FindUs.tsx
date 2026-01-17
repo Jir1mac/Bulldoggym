@@ -4,7 +4,7 @@ import { Button } from '@/components/button';
 
 export default function FindUs() {
     return (
-        <section id="kontakt" className="py-24 bg-zinc-150 text-black px-6 overflow-hidden">
+        <section id="kontakt" className="py-16 md:py-24 bg-zinc-150 text-black px-4 sm:px-6 overflow-hidden">
             <div className="max-w-[1200px] mx-auto text-center">
 
                 <div data-aos="fade-down">

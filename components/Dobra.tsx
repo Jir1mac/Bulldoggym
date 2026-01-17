@@ -26,7 +26,7 @@ export default function BusinessHours() {
     const today = new Intl.DateTimeFormat('cs-CZ', { weekday: 'long' }).format(new Date());
 
     return (
-        <section id="oteviraci-doba" className="py-24 bg-zinc-150 text-white px-6 overflow-hidden">
+        <section id="oteviraci-doba" className="py-16 md:py-24 bg-zinc-150 text-white px-4 sm:px-6 overflow-hidden">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-16" data-aos="fade-down">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Provozní doba</h2>

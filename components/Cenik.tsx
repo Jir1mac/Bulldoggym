@@ -46,7 +46,7 @@ const pricingPlans = [
 
 export default function Pricing() {
     return (
-        <section id="cenik" className="py-24 min-h-screen flex items-center bg-zinc-100 px-6 overflow-hidden">
+        <section id="cenik" className="py-16 md:py-24 min-h-screen flex items-center bg-zinc-100 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-[1500px] mx-auto w-full">
 
                 <div className="text-center mb-16" data-aos="fade-down">
@@ -74,7 +74,7 @@ export default function Pricing() {
                             key={index}
                             data-aos="fade-up"
                             data-aos-delay={index * 150}
-                            className={`relative p-8 rounded-3xl border transition-all duration-300 w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-2rem)] min-w-[300px] flex flex-col ${
+                            className={`relative p-6 sm:p-8 rounded-3xl border transition-all duration-300 w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-2rem)] min-w-[280px] flex flex-col ${
                                 plan.highlight
                                     ? 'border-red-600 bg-zinc-900 shadow-[0_0_30px_rgba(220,38,38,0.15)] lg:scale-105 z-10'
                                     : 'border-zinc-800 bg-zinc-900/40 hover:border-zinc-700'
