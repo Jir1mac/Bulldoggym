@@ -32,7 +32,7 @@ export default function RootLayout({
     return (
         <html lang="cs" className="scroll-smooth">
         <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         </head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}

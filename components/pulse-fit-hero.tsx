@@ -221,10 +221,10 @@ export function PulseFitHero({
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0, maxHeight: 0 }}
+                        animate={{ opacity: 1, maxHeight: "500px" }}
+                        exit={{ opacity: 0, maxHeight: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="fixed top-[70px] left-0 w-full bg-white/95 backdrop-blur-md shadow-lg z-40 lg:hidden overflow-hidden"
                     >
                         <nav className="flex flex-col p-6 gap-4" aria-label="Mobile navigation">
