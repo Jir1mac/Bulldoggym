@@ -14,6 +14,14 @@ const openingHours = [
     { day: "Neděle", hours: "08:00 – 22:00", note: "Víkendový režim" },
 ];
 
+const DAY_CLASS_BASE = "text-lg font-bold uppercase italic";
+const DAY_CLASS_TODAY = "text-white";
+const DAY_CLASS_DEFAULT = "text-black";
+
+const HOUR_CLASS_BASE = "text-xl font-black tracking-tighter";
+const HOUR_CLASS_TODAY = "text-red-600";
+const HOUR_CLASS_DEFAULT = "text-white";
+
 export default function BusinessHours() {
     const today = new Intl.DateTimeFormat('cs-CZ', { weekday: 'long' }).format(new Date());
 
@@ -63,8 +71,8 @@ export default function BusinessHours() {
                                             className={cn("mr-3", isToday ? "text-red-600" : "text-zinc-500")}
                                         />
                                         <span className={cn(
-                                            "text-lg font-bold uppercase italic",
-                                            isToday ? "text-white" : "text-black"
+                                            DAY_CLASS_BASE,
+                                            isToday ? DAY_CLASS_TODAY : DAY_CLASS_DEFAULT
                                         )}>
                                             {item.day}
                                             {isToday && <span className="ml-3 text-[10px] bg-red-600 text-white px-2 py-0.5 rounded-full not-italic tracking-normal">Dnes</span>}
@@ -73,8 +81,8 @@ export default function BusinessHours() {
 
                                     <div className="flex flex-col sm:items-end">
                                         <span className={cn(
-                                            "text-xl font-black tracking-tighter",
-                                            isToday ? "text-red-600" : "text-white"
+                                            HOUR_CLASS_BASE,
+                                            isToday ? HOUR_CLASS_TODAY : HOUR_CLASS_DEFAULT
                                         )}>
                                             {item.hours}
                                         </span>

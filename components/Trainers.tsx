@@ -52,15 +52,14 @@ export default function Trainers() {
                                 <Image
                                     src={trainer.imageUrl}
                                     alt={trainer.name}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="transition-transform duration-500 hover:scale-105"
+                                    fill
+                                    className="object-cover transition-transform duration-500 hover:scale-105"
                                 />
                             </div>
                             <div className="p-8 text-left">
                                 <h4 className="text-black font-bold text-3xl mb-2">{trainer.name}</h4>
                                 <p className="text-red-600 text-lg font-semibold mb-4">{trainer.specialization}</p>
-                                <p className="text-zinc-800 text-base leading-relaxed mb-6">{trainer.bio}</p>
+                                <p className="text-zinc-800 text-sm leading-relaxed mb-6">{trainer.bio}</p>
 
                                 <div className="space-y-3">
                                     <a href={`tel:${trainer.phone}`} className="flex items-center text-zinc-800 hover:text-red-500 transition-colors cursor-pointer">

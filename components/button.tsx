@@ -42,11 +42,13 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant, size, asChild = false, ...props }, ref) => {
         const Comp = asChild ? Slot : "button"
+        // prevent accidental propagation of a `key` property when callers spread objects that include it
+        const { key: _key, ...rest } = props as Record<string, unknown>
         return (
             <Comp
                 className={cn(buttonVariants({ variant, size, className }))}
                 ref={ref}
-                {...props}
+                {...(rest as any)}
             />
         )
     }

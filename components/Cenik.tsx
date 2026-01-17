@@ -1,6 +1,14 @@
 import React from 'react';
 import { Check, Users } from 'lucide-react';
 
+const MassageIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <path d="M7 14c0-1.7 1.3-3 3-3s3 1.3 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M3 17c2-3 6-5 9-5s7 2 9 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="7" r="3" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+);
+
 const pricingPlans = [
     {
         title: "Měsíční členství",
@@ -53,6 +61,11 @@ export default function Pricing() {
                     <p className="text-red-600 font-bold uppercase mt-4 tracking-widest">
                         Jednorázové vstupné: 130 Kč
                     </p>
+
+                    <div className="flex items-center justify-center gap-2 text-sm text-zinc-700 mt-3">
+                        <MassageIcon width={18} height={18} className="text-red-600" />
+                        <span>Masáže k dispozici — rezervace v recepci</span>
+                    </div>
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-6 xl:gap-8">
