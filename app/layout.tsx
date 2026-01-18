@@ -5,7 +5,7 @@ import AosProvider from "@/components/AosProvider";
 
 export const metadata: Metadata = {
     title: "Bulldog gym",
-    description: "1000m<sup>2</sup> posilovna, masáže",
+    description: "1000m2 posilovna, masáže",
 };
 
 const geistSans = Geist({
