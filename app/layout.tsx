@@ -1,10 +1,12 @@
-"use client";
-
 import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AosProvider from "@/components/AosProvider";
+
+export const metadata: Metadata = {
+    title: "Bulldog gym",
+    description: "1000m<sup>2</sup> posilovna, masáže",
+};
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -21,18 +23,10 @@ export default function RootLayout({
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            once: true,
-            easing: 'ease-out-quad',
-        });
-    }, []);
-
     return (
         <html lang="cs" className="scroll-smooth">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <AosProvider>{children}</AosProvider>
         </body>
         </html>
     );
