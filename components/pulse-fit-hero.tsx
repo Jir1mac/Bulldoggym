@@ -49,14 +49,11 @@ export function PulseFitHero({
     return (
         <section
             className={cn(
-                "relative w-full min-h-screen flex flex-col overflow-hidden pt-[60px]", // Menší pt, když není fixní header
+                "relative w-full min-h-screen flex flex-col overflow-hidden pt-[60px] bg-zinc-150", // Tvoje barva pozadí
                 className
             )}
-            style={{
-                background: "linear-gradient(180deg, #E8F0FF 0%, #F5F9FF 50%, #FFFFFF 100%)",
-            }}
+            role="banner"
         >
-            {/* Samotný obsah Hero sekce */}
             {children ? (
                 <div className="relative z-10 flex-1 flex items-center justify-center w-full">
                     {children}
@@ -71,13 +68,13 @@ export function PulseFitHero({
                         style={{ gap: "32px" }}
                     >
                         <h1
+                            className="uppercase italic tracking-tighter"
                             style={{
-                                fontFamily: "Inter, sans-serif",
-                                fontWeight: 700,
-                                fontSize: "clamp(36px, 6vw, 72px)",
-                                lineHeight: "1.1",
-                                color: "#1a1a1a",
-                                letterSpacing: "-0.02em",
+                                fontFamily: "system-ui, -apple-system, sans-serif",
+                                fontWeight: 500,
+                                fontSize: "clamp(40px, 8vw, 84px)",
+                                lineHeight: "0.9",
+                                color: "#000000",
                             }}
                         >
                             {title}
@@ -86,11 +83,11 @@ export function PulseFitHero({
                         <p
                             style={{
                                 fontFamily: "Inter, sans-serif",
-                                fontWeight: 400,
+                                fontWeight: 500,
                                 fontSize: "clamp(16px, 2vw, 20px)",
                                 lineHeight: "1.6",
-                                color: "#4a5568",
-                                maxWidth: "600px",
+                                color: "#3f3f46",
+                                maxWidth: "650px",
                             }}
                         >
                             {subtitle}
@@ -104,56 +101,66 @@ export function PulseFitHero({
                                 className="flex flex-col sm:flex-row items-center gap-4"
                             >
                                 {primaryAction && (
-                                    primaryAction.href ? (
-                                        <a href={primaryAction.href} className="flex flex-row items-center gap-2 px-8 py-4 rounded-full transition-all hover:scale-105 cursor-pointer" style={{ background: "#1a1a1a", color: "#FFFFFF", fontWeight: 500 }}>
-                                            {primaryAction.label}
-                                        </a>
-                                    ) : (
-                                        <button onClick={primaryAction.onClick} className="px-8 py-4 rounded-full transition-all hover:scale-105" style={{ background: "#1a1a1a", color: "#FFFFFF" }}>
-                                            {primaryAction.label}
-                                        </button>
-                                    )
+                                    <a
+                                        href={primaryAction.href}
+                                        onClick={primaryAction.onClick}
+                                        className="flex flex-row items-center gap-2 px-10 py-5 rounded-xl transition-all hover:scale-105 cursor-pointer uppercase font-black italic shadow-xl bg-red-600 text-white hover:bg-red-700"
+                                    >
+                                        {primaryAction.label}
+                                    </a>
                                 )}
 
                                 {secondaryAction && (
-                                    <a href={secondaryAction.href} className="px-8 py-4 rounded-full border border-gray-300 transition-all hover:scale-105" style={{ color: "#1a1a1a" }}>
+                                    <a
+                                        href={secondaryAction.href}
+                                        onClick={secondaryAction.onClick}
+                                        className="px-10 py-5 rounded-xl border-2 border-zinc-900 transition-all hover:bg-zinc-900 hover:text-white cursor-pointer uppercase font-black italic"
+                                    >
                                         {secondaryAction.label}
                                     </a>
                                 )}
                             </motion.div>
                         )}
 
+                        {disclaimer && (
+                            <p className="text-zinc-500 italic text-sm font-medium">
+                                {disclaimer}
+                            </p>
+                        )}
+
                         {socialProof && (
-                            <motion.div className="flex flex-row items-center gap-3">
+                            <motion.div className="flex flex-row items-center gap-3 bg-white/50 p-2 rounded-full pr-6 border border-zinc-200">
                                 <div className="flex flex-row -space-x-2">
                                     {socialProof.avatars.map((avatar, index) => (
-                                        <Image key={index} src={avatar} alt="User" width={40} height={40} className="rounded-full border-2 border-white" />
+                                        <div key={index} className="relative w-10 h-10 border-2 border-zinc-150 rounded-full overflow-hidden">
+                                            <Image src={avatar} alt="User" fill className="object-cover" />
+                                        </div>
                                     ))}
                                 </div>
-                                <span className="text-sm font-medium text-gray-600">{socialProof.text}</span>
+                                <span className="text-sm font-bold text-zinc-800 uppercase tracking-tight">{socialProof.text}</span>
                             </motion.div>
                         )}
                     </motion.div>
                 </div>
             )}
 
-            {/* Program slider na spodní straně zůstává */}
+            {/* Program slider na spodní straně */}
             {programs.length > 0 && (
                 <motion.div
-                    className="relative z-10 w-full overflow-hidden pb-16"
+                    className="relative z-10 w-full overflow-hidden pb-16 pt-10"
                 >
                     <motion.div
                         className="flex items-center"
                         animate={{ x: [0, -((programs.length * 380) / 2)] }}
-                        transition={{ repeat: Infinity, duration: programs.length * 3, ease: "linear" }}
+                        transition={{ repeat: Infinity, duration: programs.length * 5, ease: "linear" }}
                         style={{ gap: "24px", paddingLeft: "24px" }}
                     >
                         {[...programs, ...programs].map((program, index) => (
-                            <div key={index} className="flex-shrink-0 w-[356px] h-[480px] rounded-[24px] relative overflow-hidden shadow-xl">
-                                <Image src={program.image} alt={program.title} fill className="object-cover" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-                                    <span className="text-xs font-bold text-white/80 uppercase">{program.category}</span>
-                                    <h3 className="text-2xl font-bold text-white">{program.title}</h3>
+                            <div key={index} className="flex-shrink-0 w-[350px] h-[450px] rounded-[24px] relative overflow-hidden group shadow-2xl border border-zinc-200">
+                                <Image src={program.image} alt={program.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+                                    <span className="text-red-600 font-black uppercase tracking-widest text-sm mb-1">{program.category}</span>
+                                    <h3 className="text-2xl font-black text-white uppercase italic leading-none">{program.title}</h3>
                                 </div>
                             </div>
                         ))}
