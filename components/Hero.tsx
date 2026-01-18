@@ -3,18 +3,7 @@ import { PulseFitHero } from "@/components/pulse-fit-hero";
 export default function BulldogGymHero() {
     return (
         <PulseFitHero
-            logo="Bulldog gym"
-            navigation={[
-                { label: "O nás", href: "/#o-nas", onClick: () => console.log("O nás") },
-                { label: "Trenéři", href: "/#trainers", onClick: () => console.log("Trenéři") },
-                { label: "Ceník", href: "/#cenik", onClick: () => console.log("Ceník") },
-                { label: "Kontakt", href: "/#kontakt", onClick: () => console.log("Kontakt") },
-            ]}
-            ctaButton={{
-                label: "Otevírací doba",
-                onClick: () => console.log("Otevírací doba"),
-                href: "/#oteviraci-doba",
-            }}
+            /* Navbar prvky (logo, navigation, ctaButton) byly odstraněny */
             title="Tvůj limit je v hlavě. Překonej ho u nás."
             subtitle="Největší posilovna v Mostě na ploše 1000 m². Špičkové vybavení značek Cybex a Nautilus, profesionální trenéři a komunita, která tě nenechá přestat."
             primaryAction={{

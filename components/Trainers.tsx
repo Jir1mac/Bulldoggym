@@ -17,7 +17,7 @@ const trainers = [
         name: "Luboš Dundr",
         specialization: "Kulturistika | Silový trénink",
         bio: "Sport mi v životě dal a dává mnoho a vždy mě bavilo hledat cesty, jak trénovat správně tak, abych dosáhl svých cílů. Důležité je mít silnou motivaci a vědět proč chci něčeho dostáhnout a dokázat přistoupit k životnímu stylu a tréninku tak, aby člověk dospěl k úspěchu! Neváhejte se na mě obrátit.",
-        imageUrl: "/trainers/petr-svoboda.jpg", // Tady si pak oprav cestu k fotce, jako u Lukáše
+        imageUrl: "/trainers/petr-svoboda.jpg",
         phone: "+420 777 987 654",
         email: "lubos.dundr@bulldoggym.cz",
     },
@@ -25,11 +25,9 @@ const trainers = [
 
 export default function Trainers() {
     return (
-        // Přidán overflow-hidden kvůli animacím
         <section id="trainers" className="min-h-screen flex items-center py-16 md:py-24 bg-zinc-150 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-7xl mx-auto text-center">
 
-                {/* Nadpisy přijedou shora */}
                 <div data-aos="fade-down">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-base mb-4">
                         Naši experti
@@ -43,7 +41,6 @@ export default function Trainers() {
                     {trainers.map((trainer, index) => (
                         <div
                             key={trainer.id}
-                            // Karty trenérů přijedou zdola s delayem
                             data-aos="fade-up"
                             data-aos-delay={index * 200}
                             className="bg-zinc-150 rounded-2xl overflow-hidden shadow-lg border border-zinc-800 hover:border-red-600 transition-colors duration-300"
