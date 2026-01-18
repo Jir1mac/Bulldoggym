@@ -42,7 +42,7 @@ export default function Navbar() {
                     onClick={scrollToTop}
                     className="flex items-center gap-2 group cursor-pointer active:scale-95 transition-transform"
                 >
-                    <div className="bg-red-600 p-2 rounded-lg transition-transform group-hover:rotate-6">
+                    <div className="bg-red-600 p-2 rounded-lg ">
                         <Dumbbell className="text-white" size={24} />
                     </div>
                     <span className={cn(
