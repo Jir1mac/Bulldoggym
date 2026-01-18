@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from 'next/image';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 
 interface NavigationItem {
     label: string;
@@ -90,6 +91,8 @@ export function PulseFitHero({
                                  className,
                                  children,
                              }: PulseFitHeroProps) {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
     return (
         <section
             className={cn(
@@ -106,7 +109,7 @@ export function PulseFitHero({
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="fixed top-0 left-0 w-full z-50 flex flex-row justify-between items-center px-8 lg:px-16 bg-white/80 backdrop-blur-md"
+                className="fixed top-0 left-0 w-full z-50 flex flex-row justify-between items-center px-4 sm:px-8 lg:px-16 bg-white/80 backdrop-blur-md"
                 style={{
                     paddingTop: "20px",
                     paddingBottom: "20px",
@@ -116,7 +119,7 @@ export function PulseFitHero({
                     style={{
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 700,
-                        fontSize: "24px",
+                        fontSize: "clamp(18px, 5vw, 24px)",
                         color: "#1a1a1a",
                     }}
                 >
@@ -168,42 +171,136 @@ export function PulseFitHero({
                      })}
                 </nav>
 
-                {ctaButton && (
-                    ctaButton.href ? (
-                        <a
-                            href={ctaButton.href}
-                            className="px-6 py-3 rounded-full transition-all hover:scale-105 cursor-pointer inline-block"
-                            style={{
-                                background: "#FFFFFF",
-                                border: "1px solid #e2e8f0",
-                                fontFamily: "Inter, sans-serif",
-                                fontSize: "16px",
-                                fontWeight: 500,
-                                color: "#1a1a1a",
-                                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-                            }}
-                        >
-                            {ctaButton.label}
-                        </a>
-                    ) : (
-                        <button
-                            onClick={ctaButton.onClick}
-                            className="px-6 py-3 rounded-full transition-all hover:scale-105 cursor-pointer"
-                            style={{
-                                background: "#FFFFFF",
-                                border: "1px solid #e2e8f0",
-                                fontFamily: "Inter, sans-serif",
-                                fontSize: "16px",
-                                fontWeight: 500,
-                                color: "#1a1a1a",
-                                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-                            }}
-                        >
-                            {ctaButton.label}
-                        </button>
-                    )
-                )}
+                <div className="flex items-center gap-4">
+                    {ctaButton && (
+                        ctaButton.href ? (
+                            <a
+                                href={ctaButton.href}
+                                className="hidden sm:inline-block px-4 lg:px-6 py-2 lg:py-3 rounded-full transition-all hover:scale-105 cursor-pointer text-sm lg:text-base"
+                                style={{
+                                    background: "#FFFFFF",
+                                    border: "1px solid #e2e8f0",
+                                    fontFamily: "Inter, sans-serif",
+                                    fontWeight: 500,
+                                    color: "#1a1a1a",
+                                    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
+                                }}
+                            >
+                                {ctaButton.label}
+                            </a>
+                        ) : (
+                            <button
+                                onClick={ctaButton.onClick}
+                                className="hidden sm:inline-block px-4 lg:px-6 py-2 lg:py-3 rounded-full transition-all hover:scale-105 cursor-pointer text-sm lg:text-base"
+                                style={{
+                                    background: "#FFFFFF",
+                                    border: "1px solid #e2e8f0",
+                                    fontFamily: "Inter, sans-serif",
+                                    fontWeight: 500,
+                                    color: "#1a1a1a",
+                                    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
+                                }}
+                            >
+                                {ctaButton.label}
+                            </button>
+                        )
+                    )}
+
+                    {/* Mobile menu button */}
+                    <button
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className="lg:hidden p-2 text-gray-600 hover:text-red-600 transition-colors"
+                        aria-label="Toggle menu"
+                    >
+                        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </motion.header>
+
+            {/* Mobile menu */}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, maxHeight: 0 }}
+                        animate={{ opacity: 1, maxHeight: "500px" }}
+                        exit={{ opacity: 0, maxHeight: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="fixed top-[70px] left-0 w-full bg-white/95 backdrop-blur-md shadow-lg z-40 lg:hidden overflow-hidden"
+                    >
+                        <nav className="flex flex-col p-6 gap-4" aria-label="Mobile navigation">
+                            {navigation.map((item, index) => {
+                                const content = (
+                                    <span className="text-lg">{item.label}</span>
+                                );
+
+                                const commonProps = {
+                                    onClick: () => {
+                                        item.onClick?.();
+                                        setMobileMenuOpen(false);
+                                    },
+                                    className: "py-3 px-4 text-gray-600 hover:text-red-600 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer text-left",
+                                    style: {
+                                        fontFamily: "Inter, sans-serif",
+                                        fontWeight: 500,
+                                    } as React.CSSProperties,
+                                };
+
+                                if (item.href) {
+                                    return (
+                                        <a key={index} {...commonProps} href={item.href}>
+                                            {content}
+                                        </a>
+                                    );
+                                }
+
+                                return (
+                                    <button key={index} {...commonProps}>
+                                        {content}
+                                    </button>
+                                );
+                            })}
+
+                            {ctaButton && (
+                                <div className="pt-4 border-t border-gray-200">
+                                    {ctaButton.href ? (
+                                        <a
+                                            href={ctaButton.href}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className="block w-full px-6 py-3 rounded-full text-center transition-all hover:scale-105 cursor-pointer"
+                                            style={{
+                                                background: "#1a1a1a",
+                                                fontFamily: "Inter, sans-serif",
+                                                fontSize: "16px",
+                                                fontWeight: 500,
+                                                color: "#FFFFFF",
+                                            }}
+                                        >
+                                            {ctaButton.label}
+                                        </a>
+                                    ) : (
+                                        <button
+                                            onClick={() => {
+                                                ctaButton.onClick?.();
+                                                setMobileMenuOpen(false);
+                                            }}
+                                            className="w-full px-6 py-3 rounded-full transition-all hover:scale-105 cursor-pointer"
+                                            style={{
+                                                background: "#1a1a1a",
+                                                fontFamily: "Inter, sans-serif",
+                                                fontSize: "16px",
+                                                fontWeight: 500,
+                                                color: "#FFFFFF",
+                                            }}
+                                        >
+                                            {ctaButton.label}
+                                        </button>
+                                    )}
+                                </div>
+                            )}
+                        </nav>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {children ? (
                 <div className="relative z-10 flex-1 flex items-center justify-center w-full">

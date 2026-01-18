@@ -26,7 +26,7 @@ const trainers = [
 export default function Trainers() {
     return (
         // Přidán overflow-hidden kvůli animacím
-        <section id="trainers" className="min-h-screen flex items-center py-24 bg-zinc-150 px-6 overflow-hidden">
+        <section id="trainers" className="min-h-screen flex items-center py-16 md:py-24 bg-zinc-150 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-7xl mx-auto text-center">
 
                 {/* Nadpisy přijedou shora */}
