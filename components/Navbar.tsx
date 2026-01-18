@@ -22,6 +22,13 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     return (
         <nav className={cn(
             "fixed top-0 w-full z-[100] transition-all duration-300 px-4 py-4",
@@ -31,8 +38,11 @@ export default function Navbar() {
                 "max-w-7xl mx-auto rounded-2xl transition-all duration-300 px-6 py-3 flex items-center justify-between",
                 isScrolled ? "bg-white/80 backdrop-blur-md shadow-lg border border-zinc-200" : "bg-transparent"
             )}>
-                <div className="flex items-center gap-2 group cursor-pointer">
-                    <div className="bg-red-600 p-2 rounded-lg group-hover:rotate-12 transition-transform">
+                <div
+                    onClick={scrollToTop}
+                    className="flex items-center gap-2 group cursor-pointer active:scale-95 transition-transform"
+                >
+                    <div className="bg-red-600 p-2 rounded-lg transition-transform group-hover:rotate-6">
                         <Dumbbell className="text-white" size={24} />
                     </div>
                     <span className={cn(
