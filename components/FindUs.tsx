@@ -70,7 +70,7 @@ export default function FindUs() {
 
                         <div className="flex space-x-4">
                             <Button variant="ghost" size="icon" asChild className="cursor-pointer">
-                                <a href="https://www.youtube.com/@BulldogGymMost" target="_blank" rel="noopener noreferrer" aria-label="YouTube Bulldog Gym">
+                                <a href="https://www.youtube.com/channel/UCDtv1fhz07WQ5O2lVJWg0zg" target="_blank" rel="noopener noreferrer" aria-label="YouTube Bulldog Gym">
                                     <Youtube className="text-zinc-400 hover:text-red-600 transition-colors" size={28} />
                                 </a>
                             </Button>

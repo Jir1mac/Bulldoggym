@@ -39,7 +39,7 @@ export default function Foter() {
                 },
                 {
                     name: "youTube",
-                    href: "https://youtube.com/@BulldogGymMost",
+                    href: "https://www.youtube.com/channel/UCDtv1fhz07WQ5O2lVJWg0zg",
                 },
             ]}
             columns={[
