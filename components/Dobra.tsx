@@ -50,7 +50,7 @@ export default function BusinessHours() {
                     </div>
 
                     <div className="space-y-4">
-                        {openingHours.map((item, index) => {
+                        {openingHours.map((item) => {
                             const isToday = item.day.toLowerCase() === today.toLowerCase();
 
                             return (
@@ -62,8 +62,7 @@ export default function BusinessHours() {
                                             ? "bg-red-600/10 border border-red-600/30 scale-[1.02]"
                                             : "hover:bg-zinc-800/50 border border-transparent"
                                     )}
-                                    data-aos="fade-left"
-                                    data-aos-delay={index * 50}
+                                    /* Animace data-aos zde byly odstraněny */
                                 >
                                     <div className="flex items-center mb-2 sm:mb-0">
                                         <Calendar
