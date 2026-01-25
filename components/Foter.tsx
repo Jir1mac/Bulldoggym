@@ -31,11 +31,11 @@ export default function Foter() {
             socialLinks={[
                 {
                     name: "instagram",
-                    href: "https://instagram.com/bulldoggymmost",
+                    href: "https://www.instagram.com/bulldoggym.most?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
                 },
                 {
                     name: "facebook",
-                    href: "https://facebook.com/bulldoggymmost",
+                    href: "https://www.facebook.com/profile.php?id=100057360913960",
                 },
                 {
                     name: "youTube",

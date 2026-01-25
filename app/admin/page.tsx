@@ -39,7 +39,6 @@ export default function AdminPage() {
     return (
         <div className="min-h-screen bg-zinc-100 text-black p-8 font-sans">
             <div className="max-w-5xl mx-auto">
-                {/* Header */}
                 <div className="flex justify-between items-center mb-12">
                     <h1 className="text-4xl font-black uppercase italic">Admin <span className="text-red-600">Bulldog</span></h1>
                     <button className="bg-red-600 hover:bg-red-700 transition-colors px-8 py-3 rounded-xl text-white font-bold flex items-center gap-2 cursor-pointer uppercase tracking-tighter shadow-lg shadow-red-600/20">
@@ -49,7 +48,6 @@ export default function AdminPage() {
 
                 <div className="grid grid-cols-1 gap-12">
 
-                    {/* Sekce: Otevírací doba */}
                     <section>
                         <div className="flex items-center gap-3 mb-6">
                             <Clock className="text-red-600" />
@@ -75,8 +73,6 @@ export default function AdminPage() {
                             ))}
                         </div>
                     </section>
-
-                    {/* Sekce: Ceník permanentek */}
                     <section>
                         <div className="flex items-center gap-3 mb-6">
                             <Tag className="text-red-600" />
