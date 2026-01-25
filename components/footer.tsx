@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 
@@ -33,22 +34,22 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
     ({ className, brand, socialLinks, columns, copyright, ...props }, ref) => {
         // prevent accidental propagation of `key` through props
-        const { key: _key, ...rest } = props as Record<string, unknown>
+        const { key: _, ...rest } = props as Record<string, unknown>
 
         return (
             <div
                 ref={ref}
                 className={cn("pt-16 md:pt-24", className)}
-                {...(rest as any)}
+                {...(rest as React.HTMLAttributes<HTMLDivElement>)}
             >
                 <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
                     {/* Mobile-First Layout */}
                     <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
                         {/* Brand Section - Mobile Optimized */}
                         <div className="lg:col-span-4">
-                            <a href="/" className="text-2xl md:text-xl font-bold inline-block mb-3 hover:text-red-600 transition-colors min-h-[44px] flex items-center">
+                            <Link href="/" className="text-2xl md:text-xl font-bold inline-block mb-3 hover:text-red-600 transition-colors min-h-[44px] flex items-center">
                                 {brand.name}
-                            </a>
+                            </Link>
                             <p className="text-base md:text-sm text-foreground/70 mb-6 leading-relaxed">
                                 {brand.description}
                             </p>

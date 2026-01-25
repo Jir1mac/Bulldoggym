@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Dumbbell } from 'lucide-react';
+import Link from 'next/link';
+import { X, Dumbbell } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -162,7 +163,7 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     onClick={handleLinkClick}
-                                    className="flex items-center px-4 py-4 text-lg font-bold uppercase tracking-wide text-zinc-900 hover:bg-red-50 hover:text-red-600 rounded-xl transition-all active:scale-98 min-h-[56px]"
+                                    className="flex items-center px-4 py-4 text-lg font-bold uppercase tracking-wide text-zinc-900 hover:bg-red-50 hover:text-red-600 rounded-xl transition-all active:scale-95 min-h-[56px]"
                                 >
                                     {link.name}
                                 </a>
