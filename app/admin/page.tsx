@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Save, Tag, Clock } from 'lucide-react';
+import Login from '../../components/Login';
 
 const initialHours = [
     { day: "Pondělí", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
@@ -37,6 +38,9 @@ export default function AdminPage() {
     };
 
     return (
+        <>
+            <Login />
+
         <div className="min-h-screen bg-zinc-100 text-black p-8 font-sans">
             <div className="max-w-5xl mx-auto">
                 <div className="flex justify-between items-center mb-12">
@@ -108,5 +112,6 @@ export default function AdminPage() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

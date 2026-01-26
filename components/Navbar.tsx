@@ -6,6 +6,7 @@ import { X, Dumbbell } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 const navLinks = [
+    { name: 'Masáže', href: 'https://most-masaze.cz/' },
     { name: 'O nás', href: '#o-nas' },
     { name: 'Trenéři', href: '#trainers' },
     { name: 'Ceník', href: '#cenik' },
