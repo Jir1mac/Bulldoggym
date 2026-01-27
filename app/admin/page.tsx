@@ -1,108 +1,188 @@
 "use client";
 
-import React, { useState } from 'react';
-import { Save, Tag, Clock } from 'lucide-react';
-import Login from '../../components/Login';
+import React, { useState, useEffect } from 'react';
+import { Save, Tag, Clock, Loader2, CheckCircle2, Ticket } from 'lucide-react';
 
-const initialHours = [
-    { day: "Pondělí", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Úterý", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Středa", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Čtvrtek", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Pátek", hours: "7:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Sobota", hours: "08:00 – 22:00", note: "Víkendový režim" },
-    { day: "Neděle", hours: "08:00 – 22:00", note: "Víkendový režim" },
-];
+interface HourRow {
+    day: string;
+    hours: string;
+    note: string;
+}
 
-const initialPricing = [
-    { title: "Měsíční členství", priceNormal: "1 390", priceDiscount: "990" },
-    { title: "Čtvrtletní členství", priceNormal: "4 000", priceDiscount: "2 900" },
-    { title: "Pololetní členství", priceNormal: "8 000", priceDiscount: "5 800" },
-    { title: "Roční členství", priceNormal: "16 000", priceDiscount: "11 000" }
-];
+interface PriceRow {
+    title: string;
+    priceNormal: string;
+    priceDiscount: string;
+}
 
 export default function AdminPage() {
-    const [hours, setHours] = useState(initialHours);
-    const [pricing, setPricing] = useState(initialPricing);
+    const [hours, setHours] = useState<HourRow[]>([]);
+    const [pricing, setPricing] = useState<PriceRow[]>([]);
 
-    const updateDay = (index: number, field: string, value: string) => {
+    const [entry10, setEntry10] = useState("");
+    const [entrySingle, setEntrySingle] = useState("");
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [isSaving, setIsSaving] = useState(false);
+    const [saveStatus, setSaveStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch('/api/content');
+                const data = await res.json();
+                setHours(data.hours || []);
+                setPricing(data.pricing || []);
+                setEntry10(data.entry10 || "1 100");
+                setEntrySingle(data.entrySingle || "130");
+            } catch (error) {
+                console.error("Chyba při načítání:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const handleSave = async () => {
+        setIsSaving(true);
+        setSaveStatus('idle');
+        try {
+            const res = await fetch('/api/content', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    hours,
+                    pricing,
+                    entry10,
+                    entrySingle
+                }),
+            });
+            if (res.ok) {
+                setSaveStatus('success');
+                setTimeout(() => setSaveStatus('idle'), 3000);
+            } else {
+                setSaveStatus('error');
+            }
+        } catch {
+            setSaveStatus('error');
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
+    const updateDay = (index: number, field: keyof HourRow, value: string) => {
         const newHours = [...hours];
         newHours[index] = { ...newHours[index], [field]: value };
         setHours(newHours);
     };
 
-    const updatePrice = (index: number, field: string, value: string) => {
+    const updatePrice = (index: number, field: keyof PriceRow, value: string) => {
         const newPricing = [...pricing];
         newPricing[index] = { ...newPricing[index], [field]: value };
         setPricing(newPricing);
     };
 
-    return (
-        <>
-            <Login />
+    if (isLoading) {
+        return (
+            <div className="min-h-screen bg-zinc-100 flex items-center justify-center">
+                <Loader2 className="animate-spin text-red-600" size={40} />
+            </div>
+        );
+    }
 
-        <div className="min-h-screen bg-zinc-100 text-black p-8 font-sans">
+    return (
+        <div className="min-h-screen bg-zinc-100 text-black p-8 font-sans uppercase">
             <div className="max-w-5xl mx-auto">
                 <div className="flex justify-between items-center mb-12">
-                    <h1 className="text-4xl font-black uppercase italic">Admin <span className="text-red-600">Bulldog</span></h1>
-                    <button className="bg-red-600 hover:bg-red-700 transition-colors px-8 py-3 rounded-xl text-white font-bold flex items-center gap-2 cursor-pointer uppercase tracking-tighter shadow-lg shadow-red-600/20">
-                        <Save size={20} /> Uložit vše
-                    </button>
+                    <h1 className="text-4xl font-black italic tracking-tighter">
+                        Admin <span className="text-red-600">Bulldog</span>
+                    </h1>
+
+                    <div className="flex items-center gap-4">
+                        {saveStatus === 'success' && <span className="text-green-600 font-bold text-xs italic">Uloženo!</span>}
+                        <button
+                            onClick={handleSave}
+                            disabled={isSaving}
+                            className="bg-red-600 hover:bg-red-700 disabled:bg-zinc-400 px-8 py-3 rounded-xl text-white font-bold flex items-center gap-2 shadow-lg shadow-red-600/20 active:scale-95 transition-all cursor-pointer"
+                        >
+                            {isSaving ? <Loader2 size={20} className="animate-spin" /> : <Save size={20} />}
+                            Uložit vše
+                        </button>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 gap-12">
 
+                    <section className="bg-white p-8 rounded-3xl border border-zinc-200 shadow-sm">
+                        <div className="flex items-center gap-3 mb-6">
+                            <Ticket className="text-red-600" />
+                            <h2 className="text-2xl font-black italic">Základní vstupné</h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <label className="text-[10px] font-bold text-zinc-400 block mb-2">Permanentka (10 vstupů) - Kč</label>
+                                <input
+                                    className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 rounded-xl font-bold outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all"
+                                    value={entry10}
+                                    onChange={(e) => setEntry10(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <label className="text-[10px] font-bold text-zinc-400 block mb-2">Jednorázový vstup - Kč</label>
+                                <input
+                                    className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 rounded-xl font-bold outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all"
+                                    value={entrySingle}
+                                    onChange={(e) => setEntrySingle(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                    </section>
+
                     <section>
                         <div className="flex items-center gap-3 mb-6">
                             <Clock className="text-red-600" />
-                            <h2 className="text-2xl font-black uppercase italic">Otevírací doba</h2>
+                            <h2 className="text-2xl font-black italic">Otevírací doba</h2>
                         </div>
                         <div className="space-y-3">
                             {hours.map((item, index) => (
-                                <div key={item.day} className="bg-white p-4 rounded-2xl border border-zinc-200 shadow-sm flex items-center gap-4">
-                                    <div className="w-28 font-bold uppercase italic text-zinc-400 text-sm">{item.day}</div>
+                                <div key={index} className="bg-white p-4 rounded-2xl border border-zinc-200 shadow-sm flex items-center gap-4">
+                                    <div className="w-28 font-bold text-zinc-400 text-sm">{item.day}</div>
                                     <input
-                                        className="bg-zinc-50 border border-zinc-200 px-4 py-2 rounded-lg flex-1 outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all"
+                                        className="bg-zinc-50 border border-zinc-200 px-4 py-2 rounded-lg flex-1 outline-none focus:border-red-600 font-bold"
                                         value={item.hours}
                                         onChange={(e) => updateDay(index, 'hours', e.target.value)}
-                                        placeholder="Čas"
                                     />
                                     <input
-                                        className="bg-zinc-50 border border-zinc-200 px-4 py-2 rounded-lg flex-1 text-zinc-500 outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all"
+                                        className="bg-zinc-50 border border-zinc-200 px-4 py-2 rounded-lg flex-1 text-zinc-500 outline-none focus:border-red-600"
                                         value={item.note}
                                         onChange={(e) => updateDay(index, 'note', e.target.value)}
-                                        placeholder="Poznámka"
                                     />
                                 </div>
                             ))}
                         </div>
                     </section>
+
                     <section>
                         <div className="flex items-center gap-3 mb-6">
                             <Tag className="text-red-600" />
-                            <h2 className="text-2xl font-black uppercase italic">Ceny členství</h2>
+                            <h2 className="text-2xl font-black italic">Ceny členství</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {pricing.map((plan, index) => (
-                                <div key={plan.title} className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
-                                    <div className="font-bold uppercase italic mb-4 text-red-600">{plan.title}</div>
+                                <div key={index} className="bg-white p-6 rounded-2xl border border-zinc-200">
+                                    <div className="font-bold mb-4 text-red-600">{plan.title}</div>
                                     <div className="space-y-4">
-                                        <div>
-                                            <label className="text-[10px] font-bold uppercase text-zinc-400 mb-1 block">Základní cena (Kč)</label>
-                                            <input
-                                                className="w-full bg-zinc-50 border border-zinc-200 px-4 py-2 rounded-lg outline-none focus:border-red-600 font-bold"
-                                                value={plan.priceNormal}
-                                                onChange={(e) => updatePrice(index, 'priceNormal', e.target.value)}
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="text-[10px] font-bold uppercase text-red-400 mb-1 block">Zvýhodněná cena (Kč)</label>
-                                            <input
-                                                className="w-full bg-red-50 border border-red-100 px-4 py-2 rounded-lg outline-none focus:border-red-600 text-red-600 font-bold"
-                                                value={plan.priceDiscount}
-                                                onChange={(e) => updatePrice(index, 'priceDiscount', e.target.value)}
-                                            />
-                                        </div>
+                                        <input
+                                            className="w-full bg-zinc-50 border border-zinc-200 px-4 py-2 rounded-lg font-bold"
+                                            value={plan.priceNormal}
+                                            onChange={(e) => updatePrice(index, 'priceNormal', e.target.value)}
+                                        />
+                                        <input
+                                            className="w-full bg-red-50 border border-red-100 px-4 py-2 rounded-lg text-red-600 font-bold"
+                                            value={plan.priceDiscount}
+                                            onChange={(e) => updatePrice(index, 'priceDiscount', e.target.value)}
+                                        />
                                     </div>
                                 </div>
                             ))}
@@ -112,6 +192,5 @@ export default function AdminPage() {
                 </div>
             </div>
         </div>
-        </>
     );
 }

@@ -1,6 +1,9 @@
-import React from 'react';
-import { Check, Users } from 'lucide-react';
+"use client";
 
+import React, { useState, useEffect } from 'react';
+import { Check, Users, Loader2 } from 'lucide-react';
+
+// Ikona masáže zůstává stejná
 const MassageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <path d="M7 14c0-1.7 1.3-3 3-3s3 1.3 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -9,42 +12,67 @@ const MassageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-const pricingPlans = [
-    {
-        title: "Měsíční členství",
+const planStaticDetails: Record<string, { description: string, features: string[] }> = {
+    "Měsíční členství": {
         description: "Pravidelný trénink bez omezení počtu vstupů.",
-        priceNormal: "1 390",
-        priceDiscount: "990",
-        features: ["Neomezený přístup 30 dní", "Vstup na všechny stroje", "Bez registrace a závazků"],
-        highlight: true,
+        features: ["Neomezený přístup 30 dní", "Vstup na všechny stroje", "Bez registrace a závazků"]
     },
-    {
-        title: "Čtvrtletní členství",
+    "Čtvrtletní členství": {
         description: "3 měsíce pro tvou proměnu.",
-        priceNormal: "4 000",
-        priceDiscount: "2 900",
-        features: ["Výhodnější cena", "90 dní tréninku", "Stabilní režim"],
-        highlight: true,
+        features: ["Výhodnější cena", "90 dní tréninku", "Stabilní režim"]
     },
-    {
-        title: "Pololetní členství",
+    "Pololetní členství": {
         description: "Půl roku disciplíny a výsledků.",
-        priceNormal: "8 000",
-        priceDiscount: "5 800",
-        features: ["Dlouhodobý progres", "180 dní tréninku", "Ušetříte 1600 Kč"],
-        highlight: true,
+        features: ["Dlouhodobý progres", "180 dní tréninku", "Ušetříte 1600 Kč"]
     },
-    {
-        title: "Roční členství",
+    "Roční členství": {
         description: "Maximální závazek, nejlepší cena.",
-        priceNormal: "16 000",
-        priceDiscount: "11 000",
-        features: ["TOP cena za měsíc", "365 dní tréninku", "Nejlepší investice"],
-        highlight: true,
+        features: ["TOP cena za měsíc", "365 dní tréninku", "Nejlepší investice"]
     }
-];
+};
+
+interface PricePlan {
+    title: string;
+    priceNormal: string;
+    priceDiscount: string;
+}
 
 export default function Pricing() {
+    const [pricingPlans, setPricingPlans] = useState<PricePlan[]>([]);
+    // NOVÉ: Stavy pro dynamické základní ceny
+    const [entry10, setEntry10] = useState("");
+    const [entrySingle, setEntrySingle] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchPricing = async () => {
+            try {
+                const res = await fetch('/api/content');
+                const data = await res.json();
+
+                if (data.pricing) setPricingPlans(data.pricing);
+
+                // Načtení nových hodnot z API (s fallbackem na původní ceny)
+                setEntry10(data.entry10 || "1 100");
+                setEntrySingle(data.entrySingle || "130");
+
+            } catch (error) {
+                console.error("Chyba při načítání ceníku:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchPricing();
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div className="min-h-screen bg-zinc-100 flex items-center justify-center">
+                <Loader2 className="animate-spin text-red-600" size={48} />
+            </div>
+        );
+    }
+
     return (
         <section id="cenik" className="py-16 md:py-24 min-h-screen flex items-center bg-zinc-100 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-[1500px] mx-auto w-full">
@@ -55,12 +83,9 @@ export default function Pricing() {
                 </div>
 
                 <div className="mt-16 mb-5 text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <p className="text-zinc-700 text-sm ">
-                        Permanentka na 10 vstupů: 1100 Kč
-                    </p>
-                    <p className="text-red-600 font-bold uppercase mt-4 tracking-widest">
-                        Jednorázové vstupné: 130 Kč
-                    </p>
+                    {/* ZDE JSOU TEĎ PROMĚNNÉ Z API */}
+                    <p className="text-zinc-700 text-sm">Permanentka na 10 vstupů: {entry10} Kč</p>
+                    <p className="text-red-600 font-bold uppercase mt-4 tracking-widest">Jednorázové vstupné: {entrySingle} Kč</p>
 
                     <div className="flex items-center justify-center gap-2 text-sm text-zinc-700 mt-3">
                         <MassageIcon width={18} height={18} className="text-red-600" />
@@ -69,56 +94,55 @@ export default function Pricing() {
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-6 xl:gap-8">
-                    {pricingPlans.map((plan, index) => (
-                        <div
-                            key={index}
-                            data-aos="fade-up"
-                            data-aos-delay={index * 150}
-                            className={`relative p-6 sm:p-8 rounded-3xl border transition-all duration-300 w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-2rem)] min-w-[280px] flex flex-col ${
-                                plan.highlight
-                                    ? 'border-red-600 bg-zinc-900 shadow-[0_0_30px_rgba(220,38,38,0.15)] lg:scale-105 z-10'
-                                    : 'border-zinc-800 bg-zinc-900/40 hover:border-zinc-700'
-                            }`}
-                        >
-                            <div className="flex-grow">
-                                <h4 className="text-2xl font-bold text-white mb-2 leading-tight">{plan.title}</h4>
-                                <p className="text-zinc-500 mb-8 text-sm h-10 leading-snug">{plan.description}</p>
+                    {pricingPlans.map((plan, index) => {
+                        const details = planStaticDetails[plan.title] || { description: "", features: [] };
 
-                                <div className="space-y-4 mb-8 pb-8 border-b border-zinc-800">
-                                    <div className="flex justify-between items-center text-zinc-400">
-                                        <span className="text-xs uppercase font-bold tracking-wider">Základní</span>
-                                        <div className="flex items-baseline whitespace-nowrap">
-                                            <span className="text-3xl font-bold text-white">{plan.priceNormal}</span>
-                                            <span className="ml-1 text-sm">Kč</span>
+                        return (
+                            <div
+                                key={index}
+                                data-aos="fade-up"
+                                data-aos-delay={index * 150}
+                                className="relative p-6 sm:p-8 rounded-3xl border transition-all duration-300 w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(25%-2rem)] min-w-[280px] flex flex-col border-red-600 bg-zinc-900 shadow-[0_0_30px_rgba(220,38,38,0.15)] lg:scale-105 z-10"
+                            >
+                                <div className="flex-grow">
+                                    <h4 className="text-2xl font-bold text-white mb-2 leading-tight">{plan.title}</h4>
+                                    <p className="text-zinc-500 mb-8 text-sm h-10 leading-snug">{details.description}</p>
+
+                                    <div className="space-y-4 mb-8 pb-8 border-b border-zinc-800">
+                                        <div className="flex justify-between items-center text-zinc-400">
+                                            <span className="text-xs uppercase font-bold tracking-wider">Základní</span>
+                                            <div className="flex items-baseline whitespace-nowrap">
+                                                <span className="text-3xl font-bold text-white">{plan.priceNormal}</span>
+                                                <span className="ml-1 text-sm">Kč</span>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex justify-between items-center bg-red-600/10 p-3 rounded-xl border border-red-600/20">
+                                            <div className="flex items-center text-red-500 mr-2">
+                                                <Users size={16} className="mr-2 flex-shrink-0" />
+                                                <span className="text-[10px] font-black uppercase leading-none whitespace-nowrap">Zvýhodněné*</span>
+                                            </div>
+                                            <div className="flex items-baseline text-red-600 whitespace-nowrap font-black">
+                                                <span className="text-3xl">{plan.priceDiscount}</span>
+                                                <span className="ml-1 text-sm">Kč</span>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div className="flex justify-between items-center bg-red-600/10 p-3 rounded-xl border border-red-600/20">
-                                        <div className="flex items-center text-red-500 mr-2">
-                                            <Users size={16} className="mr-2 flex-shrink-0" />
-                                            <span className="text-[10px] font-black uppercase leading-none whitespace-nowrap">Zvýhodněné*</span>
-                                        </div>
-                                        <div className="flex items-baseline text-red-600 whitespace-nowrap font-black">
-                                            <span className="text-3xl">{plan.priceDiscount}</span>
-                                            <span className="ml-1 text-sm">Kč</span>
-                                        </div>
-                                    </div>
+                                    <ul className="space-y-4 mb-6">
+                                        {details.features.map((feature, i) => (
+                                            <li key={i} className="flex items-start text-zinc-300 text-sm">
+                                                <Check className="text-red-600 mr-3 mt-1 flex-shrink-0" size={16} />
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-
-                                <ul className="space-y-4 mb-6">
-                                    {plan.features.map((feature, i) => (
-                                        <li key={i} className="flex items-start text-zinc-300 text-sm">
-                                            <Check className="text-red-600 mr-3 mt-1 flex-shrink-0" size={16} />
-                                            <span>{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
-                {/* Patička ceníku s animací fade-up */}
                 <div className="mt-16 text-center" data-aos="fade-up" data-aos-offset="0">
                     <p className="text-zinc-500 text-sm italic">
                         * Zvýhodněná cena platí pro studenty do 26 let (po předložení ISIC), seniory nad 60 let a držitele průkazu ZTP.
