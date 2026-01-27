@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { Check, Users, Loader2 } from 'lucide-react';
 
-// Ikona masáže zůstává stejná
 const MassageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <path d="M7 14c0-1.7 1.3-3 3-3s3 1.3 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -39,7 +38,6 @@ interface PricePlan {
 
 export default function Pricing() {
     const [pricingPlans, setPricingPlans] = useState<PricePlan[]>([]);
-    // NOVÉ: Stavy pro dynamické základní ceny
     const [entry10, setEntry10] = useState("");
     const [entrySingle, setEntrySingle] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +50,6 @@ export default function Pricing() {
 
                 if (data.pricing) setPricingPlans(data.pricing);
 
-                // Načtení nových hodnot z API (s fallbackem na původní ceny)
                 setEntry10(data.entry10 || "1 100");
                 setEntrySingle(data.entrySingle || "130");
 
@@ -83,7 +80,6 @@ export default function Pricing() {
                 </div>
 
                 <div className="mt-16 mb-5 text-center" data-aos="zoom-in" data-aos-delay="200">
-                    {/* ZDE JSOU TEĎ PROMĚNNÉ Z API */}
                     <p className="text-zinc-700 text-sm">Permanentka na 10 vstupů: {entry10} Kč</p>
                     <p className="text-red-600 font-bold uppercase mt-4 tracking-widest">Jednorázové vstupné: {entrySingle} Kč</p>
 

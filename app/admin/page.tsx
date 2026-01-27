@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Save, Tag, Clock, Loader2, CheckCircle2, Ticket } from 'lucide-react';
+import { Save, Tag, Clock, Loader2, Ticket } from 'lucide-react';
 
 interface HourRow {
     day: string;

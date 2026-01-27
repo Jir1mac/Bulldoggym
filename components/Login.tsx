@@ -7,13 +7,11 @@ import { useRouter } from 'next/navigation';
 export default function LoginPage() {
     const router = useRouter();
 
-    // Stavy pro formulář
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     });
 
-    // Stavy pro UI
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -33,10 +31,8 @@ export default function LoginPage() {
             const data = await res.json();
 
             if (res.ok) {
-                // Úspěch - přesměrování na admin nástěnku
                 router.push('/admin/dashboard');
             } else {
-                // Chyba z backendu (špatné heslo)
                 setError(data.message || 'Přihlášení se nezdařilo');
             }
         } catch (err) {
@@ -61,7 +57,6 @@ export default function LoginPage() {
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                        {/* Chybová hláška */}
                         {error && (
                             <div className="bg-red-50 text-red-600 p-3 rounded-xl text-[11px] font-black uppercase border border-red-200 text-center animate-pulse">
                                 {error}

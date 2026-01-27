@@ -11,7 +11,6 @@ interface HourRow {
 }
 
 const DAY_CLASS_BASE = "text-lg font-bold uppercase italic";
-// TADY JE ZMĚNA: Odebráno underline a související dekorace
 const DAY_CLASS_TODAY = "text-red-600";
 const DAY_CLASS_DEFAULT = "text-black";
 
@@ -23,7 +22,6 @@ export default function BusinessHours() {
     const [openingHours, setOpeningHours] = useState<HourRow[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    // Získání dne v týdnu česky
     const today = new Intl.DateTimeFormat('cs-CZ', { weekday: 'long' }).format(new Date());
 
     useEffect(() => {
