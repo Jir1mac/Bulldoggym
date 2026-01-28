@@ -4,10 +4,25 @@ import bcrypt from 'bcrypt';
 import { prisma } from '@/lib/prisma';
 
 export async function POST(request: Request) {
-    const body = await request.json();
-    const { username, password } = body;
-
     try {
+        const body = await request.json();
+        const { username, password } = body;
+
+        // Input validation
+        if (!username || !password || typeof username !== 'string' || typeof password !== 'string') {
+            return NextResponse.json({
+                success: false,
+                message: "Špatné jméno nebo heslo"
+            }, { status: 401 });
+        }
+
+        if (username.trim() === '' || password.trim() === '') {
+            return NextResponse.json({
+                success: false,
+                message: "Špatné jméno nebo heslo"
+            }, { status: 401 });
+        }
+
         // Find user in database
         const user = await prisma.user.findUnique({
             where: { username }
@@ -47,9 +62,10 @@ export async function POST(request: Request) {
         return response;
     } catch (error) {
         console.error('Login error:', error);
+        // Return same error message to avoid leaking information
         return NextResponse.json({
             success: false,
-            message: "Chyba při přihlašování"
-        }, { status: 500 });
+            message: "Špatné jméno nebo heslo"
+        }, { status: 401 });
     }
 }

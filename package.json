@@ -9,9 +9,6 @@
     "lint": "eslint",
     "seed": "tsx prisma/seed.ts"
   },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
-  },
   "dependencies": {
     "@prisma/client": "^6.19.2",
     "@radix-ui/react-slot": "^1.2.4",
