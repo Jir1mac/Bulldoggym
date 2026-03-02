@@ -1,106 +1,139 @@
 "use client";
 
+import React from 'react';
 import {
-    Blocks,
+    Dumbbell,
+    History,
+    Users,
     CreditCard,
-    Handshake,
-    Scale,
-    History
+    MapPin,
+    Phone,
+    Mail,
+    Instagram,
+    Facebook,
+    Youtube,
+    ChevronRight,
+    Clock
 } from "lucide-react";
-import { Footer } from "@/components/footer";
 
-const GoogleAnalyticsIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        {...props}
-    >
-        <path d="M17 5.1v13.5c0 1.6 1 2.4 2 2.4s2-.7 2-2.4V5.2C21 4 20 3 19 3s-2 1-2 2.1Zm-7 7v6.6c0 1.5 1 2.3 2 2.3s2-.7 2-2.3v-6.5c0-1.3-1-2.2-2-2.2s-2 1-2 2.1Zm-3.6 8.3a2 2 0 1 0-2.8-2.8 2 2 0 0 0 2.8 2.8Z" />
-    </svg>
-);
+export default function Footer() {
+    const currentYear = new Date().getFullYear();
 
-export default function Foter() {
+    const sections = [
+        {
+            title: "Navigace",
+            links: [
+                { name: "Domů", href: "/", icon: <ChevronRight size={14} /> },
+                { name: "O nás", href: "/#o-nas", icon: <History size={14} /> },
+                { name: "Trenéři", href: "/#trainers", icon: <Users size={14} /> },
+                { name: "Ceník", href: "/#cenik", icon: <CreditCard size={14} /> },
+            ]
+        },
+        {
+            title: "Kontakt",
+            links: [
+                { name: "Most, 434 01", icon: <MapPin size={14} /> },
+                { name: "+420 123 456 789", href: "tel:+420123456789", icon: <Phone size={14} /> },
+                { name: "bulldog.gym@seznam.cz", href: "mailto:bulldog.gym@seznam.cz", icon: <Mail size={14} /> },
+            ]
+        }
+    ];
+
+    const socialLinks = [
+        { icon: <Instagram size={20} />, href: "https://www.instagram.com/bulldoggym.most" },
+        { icon: <Facebook size={20} />, href: "https://www.facebook.com/profile.php?id=100057360913960" },
+        { icon: <Youtube size={20} />, href: "https://www.youtube.com/channel/UCDtv1fhz07WQ5O2lVJWg0zg" },
+    ];
+
     return (
-        <Footer
-            className="mt-20"
-            brand={{
-                name: "Bulldog Gym",
-                description: "Největší posilovna v Mostě na ploše 1000 m².",
-            }}
-            socialLinks={[
-                {
-                    name: "instagram",
-                    href: "https://www.instagram.com/bulldoggym.most?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-                },
-                {
-                    name: "facebook",
-                    href: "https://www.facebook.com/profile.php?id=100057360913960",
-                },
-                {
-                    name: "youTube",
-                    href: "https://www.youtube.com/channel/UCDtv1fhz07WQ5O2lVJWg0zg",
-                },
-            ]}
-            columns={[
-                {
-                    title: "Navigace",
-                    links: [
-                        {
-                            name: "Domů",
-                            Icon: Blocks,
-                            href: "/",
-                        },
-                        {
-                            name: "Příběh",
-                            Icon: History,
-                            href: "/#o-nas",
-                        },
-                        {
-                            name: "Trenéři",
-                            Icon: GoogleAnalyticsIcon,
-                            href: "/#trainers",
-                        },
-                    ],
-                },
-                {
-                    title: "Ceník",
-                    links: [
-                        {
-                            name: "Jednodenní vstup - 130 Kč",
-                            Icon: Scale,
-                            href: "#cenik",
-                        },
-                        {
-                            name: "Měsíční permanentka - 1390 Kč",
-                            Icon: Handshake,
-                            href: "#cenik",
-                        },
-                        {
-                            name: "Roční členství - 16000 Kč",
-                            Icon: CreditCard,
-                            href: "#cenik",
-                        },
-                    ],
-                },
+        <footer className="bg-zinc-100 text-black pt-16 pb-8 px-4 sm:px-6 border-t border-zinc-200">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
-            ]}
-            copyright={
-                <>
-                    <div className="mb-2 md:mb-0">© {new Date().getFullYear()} Bulldog gym</div>
+                    <div className="space-y-6">
+                        <div className="flex items-center gap-2">
+                            <Dumbbell className="text-red-600" size={32} />
+                            <span className="text-2xl font-black uppercase tracking-tighter">
+                                Bulldog<span className="text-red-600">Gym</span>
+                            </span>
+                        </div>
+                        <p className="text-zinc-600 leading-relaxed max-w-sm">
+                            Největší posilovna v Mostě na ploše 1000 m².
+                        </p>
+                        <div className="flex gap-4">
+                            {socialLinks.map((social, i) => (
+                                <a
+                                    key={i}
+                                    href={social.href}
+                                    target="_blank"
+                                    className="p-2 bg-white border border-zinc-200 rounded-lg hover:bg-red-600 transition-all group"
+                                >
+                                    <span className="text-zinc-600 group-hover:text-white">
+                                        {social.icon}
+                                    </span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    {sections.map((section) => (
+                        <div key={section.title}>
+                            <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-red-600">
+                                {section.title}
+                            </h4>
+                            <ul className="space-y-4">
+                                {section.links.map((link) => (
+                                    <li key={link.name}>
+                                        <a
+                                            href={link.href}
+                                            className="flex items-center gap-2 text-zinc-600 hover:text-black transition-colors group"
+                                        >
+                                            <span>
+                                                {link.icon}
+                                            </span>
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+
                     <div>
-                        Vytvořil{' '}
+                        <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-red-600">
+                            Otevírací doba
+                        </h4>
+                        <div className="space-y-4">
+                            <div>
+                                <ul className="space-y-3 text-sm">
+                                    <li className="flex justify-between items-center">
+                                        <span className="text-zinc-500 font-medium">Po - Pá:</span>
+                                        <span className="font-bold">07:30 - 22:00</span>
+                                    </li>
+                                    <li className="flex justify-between items-center">
+                                        <span className="text-zinc-500 font-medium">So, Ne:</span>
+                                        <span className="font-bold">08:00 - 22:00</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-500 uppercase tracking-widest font-bold">
+                    <p>© {currentYear} Bulldog Gym Most</p>
+                    <p>
+                        Vytvořil{" "}
                         <a
                             href="https://www.jirimacal.cz/"
                             target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-red-700 font-medium"
+                            className="text-black hover:text-red-600 transition-colors underline decoration-red-600 underline-offset-4"
                         >
                             Jiří Macal
                         </a>
-                    </div>
-                </>
-             }
-         />
-     );
- }
+                    </p>
+                </div>
+            </div>
+        </footer>
+    );
+}

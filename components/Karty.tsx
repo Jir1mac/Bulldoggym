@@ -51,13 +51,13 @@ export default function AcceptedCards() {
                             key={card.name}
                             data-aos="fade-up"
                             data-aos-delay={index * 100}
-                            className="group bg-zinc-100 border border-zinc-800 p-8 rounded-2xl hover:border-red-600 transition-all duration-300"
+                            className="group bg-zinc-100 border border-zinc-800 p-8 rounded-2xl transition-all duration-300"
                         >
                             <div className="flex items-start justify-between mb-6">
-                                <div className="bg-black p-3 rounded-xl group-hover:bg-red-600 transition-colors">
+                                <div className="bg-black p-3 rounded-xl  transition-colors">
                                     <CreditCard className="text-white" size={24} />
                                 </div>
-                                <CheckCircle2 className="text-red-600 opacity-0 group-hover:opacity-100 transition-opacity" size={20} />
+                                <CheckCircle2 className="text-red-600 opacity-0 transition-opacity" size={20} />
                             </div>
                             <h4 className="text-black font-bold text-2xl mb-3 uppercase tracking-tight">
                                 {card.name}
