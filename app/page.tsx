@@ -7,6 +7,7 @@ import Foter from "@/components/Foter";
 import Dobra from '@/components/Dobra';
 import Navbar from "@/components/Navbar";
 import Trainers from "@/components/Trainers";
+import Karty from "@/components/Karty";
 
 export default function Home() {
     return (
@@ -17,6 +18,7 @@ export default function Home() {
         <About/>
         <Trainers/>
         <Cenik/>
+            <Karty/>
         <FindUs/>
         <Foter/>
         </>
