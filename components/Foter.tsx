@@ -13,7 +13,6 @@ import {
     Facebook,
     Youtube,
     ChevronRight,
-    Clock
 } from "lucide-react";
 
 export default function Footer() {
