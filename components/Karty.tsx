@@ -30,7 +30,7 @@ export default function AcceptedCards() {
         <section className="py-16 md:py-24 bg-zinc-100 px-4 sm:px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                    <div data-aos="fade-right">
+                    <div>
                         <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">
                             Benefity a karty
                         </h2>
@@ -38,7 +38,7 @@ export default function AcceptedCards() {
                             Podporujeme vaše <br /> <span className="text-red-600">benefity</span>
                         </h3>
                     </div>
-                    <div className="max-w-md" data-aos="fade-left">
+                    <div className="max-w-md">
                         <p className="text-zinc-600 text-lg">
                             Cvičení u nás je dostupné pro každého. Kromě standardních plateb podporujeme MultiSport, Benefity a Pluxee.
                         </p>
@@ -46,21 +46,20 @@ export default function AcceptedCards() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6">
-                    {cardTypes.map((card, index) => (
+                    {cardTypes.map((card) => (
                         <div
                             key={card.name}
-                            data-aos="fade-up"
-                            data-aos-delay={index * 100}
-                            className="group bg-zinc-100 border border-zinc-800 p-8 rounded-2xl transition-all duration-300"
+                            className="bg-zinc-100 border border-zinc-300 p-8 rounded-2xl transition-all duration-300 "
                         >
-                            <div className="flex items-center justify-center mb-6">
-                                <div className="relative w-48 h-32">
+                            <div className="flex items-center justify-center mb-8">
+                                <div className="relative w-full aspect-[1.6/1]">
                                     <Image
                                         src={card.image}
                                         alt={card.name}
                                         fill
-                                        sizes="192px"
-                                        className="object-contain"
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className="object-cover rounded-xl shadow-sm"
+                                        priority
                                     />
                                 </div>
                             </div>
