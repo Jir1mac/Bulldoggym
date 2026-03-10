@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { X, Dumbbell } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
@@ -24,7 +23,6 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close menu on escape key
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === 'Escape' && mobileMenuOpen) {
@@ -35,7 +33,6 @@ export default function Navbar() {
         return () => window.removeEventListener('keydown', handleEscape);
     }, [mobileMenuOpen]);
 
-    // Prevent body scroll when menu is open
     useEffect(() => {
         if (mobileMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -97,8 +94,6 @@ export default function Navbar() {
                             Vstup do gymu
                         </a>
                     </div>
-
-                    {/* Animated Hamburger Button */}
                     <button 
                         className="md:hidden relative w-10 h-10 flex items-center justify-center text-black z-[102]"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -122,7 +117,6 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* Backdrop Overlay */}
             {mobileMenuOpen && (
                 <div 
                     className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[101] md:hidden transition-opacity duration-300 animate-in fade-in"
@@ -131,13 +125,11 @@ export default function Navbar() {
                 />
             )}
 
-            {/* Slide-in Mobile Menu */}
             <div className={cn(
                 "fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white z-[102] md:hidden shadow-2xl transition-transform duration-300 ease-out",
                 mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             )}>
                 <div className="flex flex-col h-full">
-                    {/* Menu Header */}
                     <div className="flex items-center justify-between p-6 border-b border-zinc-200">
                         <div className="flex items-center gap-2">
                             <div className="bg-red-600 p-2 rounded-lg">
@@ -156,7 +148,6 @@ export default function Navbar() {
                         </button>
                     </div>
 
-                    {/* Menu Items */}
                     <nav className="flex-1 overflow-y-auto py-6 px-6">
                         <div className="flex flex-col gap-2">
                             {navLinks.map((link) => (
@@ -171,7 +162,6 @@ export default function Navbar() {
                             ))}
                         </div>
 
-                        {/* CTA Button in Menu */}
                         <div className="mt-6 px-4">
                             <a 
                                 href="#kontakt" 
@@ -183,7 +173,6 @@ export default function Navbar() {
                         </div>
                     </nav>
 
-                    {/* Menu Footer */}
                     <div className="p-6 border-t border-zinc-200">
                         <p className="text-sm text-zinc-600 text-center">
                             Největší posilovna v Mostě
