@@ -56,12 +56,12 @@ export default function Navbar() {
             className="flex items-center gap-4 active:scale-95 transition-transform flex-shrink-0"
             onClick={handleLinkClick}
         >
-            <div className="relative w-12 h-12 overflow-hidden rounded-lg flex-shrink-0">
+            <div className="relative w-14 h-14 flex-shrink-0">
                 <Image
                     src="/bulldog.jpg"
                     alt="Bulldog Logo"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     priority
                 />
             </div>
