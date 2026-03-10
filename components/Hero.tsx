@@ -5,7 +5,7 @@ export default function BulldogGymHero() {
         <PulseFitHero
             /* Navbar prvky (logo, navigation, ctaButton) byly odstraněny */
             title="Tvůj limit je v hlavě. Překonej ho u nás."
-            subtitle="Největší posilovna v Mostě na ploše 1000 m². Špičkové vybavení značek Cybex a Nautilus, profesionální trenéři a komunita, která tě nenechá přestat."
+            subtitle="Fitness s tradicí od roku 2013. Na ploše 1 000 m² najdete špičkové vybavení značek CYBEX, TUFF STUFF, TECHNOGYM, IMPULSE, HOIST a NAUTILUS. Profesionální trenéři a přátelská atmosféra."
             primaryAction={{
                 label: "Chci začít cvičit",
                 onClick: () => console.log("Start training"),
@@ -42,7 +42,7 @@ export default function BulldogGymHero() {
                 {
                     image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=500&fit=crop",
                     category: "TRADICE",
-                    title: "Více než 20 let zkušeností",
+                    title: "Více než 10 let zkušeností",
                     onClick: () => console.log("Tradice"),
                 },
                 {

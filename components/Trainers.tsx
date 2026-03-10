@@ -14,12 +14,21 @@ const trainers = [
     },
     {
         id: 2,
-        name: "Luboš Dundr",
-        specialization: "Kulturistika | Silový trénink",
-        bio: "Sport mi v životě dal a dává mnoho a vždy mě bavilo hledat cesty, jak trénovat správně tak, abych dosáhl svých cílů. Důležité je mít silnou motivaci a vědět proč chci něčeho dostáhnout a dokázat přistoupit k životnímu stylu a tréninku tak, aby člověk dospěl k úspěchu! Neváhejte se na mě obrátit.",
-        imageUrl: "/trainers/petr-svoboda.jpg",
-        phone: "+420 777 987 654",
-        email: "lubos.dundr@bulldoggym.cz",
+        name: "Jana Nováková",
+        specialization: "Osobní trenérka | Aerobní aktivity",
+        bio: "Jsem vášnivá sportovkyně a věřím, že pohyb by měl být radostí pro každého. Specializuji se na aerobní trénink, skupinová cvičení a pomáhám klientkám dosáhnout jejich cílů v příjemné a motivující atmosféře.",
+        imageUrl: "/trainers/jana-novakova.jpg",
+        phone: "+420 777 234 567",
+        email: "jana.novakova@bulldoggym.cz",
+    },
+    {
+        id: 3,
+        name: "Petra Dvořáková",
+        specialization: "Osobní trenérka | Silový trénink",
+        bio: "Sport je pro mě životní styl. Specializuji se na silový a kondiční trénink pro ženy. Pomohu vám dosáhnout vysněné postavy, zvýšit sebevědomí a zlepšit celkovou fyzickou kondici. Neváhejte se na mě obrátit.",
+        imageUrl: "/trainers/petra-dvorakova.jpg",
+        phone: "+420 777 345 678",
+        email: "petra.dvorakova@bulldoggym.cz",
     },
 ];
 
@@ -37,7 +46,7 @@ export default function Trainers() {
                     </h3>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-12">
+                <div className="grid md:grid-cols-3 gap-12">
                     {trainers.map((trainer, index) => (
                         <div
                             key={trainer.id}
