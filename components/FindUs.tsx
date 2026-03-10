@@ -48,7 +48,7 @@ export default function FindUs() {
                                 <MapPin className="text-red-600 mr-4 flex-shrink-0" size={24} />
                                 <div>
                                     <p className="font-semibold text-black text-lg">Adresa:</p>
-                                    <p className="text-zinc-400 font-medium">třída Kpt. Jaroše 2999/19, budova Sever</p>
+                                    <p className="text-zinc-400 font-medium">K. H. Máchy 344</p>
                                     <p className="text-zinc-400 font-medium">434 01 Most</p>
                                 </div>
                             </div>
@@ -56,14 +56,14 @@ export default function FindUs() {
                                 <Phone className="text-red-600 mr-4 flex-shrink-0" size={24} />
                                 <div>
                                     <p className="font-semibold text-black text-lg">Telefon:</p>
-                                    <a href="tel:+420777123456" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">+420 777 123 456</a>
+                                    <a href="tel:+420777123456" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">+420 777 656 367</a>
                                 </div>
                             </div>
                             <div className="flex items-center justify-center lg:justify-start text-zinc-300">
                                 <Mail className="text-red-600 mr-4 flex-shrink-0" size={24} />
                                 <div>
                                     <p className="font-semibold text-black text-lg">Email:</p>
-                                    <a href="mailto:info@bulldoggym.cz" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">info@bulldoggym.cz</a>
+                                    <a href="mailto:info@bulldoggym.cz" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">bulldog.gym@seznam.cz</a>
                                 </div>
                             </div>
                         </div>

@@ -30,7 +30,7 @@ export default function About() {
                         <div
                             data-aos="fade-up"
                             data-aos-delay="100"
-                            className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl hover:border-red-600/50 transition-colors"
+                            className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl transition-colors"
                         >
                             <Dumbbell className="text-red-600 mb-4" size={38} />
                             <h4 className="text-black font-bold text-xl mb-2">80 stanovišť</h4>
@@ -40,7 +40,7 @@ export default function About() {
                         <div
                             data-aos="fade-up"
                             data-aos-delay="200"
-                            className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl hover:border-red-600/50 transition-colors"
+                            className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl transition-colors"
                         >
                             <Users className="text-red-600 mb-4" size={38} />
                             <h4 className="text-black font-bold text-xl mb-2">Komunita</h4>
@@ -50,7 +50,7 @@ export default function About() {
                         <div
                             data-aos="fade-up"
                             data-aos-delay="300"
-                            className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl hover:border-red-600/50 transition-colors"
+                            className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl  transition-colors"
                         >
                             <Trophy className="text-red-600 mb-4" size={38} />
                             <h4 className="text-black font-bold text-xl mb-2">Pro vybavení</h4>
@@ -60,7 +60,7 @@ export default function About() {
                         <div
                             data-aos="fade-up"
                             data-aos-delay="400"
-                            className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl hover:border-red-600/50 transition-colors"
+                            className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl  transition-colors"
                         >
                             <HandHeart className="text-red-600 mb-4" size={38} />
                             <h4 className="text-black font-bold text-xl mb-2">Masáže</h4>

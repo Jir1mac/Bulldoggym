@@ -1,21 +1,17 @@
 "use client";
 
-import React from 'react';
-import { Clock, Calendar } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Clock, Calendar, Loader2 } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
-const openingHours = [
-    { day: "Pondělí", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Úterý", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Středa", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Čtvrtek", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Pátek", hours: "7:30 – 22:00", note: "Špička: 16:00-19:00" },
-    { day: "Sobota", hours: "08:00 – 22:00", note: "Víkendový režim" },
-    { day: "Neděle", hours: "08:00 – 22:00", note: "Víkendový režim" },
-];
+interface HourRow {
+    day: string;
+    hours: string;
+    note: string;
+}
 
 const DAY_CLASS_BASE = "text-lg font-bold uppercase italic";
-const DAY_CLASS_TODAY = "text-white";
+const DAY_CLASS_TODAY = "text-red-600";
 const DAY_CLASS_DEFAULT = "text-black";
 
 const HOUR_CLASS_BASE = "text-xl font-black tracking-tighter";
@@ -23,10 +19,39 @@ const HOUR_CLASS_TODAY = "text-red-600";
 const HOUR_CLASS_DEFAULT = "text-black";
 
 export default function BusinessHours() {
+    const [openingHours, setOpeningHours] = useState<HourRow[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     const today = new Intl.DateTimeFormat('cs-CZ', { weekday: 'long' }).format(new Date());
 
+    useEffect(() => {
+        const fetchHours = async () => {
+            try {
+                const res = await fetch('/api/content');
+                const data = await res.json();
+                if (data.hours) {
+                    setOpeningHours(data.hours);
+                }
+            } catch (error) {
+                console.error("Chyba při načítání otevírací doby:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchHours();
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div className="py-24 flex justify-center items-center bg-zinc-100">
+                <Loader2 className="animate-spin text-red-600" size={32} />
+            </div>
+        );
+    }
+
     return (
-        <section id="oteviraci-doba" className="py-16 md:py-24 bg-zinc-150 text-white px-4 sm:px-6 overflow-hidden">
+        <section id="oteviraci-doba" className="py-16 md:py-24 bg-zinc-100 text-black px-4 sm:px-6 overflow-hidden">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-16" data-aos="fade-down">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Provozní doba</h2>
@@ -36,15 +61,15 @@ export default function BusinessHours() {
                 </div>
 
                 <div
-                    className="bg-zinc-300 border border-zinc-300 rounded-3xl p-8 md:p-12 shadow-2xl"
+                    className="bg-white border border-zinc-200 rounded-3xl p-8 md:p-12 shadow-xl"
                     data-aos="zoom-in"
                 >
                     <div className="flex items-center mb-10 pb-6 border-b border-zinc-100">
-                        <div className="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center mr-4">
+                        <div className="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-red-600/20">
                             <Clock className="text-white" size={28} />
                         </div>
                         <div>
-                            <p className="text-zinc-800 text-sm uppercase font-bold tracking-wider">Aktuální režim</p>
+                            <p className="text-zinc-500 text-xs uppercase font-bold tracking-wider">Aktuální režim</p>
                             <p className="text-xl text-black font-black italic uppercase">Standardní provoz</p>
                         </div>
                     </div>
@@ -59,22 +84,25 @@ export default function BusinessHours() {
                                     className={cn(
                                         "flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl transition-all duration-300",
                                         isToday
-                                            ? "bg-red-600/10 border border-red-600/30 scale-[1.02]"
-                                            : "hover:bg-zinc-800/50 border border-transparent"
+                                            ? "bg-red-50 border border-red-200 scale-[1.02] shadow-sm"
+                                            : "hover:bg-zinc-50 border border-transparent"
                                     )}
-                                    /* Animace data-aos zde byly odstraněny */
                                 >
                                     <div className="flex items-center mb-2 sm:mb-0">
                                         <Calendar
                                             size={18}
-                                            className={cn("mr-3", isToday ? "text-red-600" : "text-zinc-500")}
+                                            className={cn("mr-3", isToday ? "text-red-600" : "text-zinc-400")}
                                         />
                                         <span className={cn(
                                             DAY_CLASS_BASE,
                                             isToday ? DAY_CLASS_TODAY : DAY_CLASS_DEFAULT
                                         )}>
                                             {item.day}
-                                            {isToday && <span className="ml-3 text-[10px] bg-red-600 text-white px-2 py-0.5 rounded-full not-italic tracking-normal">Dnes</span>}
+                                            {isToday && (
+                                                <span className="ml-3 text-[10px] bg-red-600 text-white px-2 py-0.5 rounded-full not-italic tracking-normal font-bold">
+                                                    DNES
+                                                </span>
+                                            )}
                                         </span>
                                     </div>
 
@@ -85,19 +113,13 @@ export default function BusinessHours() {
                                         )}>
                                             {item.hours}
                                         </span>
-                                        <span className="text-[10px] text-zinc-500 uppercase font-bold tracking-widest">
+                                        <span className="text-[10px] text-zinc-400 uppercase font-black tracking-widest">
                                             {item.note}
                                         </span>
                                     </div>
                                 </div>
                             );
                         })}
-                    </div>
-
-                    <div className="mt-12 pt-8 border-t border-zinc-800 text-center">
-                        <p className="text-zinc-500 text-sm">
-                            * O svátcích může být otevírací doba upravena. Sledujte prosím náš <span className="text-red-600 font-bold hover:bg-red-100 rounded-xl"><a href="https://www.facebook.com/profile.php?id=100057360913960&locale=cs_CZ"> Facebook</a> </span>.
-                        </p>
                     </div>
                 </div>
             </div>
