@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model OpeningHour {
+  id    Int    @id @default(autoincrement())
+  day   String
+  hours String
+  note  String @default("")
+}
+
+model Pricing {
+  id            Int    @id @default(autoincrement())
+  title         String
+  priceNormal   String
+  priceDiscount String
+}
+
+model Settings {
+  id          Int    @id @default(1)
+  entry10     String @default("1 100")
+  entrySingle String @default("130")
+}
