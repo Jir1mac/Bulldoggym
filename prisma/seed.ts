@@ -12,7 +12,7 @@ async function main() {
                 { day: "Středa", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
                 { day: "Čtvrtek", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
                 { day: "Pátek", hours: "7:30 – 22:00", note: "Špička: 16:00-19:00" },
-                { day: "Sobota", hours: "08:00 – 22:00", note: "Víkendový režim" },
+                { day: "Sobota", hours: "08:00 – 22:00", note: "Špička: 13:00-16:00" },
                 { day: "Neděle", hours: "08:00 – 22:00", note: "Víkendový režim" },
             ],
         });

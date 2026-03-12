@@ -9,9 +9,6 @@ export const metadata: Metadata = {
     description: "1000m2 posilovna, masáže",
 };
 
-const geistSans = GeistSans;
-const geistMono = GeistMono;
-
 export default function RootLayout({
                                        children,
                                    }: Readonly<{
@@ -22,7 +19,7 @@ export default function RootLayout({
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         </head>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <AosProvider>{children}</AosProvider>
         </body>
         </html>
