@@ -2,15 +2,14 @@
   "name": "untitled1",
   "version": "0.1.0",
   "private": true,
-  "prisma": {
-    "seed": "npx tsx prisma/seed.ts"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
     "postinstall": "prisma generate",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "tsx prisma/seed.ts",
+    "reset": "prisma migrate reset && npm run seed"
   },
   "dependencies": {
     "@prisma/client": "^6.19.2",
