@@ -1,8 +1,5 @@
 import { NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
-
-const DATA_PATH = path.join(process.cwd(), 'data.json');
+import { prisma } from '@/lib/db';
 
 const initialData = {
     hours: [
@@ -11,7 +8,7 @@ const initialData = {
         { day: "Středa", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
         { day: "Čtvrtek", hours: "07:30 – 22:00", note: "Špička: 16:00-19:00" },
         { day: "Pátek", hours: "7:30 – 22:00", note: "Špička: 16:00-19:00" },
-        { day: "Sobota", hours: "08:00 – 22:00", note: "Víkendový režim" },
+        { day: "Sobota", hours: "08:00 – 22:00", note: "Špička: 13:00-16:00" },
         { day: "Neděle", hours: "08:00 – 22:00", note: "Víkendový režim" },
     ],
     pricing: [
@@ -24,28 +21,84 @@ const initialData = {
     entrySingle: "130"
 };
 
-async function getStoredData() {
-    try {
-        const file = await fs.readFile(DATA_PATH, 'utf8');
-        const data = JSON.parse(file);
-        return { ...initialData, ...data };
-    } catch {
-        await fs.writeFile(DATA_PATH, JSON.stringify(initialData, null, 2));
-        return initialData;
+async function getDataFromDB() {
+    const [hours, pricing, settings] = await Promise.all([
+        prisma.openingHour.findMany({ orderBy: { id: "asc" } }),
+        prisma.pricing.findMany({ orderBy: { id: "asc" } }),
+        prisma.settings.findFirst(),
+    ]);
+
+    if (hours.length === 0 && pricing.length === 0) {
+        return null;
     }
+
+    return {
+        hours: hours.map(h => ({ day: h.day, hours: h.hours, note: h.note })),
+        pricing: pricing.map(p => ({ title: p.title, priceNormal: p.priceNormal, priceDiscount: p.priceDiscount })),
+        entry10: settings?.entry10 ?? initialData.entry10,
+        entrySingle: settings?.entrySingle ?? initialData.entrySingle,
+    };
+}
+
+async function saveDataToDB(data: typeof initialData) {
+    await prisma.$transaction(async (tx) => {
+        await tx.openingHour.deleteMany();
+        await tx.pricing.deleteMany();
+
+        if (data.hours && data.hours.length > 0) {
+            await tx.openingHour.createMany({
+                data: data.hours.map((h) => ({
+                    day: h.day,
+                    hours: h.hours,
+                    note: h.note || "",
+                })),
+            });
+        }
+
+        if (data.pricing && data.pricing.length > 0) {
+            await tx.pricing.createMany({
+                data: data.pricing.map((p) => ({
+                    title: p.title,
+                    priceNormal: p.priceNormal,
+                    priceDiscount: p.priceDiscount,
+                })),
+            });
+        }
+
+        await tx.settings.upsert({
+            where: { id: 1 },
+            update: {
+                entry10: data.entry10 || initialData.entry10,
+                entrySingle: data.entrySingle || initialData.entrySingle,
+            },
+            create: {
+                id: 1,
+                entry10: data.entry10 || initialData.entry10,
+                entrySingle: data.entrySingle || initialData.entrySingle,
+            },
+        });
+    });
 }
 
 export async function GET() {
-    const data = await getStoredData();
-    return NextResponse.json(data);
+    try {
+        const dbData = await getDataFromDB();
+        if (dbData) {
+            return NextResponse.json(dbData);
+        }
+    } catch {
+        // Database not available, fall back to initial data
+    }
+
+    return NextResponse.json(initialData);
 }
 
 export async function POST(request: Request) {
     try {
         const newData = await request.json();
-        await fs.writeFile(DATA_PATH, JSON.stringify(newData, null, 2));
+        await saveDataToDB(newData);
         return NextResponse.json({ success: true });
-    } catch (error) {
+    } catch {
         return NextResponse.json({ success: false, error: "Chyba při zápisu dat" }, { status: 500 });
     }
 }
