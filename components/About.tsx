@@ -23,9 +23,6 @@ export default function About() {
                                 Cvičební prostor je rozdělen do <strong>5 sálů</strong>, kde najdete 80 stanovišť posilovacích strojů.
                                 V našem fitness centru si přijdou na své příznivci činek, strojů, ale i ti, kteří dávají přednost aerobním aktivitám.
                             </p>
-                            <p>
-                                Zakládáme si na přátelské a příjemné atmosféře.
-                            </p>
                         </div>
                     </div>
 
