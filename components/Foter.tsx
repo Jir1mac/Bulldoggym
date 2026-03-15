@@ -31,8 +31,8 @@ export default function Footer() {
         {
             title: "Kontakt",
             links: [
-                { name: "Most, 434 01", icon: <MapPin size={14} /> },
-                { name: "+420 123 456 789", href: "tel:+420123456789", icon: <Phone size={14} /> },
+                { name: "K.H. Máchy 344, Most, 434 01", icon: <MapPin size={14} /> },
+                { name: "+420 777 656 367", href: "tel:+420777656367", icon: <Phone size={14} /> },
                 { name: "bulldog.gym@seznam.cz", href: "mailto:bulldog.gym@seznam.cz", icon: <Mail size={14} /> },
             ]
         }
@@ -57,7 +57,6 @@ export default function Footer() {
                             </span>
                         </div>
                         <p className="text-zinc-600 leading-relaxed max-w-sm">
-                            Největší posilovna v Mostě na ploše 1000 m².
                         </p>
                         <div className="flex gap-4">
                             {socialLinks.map((social, i) => (

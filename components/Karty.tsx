@@ -11,12 +11,12 @@ const cardTypes: CardType[] = [
     {
         name: "MultiSport",
         image: "/multisport-card.png",
-        description: "Plně akceptujeme všechny typy karet MultiSport pro vstup do posilovny i na skupinové lekce."
+        description: "Plně akceptujeme všechny typy karet MultiSport pro vstup do posilovny."
     },
     {
         name: "Benefity",
         image: "/benefity-card.png",
-        description: "Radost každý den – využijte svou kartu Benefity k úhradě členství nebo vstupů."
+        description: "Radost každý den – využijte svou kartu Benefity k úhradě permanentek nebo vstupů."
     },
     {
         name: "Pluxee",
@@ -49,7 +49,7 @@ export default function AcceptedCards() {
                     {cardTypes.map((card) => (
                         <div
                             key={card.name}
-                            className="bg-zinc-100 border border-zinc-300 p-8 rounded-2xl transition-all duration-300 "
+                            className="bg-zinc-100 border border-zinc-300 p-8 rounded-2xl transition-all duration-300"
                         >
                             <div className="flex items-center justify-center mb-8">
                                 <div className="relative w-full aspect-[1.6/1]">

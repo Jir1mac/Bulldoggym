@@ -122,12 +122,6 @@ export function PulseFitHero({
                             </motion.div>
                         )}
 
-                        {disclaimer && (
-                            <p className="text-zinc-500 italic text-sm font-medium">
-                                {disclaimer}
-                            </p>
-                        )}
-
                         {socialProof && (
                             <motion.div className="flex flex-row items-center gap-3 bg-white/50 p-2 rounded-full pr-6 border border-zinc-200">
                                 <div className="flex flex-row -space-x-2">

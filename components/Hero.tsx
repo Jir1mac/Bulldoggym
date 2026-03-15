@@ -3,9 +3,8 @@ import { PulseFitHero } from "@/components/pulse-fit-hero";
 export default function BulldogGymHero() {
     return (
         <PulseFitHero
-            /* Navbar prvky (logo, navigation, ctaButton) byly odstraněny */
             title="Tvůj limit je v hlavě. Překonej ho u nás."
-            subtitle="Fitness s tradicí od roku 2013. Na ploše 1 000 m² najdete špičkové vybavení značek CYBEX, TUFF STUFF, TECHNOGYM, IMPULSE, HOIST a NAUTILUS. Profesionální trenéři a přátelská atmosféra."
+            subtitle="Fitness s tradicí od roku 2013. Na ploše 1 000 m² najdete špičkové vybavení značek CYBEX, TUFF STUFF, TECHNOGYM, IMPULSE, HOIST a NAUTILUS."
             primaryAction={{
                 label: "Chci začít cvičit",
                 onClick: () => console.log("Start training"),
@@ -15,16 +14,6 @@ export default function BulldogGymHero() {
                 label: "Ceník",
                 onClick: () => console.log("Ceník"),
                 href: "/#cenik",
-            }}
-            disclaimer="*Přijímáme karty MultiSport a ActivePass"
-            socialProof={{
-                avatars: [
-                    "https://i.pravatar.cc/150?img=11",
-                    "https://i.pravatar.cc/150?img=12",
-                    "https://i.pravatar.cc/150?img=13",
-                    "https://i.pravatar.cc/150?img=14",
-                ],
-                text: "Přidej se k tisícům spokojených členů v Mostě",
             }}
             programs={[
                 {

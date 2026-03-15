@@ -39,7 +39,7 @@ export default function Trainers() {
 
                 <div data-aos="fade-down">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-base mb-4">
-                        Naši experti
+                        Naši trenéři
                     </h2>
                     <h3 className="text-5xl md:text-6xl font-black uppercase text-black mb-16 leading-tight">
                         Osobní trenéři <br className="hidden md:inline" /> Bulldog Gym
@@ -52,14 +52,14 @@ export default function Trainers() {
                             key={trainer.id}
                             data-aos="fade-up"
                             data-aos-delay={index * 200}
-                            className="bg-zinc-150 rounded-2xl overflow-hidden shadow-lg border border-zinc-800 hover:border-red-600 transition-colors duration-300"
+                            className="bg-zinc-150 rounded-2xl overflow-hidden shadow-lg border border-zinc-800  transition-colors duration-300"
                         >
                             <div className="relative h-96 w-full overflow-hidden">
                                 <Image
                                     src={trainer.imageUrl}
                                     alt={trainer.name}
                                     fill
-                                    className="object-cover transition-transform duration-500 hover:scale-105"
+                                    className="object-cover transition-transform duration-500 "
                                 />
                             </div>
                             <div className="p-8 text-left">

@@ -7,9 +7,9 @@ import { X } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-    { name: 'Masáže', href: 'https://most-masaze.cz/' },
     { name: 'O nás', href: '/#o-nas' },
     { name: 'Trenéři', href: '/#trainers' },
+    { name: 'Masáže', href: 'https://most-masaze.cz/' },
     { name: 'Ceník', href: '/#cenik' },
     { name: 'Kdy makat?', href: '/#oteviraci-doba' },
     { name: 'Kontakt', href: '/#kontakt' },
@@ -96,9 +96,6 @@ export default function Navbar() {
                                 {link.name}
                             </Link>
                         ))}
-                        <Link href="/#kontakt" className="bg-black text-white px-6 py-2 rounded-full text-sm font-bold uppercase hover:bg-red-600 transition-all scale-105 active:scale-95 whitespace-nowrap">
-                            Vstup do gymu
-                        </Link>
                     </div>
                     <button
                         className="lg:hidden relative w-10 h-10 flex items-center justify-center text-black z-[102] flex-shrink-0"
