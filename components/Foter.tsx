@@ -13,6 +13,7 @@ import {
     Facebook,
     Youtube,
     ChevronRight,
+    ArrowUpRight,
 } from "lucide-react";
 
 export default function Footer() {
@@ -118,16 +119,18 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-500 uppercase tracking-widest font-bold">
+                <div className="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-400">
                     <p>© {currentYear} Bulldog Gym Most</p>
-                    <p>
-                        Vytvořil{" "}
+                    <p className="flex items-center gap-2">
+                        Vytvořil
                         <a
                             href="https://www.jirimacal.cz/"
                             target="_blank"
-                            className="text-black hover:text-red-600 transition-colors underline decoration-red-600 underline-offset-4"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1 text-zinc-900 font-bold hover:text-red-600 transition-colors group"
                         >
                             Jiří Macal
+                            <ArrowUpRight size={13} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                     </p>
                 </div>
