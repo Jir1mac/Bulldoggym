@@ -34,7 +34,11 @@ export async function POST(request: Request) {
     const ADMIN_PASS_HASH = process.env.ADMIN_PASS_HASH;
 
     if (!ADMIN_USER || !ADMIN_PASS_HASH) {
-        console.error('Chybí ADMIN_USER nebo ADMIN_PASS_HASH v .env');
+        const missing = [
+            !ADMIN_USER && 'ADMIN_USER',
+            !ADMIN_PASS_HASH && 'ADMIN_PASS_HASH'
+        ].filter(Boolean).join(', ');
+        console.error(`Chybí povinné proměnné prostředí: ${missing}`);
         return NextResponse.json({
             success: false,
             message: "Chyba konfigurace serveru"
