@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dumbbell, Trophy, HandHeart, Star } from 'lucide-react';
+import { Dumbbell, Trophy, HandHeart } from 'lucide-react';
 
 export default function About() {
     return (
@@ -24,7 +24,7 @@ export default function About() {
                                 V našem fitness centru si přijdou na své příznivci činek, strojů, ale i ti, kteří dávají přednost aerobním aktivitám.
                             </p>
                             <p>
-                                Zakládáme si na přátelské a příjemné atmosféře. S průměrným hodnocením <strong>4,8/5</strong> na Google a Firmy.cz patříme mezi nejlépe hodnocená fitka v regionu.
+                                Zakládáme si na přátelské a příjemné atmosféře.
                             </p>
                         </div>
                     </div>
@@ -38,16 +38,6 @@ export default function About() {
                             <Dumbbell className="text-red-600 mb-4" size={38} />
                             <h4 className="text-black font-bold text-xl mb-2">80 stanovišť</h4>
                             <p className="text-zinc-500 text-sm">5 sálů s širokou škálou strojů pro procvičení každého svalu na těle.</p>
-                        </div>
-
-                        <div
-                            data-aos="fade-up"
-                            data-aos-delay="200"
-                            className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl transition-colors"
-                        >
-                            <Star className="text-red-600 mb-4" size={38} />
-                            <h4 className="text-black font-bold text-xl mb-2">Hodnocení 4,8/5</h4>
-                            <p className="text-zinc-500 text-sm">Patříme mezi nejlépe hodnocená fitka v regionu na Google a Firmy.cz.</p>
                         </div>
 
                         <div
