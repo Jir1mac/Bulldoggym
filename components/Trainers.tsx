@@ -2,7 +2,17 @@ import React from 'react';
 import Image from 'next/image';
 import { Phone, Mail } from 'lucide-react';
 
-const trainers = [
+interface Trainer {
+    id: number;
+    name: string;
+    specialization: string;
+    bio: string;
+    imageUrl: string;
+    phone: string;
+    email: string;
+}
+
+const trainers: Trainer[] = [
     {
         id: 1,
         name: "Lukáš Dundr",
@@ -30,50 +40,67 @@ const trainers = [
         phone: "+420 777 345 678",
         email: "petra.dvorakova@bulldoggym.cz",
     },
+    {
+        id: 4,
+        name: "Martin Svoboda",
+        specialization: "Osobní trenér | Kulturistika",
+        bio: "Pomohu vám s nabíráním svalové hmoty, formováním postavy a přípravou na závody. Zaměřuji se na správnou techniku, těžké cviky a detailní jídelníčky přizpůsobené vašim cílům.",
+        imageUrl: "/trainers/martin-svoboda.jpg",
+        phone: "+420 777 456 789",
+        email: "martin.svoboda@bulldoggym.cz",
+    },
+    {
+        id: 5,
+        name: "Tomáš Král",
+        specialization: "Osobní trenér | Kondiční box",
+        bio: "Spojte kardio s prvky bojových sportů. Naučím vás základy boxu, zlepšíme vaši dynamiku, vytrvalost a výbušnost. Tréninky jsou vhodné pro muže i ženy všech pokročilostí.",
+        imageUrl: "/trainers/tomas-kral.jpg",
+        phone: "+420 777 567 890",
+        email: "tomas.kral@bulldoggym.cz",
+    }
 ];
 
 export default function Trainers() {
     return (
         <section id="trainers" className="min-h-screen flex items-center py-16 md:py-24 bg-zinc-150 px-4 sm:px-6 overflow-hidden">
-            <div className="max-w-7xl mx-auto text-center">
-
+            <div className="max-w-7xl mx-auto text-center w-full">
                 <div data-aos="fade-down">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-base mb-4">
                         Naši trenéři
                     </h2>
                     <h3 className="text-5xl md:text-6xl font-black uppercase text-black mb-16 leading-tight">
-                        Osobní trenéři <br className="hidden md:inline" /> Bulldog Gym
+                        Poznej náš tým
                     </h3>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-12">
+                <div className="flex flex-wrap justify-center gap-12 text-left">
                     {trainers.map((trainer, index) => (
                         <div
                             key={trainer.id}
                             data-aos="fade-up"
                             data-aos-delay={index * 200}
-                            className="bg-zinc-150 rounded-2xl overflow-hidden shadow-lg border border-zinc-800  transition-colors duration-300"
+                            className="w-full md:w-[calc((100%-3rem)/2)] lg:w-[calc((100%-6rem)/3)] bg-zinc-150 rounded-2xl overflow-hidden shadow-lg border border-zinc-800 transition-colors duration-300 flex flex-col"
                         >
-                            <div className="relative h-96 w-full overflow-hidden">
+                            <div className="relative h-96 w-full overflow-hidden flex-shrink-0">
                                 <Image
                                     src={trainer.imageUrl}
                                     alt={trainer.name}
                                     fill
-                                    className="object-cover transition-transform duration-500 "
+                                    className="object-cover transition-transform duration-500"
                                 />
                             </div>
-                            <div className="p-8 text-left">
+                            <div className="p-8 flex flex-col flex-grow">
                                 <h4 className="text-black font-bold text-3xl mb-2">{trainer.name}</h4>
                                 <p className="text-red-600 text-lg font-semibold mb-4">{trainer.specialization}</p>
-                                <p className="text-zinc-800 text-sm leading-relaxed mb-6">{trainer.bio}</p>
+                                <p className="text-zinc-800 text-sm leading-relaxed mb-6 flex-grow">{trainer.bio}</p>
 
-                                <div className="space-y-3">
-                                    <a href={`tel:${trainer.phone}`} className="flex items-center text-zinc-800 hover:text-red-500 transition-colors cursor-pointer">
-                                        <Phone size={20} className="mr-3 text-red-600" />
+                                <div className="space-y-3 mt-auto">
+                                    <a href={`tel:${trainer.phone}`} className="flex items-center text-zinc-800 hover:text-red-500 transition-colors cursor-pointer w-fit">
+                                        <Phone size={20} className="mr-3 text-red-600 flex-shrink-0" />
                                         {trainer.phone}
                                     </a>
-                                    <a href={`mailto:${trainer.email}`} className="flex items-center text-zinc-800 hover:text-red-500 transition-colors cursor-pointer">
-                                        <Mail size={20} className="mr-3 text-red-600" />
+                                    <a href={`mailto:${trainer.email}`} className="flex items-center text-zinc-800 hover:text-red-500 transition-colors cursor-pointer w-fit">
+                                        <Mail size={20} className="mr-3 text-red-600 flex-shrink-0" />
                                         {trainer.email}
                                     </a>
                                 </div>
