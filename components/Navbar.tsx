@@ -65,11 +65,8 @@ export default function Navbar() {
                     priority
                 />
             </div>
-            <span className={cn(
-                "text-2xl md:text-3xl font-black uppercase italic tracking-tighter transition-colors whitespace-nowrap",
-                isScrolled ? "text-black" : "text-black lg:text-zinc-900"
-            )}>
-                Bulldog<span className="text-red-600">Gym</span>
+            <span className="text-4xl md:text-5xl font-['Luckiest_Guy',_'Bangers',_'Comic_Sans_MS',_cursive] uppercase tracking-wide whitespace-nowrap bg-gradient-to-b from-[#f6ea00] to-[#9ccd1c] bg-clip-text text-transparent [-webkit-text-stroke:1.5px_#000] drop-shadow-[3px_4px_0_#000]">
+                BULLDOG GYM
             </span>
         </Link>
     );
@@ -137,7 +134,7 @@ export default function Navbar() {
                         <Logo />
                         <button
                             onClick={() => setMobileMenuOpen(false)}
-                            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-zinc-100 active:scale-95 transition-all"
+                            className="w-10 h-10 flex items-center justify-center rounded-full active:scale-95 transition-all"
                             aria-label="Zavřít menu"
                         >
                             <X size={24} className="text-zinc-900" />
