@@ -66,7 +66,7 @@ export default function Trainers() {
             <div className="max-w-7xl mx-auto text-center w-full">
                 <div data-aos="fade-down">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-base mb-4">
-                        Naši trenéři
+                        Náš tým
                     </h2>
                     <h3 className="text-5xl md:text-6xl font-black uppercase text-black mb-16 leading-tight">
                         Poznej náš tým
