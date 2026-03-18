@@ -55,9 +55,6 @@ export default function BusinessHours() {
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-16" data-aos="fade-down">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Provozní doba</h2>
-                    <h3 className="text-5xl md:text-6xl font-black uppercase text-black mb-6">
-                        Kdy u nás <span className="text-red-600">makat?</span>
-                    </h3>
                 </div>
 
                 <div

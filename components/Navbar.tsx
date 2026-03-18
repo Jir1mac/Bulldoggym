@@ -11,7 +11,7 @@ const navLinks = [
     { name: 'Trenéři', href: '/#trainers' },
     { name: 'Masáže', href: 'https://most-masaze.cz/' },
     { name: 'Ceník', href: '/#cenik' },
-    { name: 'Kdy makat?', href: '/#oteviraci-doba' },
+    { name: 'Kdy cvičit?', href: '/#oteviraci-doba' },
     { name: 'Kontakt', href: '/#kontakt' },
     { name: 'Galerie', href: '/gallery' },
 

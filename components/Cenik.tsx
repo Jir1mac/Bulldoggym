@@ -98,10 +98,6 @@ export default function Pricing() {
                 </div>
 
                 <div className="mt-8 mb-12 text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <div className="flex items-center justify-center gap-2 text-sm text-zinc-700">
-                        <MassageIcon width={18} height={18} className="text-red-600" />
-                        <span>Masáže k dispozici — rezervace v recepci nebo na tel: 777 656 367</span>
-                    </div>
                 </div>
 
                 <div className="flex flex-wrap justify-center items-stretch gap-6 xl:gap-8">
