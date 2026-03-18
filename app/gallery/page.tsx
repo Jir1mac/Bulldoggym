@@ -15,39 +15,93 @@ interface GalleryImage {
 const images: GalleryImage[] = [
     {
         id: 1,
-        src: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Profesionální posilovací zóna',
-        category: 'Vybavení'
+        src: '/HlavniSal.png',
+        alt: 'Hlavní sál',
+        category: 'Hlavní sál'
     },
     {
         id: 2,
-        src: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Kardio stroje a trenažery',
-        category: 'Vybavení'
+        src: '/HlavniSal2.png',
+        alt: 'Hlavní sál – pohled 2',
+        category: 'Hlavní sál'
     },
     {
         id: 3,
-        src: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Činková zóna a volné váhy',
-        category: 'Vybavení'
+        src: '/Hlavnisal3.png',
+        alt: 'Hlavní sál – pohled 3',
+        category: 'Hlavní sál'
     },
     {
         id: 4,
-        src: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Interiér Bulldog Gymu',
-        category: 'Prostory'
+        src: '/Sal1.png',
+        alt: 'Sál 1',
+        category: 'Sál 1'
     },
     {
         id: 5,
-        src: 'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Detail posilovacích strojů',
-        category: 'Vybavení'
+        src: '/Sal1,1.png',
+        alt: 'Sál 1 – pohled 2',
+        category: 'Sál 1'
     },
     {
         id: 6,
-        src: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop',
-        alt: 'Relaxační a masážní zóna',
-        category: 'Relaxace'
+        src: '/Sal1,2.png',
+        alt: 'Sál 1 – pohled 3',
+        category: 'Sál 1'
+    },
+    {
+        id: 7,
+        src: '/Sal2.png',
+        alt: 'Sál 2',
+        category: 'Sál 2'
+    },
+    {
+        id: 8,
+        src: '/Sal2.2.png',
+        alt: 'Sál 2 – pohled 2',
+        category: 'Sál 2'
+    },
+    {
+        id: 9,
+        src: '/Sal2,3.png',
+        alt: 'Sál 2 – pohled 3',
+        category: 'Sál 2'
+    },
+    {
+        id: 10,
+        src: '/Boxerna.png',
+        alt: 'Boxerna',
+        category: 'Boxerna'
+    },
+    {
+        id: 11,
+        src: '/Boxerna2.png',
+        alt: 'Boxerna – pohled 2',
+        category: 'Boxerna'
+    },
+    {
+        id: 12,
+        src: '/CardioSal.png',
+        alt: 'Kardio sál',
+        category: 'Kardio'
+    },
+    {
+        id: 13,
+        src: '/Maserna1.jpeg',
+        alt: 'Masérna',
+        category: 'Masérna'
+    },
+    {
+        id: 14,
+        src: '/Maserna2.jpeg',
+        alt: 'Masérna – pohled 2',
+        category: 'Masérna'
+    },
+    {
+        id: 15,
+        src: '/Recepce.png',
+        alt: 'Recepce',
+        category: 'Recepce'
     },
 ];
 
