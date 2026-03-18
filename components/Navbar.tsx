@@ -13,6 +13,8 @@ const navLinks = [
     { name: 'Ceník', href: '/#cenik' },
     { name: 'Kdy makat?', href: '/#oteviraci-doba' },
     { name: 'Kontakt', href: '/#kontakt' },
+    { name: 'Galerie', href: '/gallery' },
+
 ];
 
 export default function Navbar() {
