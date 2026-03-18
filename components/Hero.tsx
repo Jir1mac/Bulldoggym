@@ -17,19 +17,19 @@ export default function BulldogGymHero() {
             }}
             programs={[
                 {
-                    image: "/boxerna.png",
+                    image: "/Boxerna.png",
                     category: "Boxerna",
                     title: "80 stanovišť a stroje Cybex",
                     onClick: () => console.log("Silová zóna"),
                 },
                 {
-                    image: "/cardiosal.png",
+                    image: "/CardioSal.png",
                     category: "KARDIO",
                     title: "Moderní aerobní zóna",
                     onClick: () => console.log("Kardio"),
                 },
                 {
-                    image: "/Hlavnisal.png",
+                    image: "/HlavniSal.png",
                     category: "TRADICE",
                     title: "Více než 10 let zkušeností",
                     onClick: () => console.log("Tradice"),
