@@ -17,33 +17,45 @@ export default function BulldogGymHero() {
             }}
             programs={[
                 {
-                    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=500&fit=crop",
-                    category: "SILOVÁ ZÓNA",
+                    image: "/boxerna.png",
+                    category: "Boxerna",
                     title: "80 stanovišť a stroje Cybex",
                     onClick: () => console.log("Silová zóna"),
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=500&fit=crop",
+                    image: "/cardiosal.png",
                     category: "KARDIO",
                     title: "Moderní aerobní zóna",
                     onClick: () => console.log("Kardio"),
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=500&fit=crop",
+                    image: "/Hlavnisal.png",
                     category: "TRADICE",
                     title: "Více než 10 let zkušeností",
                     onClick: () => console.log("Tradice"),
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=500&fit=crop",
+                    image: "/Recepce.png",
                     category: "TRENÉŘI",
                     title: "Osobní trénink na míru",
                     onClick: () => console.log("Trenéři"),
                 },
                 {
-                    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=500&fit=crop",
+                    image: "/Maserna1.jpeg",
                     category: "REGENERACE",
                     title: "Masáže a lymfodrenáže",
+                    onClick: () => console.log("Regenerace"),
+                },
+                {
+                    image: "/Sal1,1.png",
+                    category: "1 Sál",
+                    title: "Sál 1",
+                    onClick: () => console.log("Regenerace"),
+                },
+                {
+                    image: "/Sal2.png",
+                    category: "REGENERACE",
+                    title: "Sál 2",
                     onClick: () => console.log("Regenerace"),
                 },
             ]}
