@@ -20,7 +20,7 @@ export default function About() {
                                 Na ploše <strong>1 000 m²</strong> najdete kvalitní vybavení značek <strong>CYBEX, TUFF STUFF, TECHNOGYM, IMPULSE, HOIST a NAUTILUS</strong>.
                             </p>
                             <p>
-                                Cvičební prostor je rozdělen do <strong>5 sálů</strong>, kde najdete 80 stanovišť posilovacích strojů.
+                                Cvičební prostor je rozdělen do <strong>5 sálů</strong>, kde najdete 90 stanovišť posilovacích strojů.
                                 V našem fitness centru si přijdou na své příznivci činek, strojů, ale i ti, kteří dávají přednost aerobním aktivitám.
                             </p>
                         </div>
