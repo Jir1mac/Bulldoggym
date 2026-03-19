@@ -16,74 +16,74 @@ const images: GalleryImage[] = [
     {
         id: 1,
         src: '/HlavniSal.png',
-        alt: 'Hlavní sál',
-        category: 'Hlavní sál'
+        alt: 'Silová zóna',
+        category: 'Silová zóna'
     },
     {
         id: 2,
         src: '/HlavniSal2.png',
-        alt: 'Hlavní sál – pohled 2',
-        category: 'Hlavní sál'
+        alt: 'Silová zóna',
+        category: 'Silová zóna'
     },
     {
         id: 3,
         src: '/Hlavnisal3.png',
-        alt: 'Hlavní sál – pohled 3',
-        category: 'Hlavní sál'
+        alt: 'Silová zóna',
+        category: 'Silová zóna'
     },
     {
         id: 4,
         src: '/Sal1.png',
-        alt: 'Sál 1',
-        category: 'Sál 1'
+        alt: 'Silová zóna',
+        category: 'Silová zóna'
     },
     {
         id: 5,
         src: '/Sal1,1.png',
-        alt: 'Sál 1 – pohled 2',
-        category: 'Sál 1'
+        alt: 'Silová zóna',
+        category: 'Silová zóna'
     },
     {
         id: 6,
         src: '/Sal1,2.png',
-        alt: 'Sál 1 – pohled 3',
-        category: 'Sál 1'
+        alt: 'Silová zóna',
+        category: 'Silová zóna'
     },
     {
         id: 7,
         src: '/Sal2.png',
-        alt: 'Sál 2',
-        category: 'Sál 2'
+        alt: 'Funkční zóna',
+        category: 'Funkční zóna'
     },
     {
         id: 8,
         src: '/Sal2.2.png',
-        alt: 'Sál 2 – pohled 2',
-        category: 'Sál 2'
+        alt: 'Funkční zóna',
+        category: 'Funkční zóna'
     },
     {
         id: 9,
         src: '/Sal2,3.png',
-        alt: 'Sál 2 – pohled 3',
-        category: 'Sál 2'
+        alt: 'Funkční zóna',
+        category: 'Funkční zóna'
     },
     {
         id: 10,
         src: '/Boxerna.png',
-        alt: 'Boxerna',
-        category: 'Boxerna'
+        alt: 'Funkční sál',
+        category: 'Funkční sál'
     },
     {
         id: 11,
         src: '/Boxerna2.png',
-        alt: 'Boxerna – pohled 2',
-        category: 'Boxerna'
+        alt: 'Funkční sál',
+        category: 'Funkční sál'
     },
     {
         id: 12,
         src: '/CardioSal.png',
         alt: 'Kardio sál',
-        category: 'Kardio'
+        category: 'Kardio sál'
     },
     {
         id: 13,
@@ -94,7 +94,7 @@ const images: GalleryImage[] = [
     {
         id: 14,
         src: '/Maserna2.jpeg',
-        alt: 'Masérna – pohled 2',
+        alt: 'Masérna',
         category: 'Masérna'
     },
     {
