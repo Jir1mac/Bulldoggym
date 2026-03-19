@@ -58,14 +58,14 @@ const images: GalleryImage[] = [
     {
         id: 8,
         src: '/Sal2.2.png',
-        alt: 'Funkční zóna',
-        category: 'Funkční zóna'
+        alt: 'Silová zóna',
+        category: 'Silová zóna'
     },
     {
         id: 9,
         src: '/Sal2,3.png',
-        alt: 'Funkční zóna',
-        category: 'Funkční zóna'
+        alt: 'Silová zóna',
+        category: 'Silová zóna'
     },
     {
         id: 10,
