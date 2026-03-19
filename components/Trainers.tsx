@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Phone, Mail } from 'lucide-react';
+import { Phone, Mail, Facebook, Globe } from 'lucide-react';
 
 interface Trainer {
     id: number;
@@ -10,6 +10,8 @@ interface Trainer {
     imageUrl: string;
     phone: string;
     email: string;
+    facebook?: string;
+    website?: string;
 }
 
 const trainers: Trainer[] = [
@@ -21,6 +23,8 @@ const trainers: Trainer[] = [
         imageUrl: "/Lukáš-Dundr-2-1.jpg",
         phone: "+420 777 123 456",
         email: "lukas.dundr@bulldoggym.cz",
+        facebook: "https://facebook.com/lukasdundr",
+        website: "https://lukasdundr.cz"
     },
     {
         id: 2,
@@ -30,6 +34,7 @@ const trainers: Trainer[] = [
         imageUrl: "/trainers/jana-novakova.jpg",
         phone: "+420 777 234 567",
         email: "jana.novakova@bulldoggym.cz",
+        facebook: "https://facebook.com/jananovakova"
     },
     {
         id: 3,
@@ -39,6 +44,7 @@ const trainers: Trainer[] = [
         imageUrl: "/trainers/petra-dvorakova.jpg",
         phone: "+420 777 345 678",
         email: "petra.dvorakova@bulldoggym.cz",
+        website: "https://petradvorakova.cz"
     },
     {
         id: 4,
@@ -47,7 +53,7 @@ const trainers: Trainer[] = [
         bio: "Pomohu vám s nabíráním svalové hmoty, formováním postavy a přípravou na závody. Zaměřuji se na správnou techniku, těžké cviky a detailní jídelníčky přizpůsobené vašim cílům.",
         imageUrl: "/trainers/martin-svoboda.jpg",
         phone: "+420 777 456 789",
-        email: "martin.svoboda@bulldoggym.cz",
+        email: "martin.svoboda@bulldoggym.cz"
     },
     {
         id: 5,
@@ -57,6 +63,7 @@ const trainers: Trainer[] = [
         imageUrl: "/trainers/tomas-kral.jpg",
         phone: "+420 777 567 890",
         email: "tomas.kral@bulldoggym.cz",
+        facebook: "https://facebook.com/tomaskral"
     }
 ];
 
@@ -94,15 +101,42 @@ export default function Trainers() {
                                 <p className="text-red-600 text-lg font-semibold mb-4">{trainer.specialization}</p>
                                 <p className="text-zinc-800 text-sm leading-relaxed mb-6 flex-grow">{trainer.bio}</p>
 
-                                <div className="space-y-3 mt-auto">
-                                    <a href={`tel:${trainer.phone}`} className="flex items-center text-zinc-800 hover:text-red-500 transition-colors cursor-pointer w-fit">
-                                        <Phone size={20} className="mr-3 text-red-600 flex-shrink-0" />
-                                        {trainer.phone}
+                                <div className="space-y-3 mt-auto pt-6 border-t border-zinc-300/50">
+                                    <a href={`tel:${trainer.phone}`} className="flex items-center text-zinc-800 hover:text-red-600 transition-colors w-fit">
+                                        <Phone size={18} className="mr-3 text-red-600 flex-shrink-0" />
+                                        <span className="text-sm font-medium">{trainer.phone}</span>
                                     </a>
-                                    <a href={`mailto:${trainer.email}`} className="flex items-center text-zinc-800 hover:text-red-500 transition-colors cursor-pointer w-fit">
-                                        <Mail size={20} className="mr-3 text-red-600 flex-shrink-0" />
-                                        {trainer.email}
+                                    <a href={`mailto:${trainer.email}`} className="flex items-center text-zinc-800 hover:text-red-600 transition-colors w-fit">
+                                        <Mail size={18} className="mr-3 text-red-600 flex-shrink-0" />
+                                        <span className="text-sm font-medium">{trainer.email}</span>
                                     </a>
+
+                                    {(trainer.facebook || trainer.website) && (
+                                        <div className="flex gap-4 pt-2">
+                                            {trainer.facebook && (
+                                                <a
+                                                    href={trainer.facebook}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center text-zinc-800 hover:text-red-600 transition-colors"
+                                                    aria-label={`Facebook profil - ${trainer.name}`}
+                                                >
+                                                    <Facebook size={20} className="text-red-600" />
+                                                </a>
+                                            )}
+                                            {trainer.website && (
+                                                <a
+                                                    href={trainer.website}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center text-zinc-800 hover:text-red-600 transition-colors"
+                                                    aria-label={`Webové stránky - ${trainer.name}`}
+                                                >
+                                                    <Globe size={20} className="text-red-600" />
+                                                </a>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
