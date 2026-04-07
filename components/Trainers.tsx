@@ -20,29 +20,22 @@ const trainers: Trainer[] = [
         name: "Michaela Stoklasová",
         specialization: "Osobní fitness trenérka",
         bio: "Sportu se věnuji od malička, ve fitness se pohybuji od roku 2018. Mám za sebou závodní přípravy i soutěže v bikini fitness, které mi daly cenné zkušenosti.\n\nJako trenérka působím od roku 2023 a pomáhám klientům zlepšit kondici, postavu i životní styl. Specializuji se na silový a kondiční trénink, tréninkové i stravovací plány a individuální přístup.\n\nNevíte si rady v posilovně nebo se stravou? Ráda vám pomůžu najít správnou cestu a dosáhnout vašich cílů.",
-        imageUrl: "/trener1.jpg",
+        imageUrl: "/trener2.jpg",
         phone: "+420 775 108 037",
     },
     {
         id: 2,
         name: "Luboš Dundr",
         specialization: "Osobní trenér",
-        imageUrl: "/trener2.jpg",
+        imageUrl: "/trener3.jpg",
         phone: "+420 777 123 456",
     },
     {
         id: 3,
         name: "Linda Gruber",
         specialization: "Osobní trenérka",
-        imageUrl: "/trener3.jpg",
+        imageUrl: "/trener1.jpg",
         phone: "+420 773 998 112",
-    },
-    {
-        id: 4,
-        name: "Martin Kovář",
-        specialization: "Silový a kondiční trenér",
-        bio: "Věnuji se silovému tréninku a kondičnímu sportu více než 10 let. Pomáhám klientům budovat sílu, zlepšovat výkonnost a dosahovat jejich sportovních cílů prostřednictvím individuálně sestavených tréninkových plánů.",
-        phone: "+420 608 456 789",
     },
 ];
 
