@@ -122,14 +122,14 @@ export default function Footer() {
                 <div className="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-400">
                     <p>© {currentYear} Bulldog Gym Most</p>
                     <p className="flex items-center gap-2">
-                        Vytvořil
+                        Vytvořili
                         <a
-                            href="https://www.jirimacal.cz/"
+                            href="https://www.wasy.dev/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1 text-zinc-900 font-bold hover:text-red-600 transition-colors group"
                         >
-                            Jiří Macal
+                            Wasy
                             <ArrowUpRight size={13} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                     </p>
