@@ -27,9 +27,9 @@ const trainers: Trainer[] = [
         id: 2,
         name: "Luboš Dundr",
         specialization: "Osobní trenér",
-        bio: "Sport mi v životě dal a dává mnoho a vždy mě bavilo hledat cesty, jak trénovat správně tak, abych dosáhl svých cílů. Důležité je mít silnou motivaci a vědět proč chci něčeho dostáhnout a dokázat přistoupit k životnímu stylu a tréninku tak, aby člověk dospěl k úspěchu! Neváhejte se na mě obrátit.",
+        bio: "Sport mi v životě dal a dává mnoho a vždy mě bavilo hledat cesty, jak trénovat správně tak, abych dosáhl svých cílů. Důležité je mít silnou motivaci a vědět proč chci něčeho dosáhnout a dokázat přistoupit k životnímu stylu a tréninku tak, aby člověk dospěl k úspěchu! Neváhejte se na mě obrátit.",
         imageUrl: "/trener3.jpg",
-        phone: "+420 777 123 456",
+        phone: "+420 777 656 800",
     },
     {
         id: 3,
