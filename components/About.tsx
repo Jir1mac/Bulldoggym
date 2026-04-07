@@ -33,7 +33,7 @@ export default function About() {
                             className="bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl transition-colors"
                         >
                             <Dumbbell className="text-red-600 mb-4" size={38} />
-                            <h4 className="text-black font-bold text-xl mb-2">80 stanovišť</h4>
+                            <h4 className="text-black font-bold text-xl mb-2">90 stanovišť</h4>
                             <p className="text-zinc-500 text-sm">5 sálů s širokou škálou strojů pro procvičení každého svalu na těle.</p>
                         </div>
 
