@@ -18,7 +18,7 @@ const planStaticDetails: Record<string, { description: string, features: string[
     },
     "Permanentka na 10 vstupů": {
         description: "Flexibilní trénink podle tvého tempa.",
-        features: ["10 vstupů", "Platnost 2 měsíce", "Přenosná"]
+        features: ["10 vstupů", "Platnost 4 měsíce", "Přenosná"]
     },
     "Měsíční permanentka": {
         description: "Pravidelný trénink bez omezení počtu vstupů.",
