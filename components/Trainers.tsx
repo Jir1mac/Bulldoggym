@@ -20,18 +20,29 @@ const trainers: Trainer[] = [
         name: "Michaela Stoklasová",
         specialization: "Osobní fitness trenérka",
         bio: "Sportu se věnuji od malička, ve fitness se pohybuji od roku 2018. Mám za sebou závodní přípravy i soutěže v bikini fitness, které mi daly cenné zkušenosti.\n\nJako trenérka působím od roku 2023 a pomáhám klientům zlepšit kondici, postavu i životní styl. Specializuji se na silový a kondiční trénink, tréninkové i stravovací plány a individuální přístup.\n\nNevíte si rady v posilovně nebo se stravou? Ráda vám pomůžu najít správnou cestu a dosáhnout vašich cílů.",
+        imageUrl: "/trener1.jpg",
         phone: "+420 775 108 037",
     },
     {
         id: 2,
         name: "Luboš Dundr",
-        imageUrl: "/Lukáš-Dundr-2-1.jpg",
+        specialization: "Osobní trenér",
+        imageUrl: "/trener2.jpg",
         phone: "+420 777 123 456",
     },
     {
         id: 3,
         name: "Linda Gruber",
+        specialization: "Osobní trenérka",
+        imageUrl: "/trener3.jpg",
         phone: "+420 773 998 112",
+    },
+    {
+        id: 4,
+        name: "Martin Kovář",
+        specialization: "Silový a kondiční trenér",
+        bio: "Věnuji se silovému tréninku a kondičnímu sportu více než 10 let. Pomáhám klientům budovat sílu, zlepšovat výkonnost a dosahovat jejich sportovních cílů prostřednictvím individuálně sestavených tréninkových plánů.",
+        phone: "+420 608 456 789",
     },
 ];
 
@@ -56,21 +67,19 @@ export default function Trainers() {
                             data-aos-delay={index * 200}
                             className="w-full md:w-[calc((100%-3rem)/2)] lg:w-[calc((100%-6rem)/3)] bg-zinc-150 rounded-2xl overflow-hidden shadow-lg border border-zinc-800 transition-colors duration-300 flex flex-col"
                         >
-                            {trainer.imageUrl && (
-                                <div className="relative h-96 w-full overflow-hidden flex-shrink-0">
+                            <div className="relative h-96 w-full overflow-hidden flex-shrink-0 bg-zinc-200">
+                                {trainer.imageUrl && (
                                     <Image
                                         src={trainer.imageUrl}
                                         alt={trainer.name}
                                         fill
                                         className="object-cover transition-transform duration-500"
                                     />
-                                </div>
-                            )}
+                                )}
+                            </div>
                             <div className="p-8 flex flex-col flex-grow">
                                 <h4 className="text-black font-bold text-3xl mb-2">{trainer.name}</h4>
-                                {trainer.specialization && (
-                                    <p className="text-red-600 text-lg font-semibold mb-4">{trainer.specialization}</p>
-                                )}
+                                <p className="text-red-600 text-lg font-semibold mb-4">{trainer.specialization ?? "\u00A0"}</p>
                                 {trainer.bio && (
                                     <p className="text-zinc-800 text-sm leading-relaxed mb-6 flex-grow whitespace-pre-line">{trainer.bio}</p>
                                 )}
