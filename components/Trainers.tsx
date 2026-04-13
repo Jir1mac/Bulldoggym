@@ -33,8 +33,11 @@ const trainers: Trainer[] = [
     },
     {
         id: 3,
-        name: "Linda Gruber",
+        name: "Mgr. Linda Gruber",
         specialization: "Osobní trenérka",
+        bio: "Jsem trenérka s magisterským vzděláním v oblasti sportu a zdraví a absolvovaným trenérským kurzem. Zaměřuji se na zdravotní cvičení – pomáhám klientům s chronickými bolestmi zad, problémy pohybového aparátu a s návratem k pohybu po zranění. Spolupracuji s fyzioterapeutem a kladu důraz na individuální přístup. \n" +
+            "Zároveň se věnuji i kondiční a sportovně specifické přípravě a to jak dětí, tak dospělých. Vycházím z několikaleté profesionální sportovní kariéry i trenérské praxe.\n" +
+            "Těším se na naší spolupráci.",
         imageUrl: "/trener1.jpg",
         phone: "+420 773 998 112",
     },
