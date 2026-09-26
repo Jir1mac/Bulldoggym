@@ -56,14 +56,14 @@ export default function FindUs() {
                                 <Phone className="text-red-600 mr-4 flex-shrink-0" size={24} />
                                 <div>
                                     <p className="font-semibold text-black text-lg">Telefon:</p>
-                                    <a href="tel:+420777123456" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">+420 777 656 367</a>
+                                    <a href="tel:+420 777656367" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">+420 777 656 367</a>
                                 </div>
                             </div>
                             <div className="flex items-center justify-center lg:justify-start text-zinc-300">
                                 <Mail className="text-red-600 mr-4 flex-shrink-0" size={24} />
                                 <div>
                                     <p className="font-semibold text-black text-lg">Email:</p>
-                                    <a href="mailto:info@bulldoggym.cz" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">bulldog.gym@seznam.cz</a>
+                                    <a href="mailto:bulldog.gym@seznam.cz" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">bulldog.gym@seznam.cz</a>
                                 </div>
                             </div>
                         </div>
