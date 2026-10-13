@@ -47,7 +47,7 @@ export default function Trainers() {
     return (
         <section id="trainers" className="min-h-screen flex items-center py-16 md:py-24 bg-zinc-150 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-7xl mx-auto text-center w-full">
-                <div data-aos="fade-down">
+                <div data-aos="fade-up">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-base mb-4">
                         Náš tým
                     </h2>
@@ -61,8 +61,8 @@ export default function Trainers() {
                         <div
                             key={trainer.id}
                             data-aos="fade-up"
-                            data-aos-delay={index * 200}
-                            className="w-full md:w-[calc((100%-3rem)/2)] lg:w-[calc((100%-6rem)/3)] bg-zinc-150 rounded-2xl overflow-hidden shadow-lg border border-zinc-800 transition-colors duration-300 flex flex-col"
+                            data-aos-delay={index * 100}
+                            className="w-full md:w-[calc((100%-3rem)/2)] lg:w-[calc((100%-6rem)/3)] bg-zinc-150 rounded-2xl overflow-hidden shadow-sm border border-zinc-800 flex flex-col"
                         >
                             <div className="relative h-96 w-full overflow-hidden flex-shrink-0 bg-zinc-200">
                                 {trainer.imageUrl && (
@@ -70,7 +70,7 @@ export default function Trainers() {
                                         src={trainer.imageUrl}
                                         alt={trainer.name}
                                         fill
-                                        className="object-cover transition-transform duration-500"
+                                        className="object-cover"
                                     />
                                 )}
                             </div>
