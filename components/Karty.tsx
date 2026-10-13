@@ -27,19 +27,19 @@ const cardTypes: CardType[] = [
 
 export default function AcceptedCards() {
     return (
-        <section className="py-16 md:py-24 bg-zinc-100 px-4 sm:px-6">
+        <section className="py-12 md:py-24 bg-zinc-100 px-4 sm:px-6">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6" data-aos="fade-up">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-4 md:gap-6" data-aos="fade-up">
                     <div>
-                        <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">
+                        <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">
                             Benefity a karty
                         </h2>
-                        <h3 className="text-4xl md:text-5xl font-black uppercase text-black leading-tight">
+                        <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-black leading-tight">
                             Podporujeme vaše <br /> <span className="text-red-600">benefity</span>
                         </h3>
                     </div>
                     <div className="max-w-md">
-                        <p className="text-zinc-600 text-lg">
+                        <p className="text-zinc-600 text-base md:text-lg">
                             Cvičení u nás je dostupné pro každého. Kromě standardních plateb podporujeme MultiSport, Benefity a Pluxee.
                         </p>
                     </div>
@@ -51,9 +51,9 @@ export default function AcceptedCards() {
                             key={card.name}
                             data-aos="fade-up"
                             data-aos-delay={index * 100}
-                            className="bg-zinc-100 border border-zinc-300 p-8 rounded-2xl"
+                            className="bg-zinc-100 border border-zinc-300 p-5 md:p-8 rounded-2xl"
                         >
-                            <div className="flex items-center justify-center mb-8">
+                            <div className="flex items-center justify-center mb-5 md:mb-8">
                                 <div className="relative w-full aspect-[1.6/1]">
                                     <Image
                                         src={card.image}
@@ -65,7 +65,7 @@ export default function AcceptedCards() {
                                     />
                                 </div>
                             </div>
-                            <h4 className="text-black font-bold text-2xl mb-3 uppercase tracking-tight">
+                            <h4 className="text-black font-bold text-xl md:text-2xl mb-2 md:mb-3 uppercase tracking-tight">
                                 {card.name}
                             </h4>
                             <p className="text-zinc-500 text-sm leading-relaxed">

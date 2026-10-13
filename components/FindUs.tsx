@@ -4,22 +4,22 @@ import { Button } from '@/components/button';
 
 export default function FindUs() {
     return (
-        <section id="kontakt" className="py-16 md:py-24 bg-zinc-150 text-black px-4 sm:px-6 overflow-hidden">
+        <section id="kontakt" className="py-12 md:py-24 bg-zinc-150 text-black px-4 sm:px-6 overflow-hidden">
             <div className="max-w-[1200px] mx-auto text-center">
 
                 <div data-aos="fade-up">
-                    <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Kontakt</h2>
-                    <h3 className="text-5xl md:text-6xl font-black uppercase text-black mb-16">
+                    <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">Kontakt</h2>
+                    <h3 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-black mb-8 md:mb-16">
                         Kde nás <span className="text-red-600">najdete</span>
                     </h3>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
                     <div
                         data-aos="fade-up"
                         data-aos-delay="100"
-                        className="w-full h-[400px] lg:h-[550px] rounded-lg overflow-hidden shadow-sm border border-zinc-800"
+                        className="w-full h-[280px] md:h-[400px] lg:h-[550px] rounded-lg overflow-hidden shadow-sm border border-zinc-800"
                     >
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.3868026240475!2d13.65197937776204!3d50.508369371603315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470a204933bc8dc1%3A0xe86660d22ad3770a!2sBulldog%20Gym!5e0!3m2!1scs!2scz!4v1768640947169!5m2!1scs!2scz"
@@ -38,12 +38,12 @@ export default function FindUs() {
                         data-aos-delay="200"
                         className="flex flex-col items-center lg:items-start text-center lg:text-left"
                     >
-                        <h4 className="text-4xl font-bold mb-6">Bulldog Gym Most</h4>
-                        <p className="text-zinc-400 mb-8 max-w-md lg:max-w-none">
+                        <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">Bulldog Gym Most</h4>
+                        <p className="text-zinc-400 mb-6 md:mb-8 max-w-md lg:max-w-none">
                             Přijďte nás navštívit do naší největší posilovny v Mostě! Najdete nás v budově Sever, kde na vás čeká 1000 m² plochy, špičkové stroje a přátelská atmosféra.
                         </p>
 
-                        <div className="space-y-4 mb-10 w-full max-w-sm">
+                        <div className="space-y-4 mb-6 md:mb-10 w-full max-w-sm">
                             <div className="flex items-center justify-center lg:justify-start text-zinc-300">
                                 <MapPin className="text-red-600 mr-4 flex-shrink-0" size={24} />
                                 <div>

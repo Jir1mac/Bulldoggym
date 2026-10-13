@@ -10,11 +10,11 @@ interface HourRow {
     note: string;
 }
 
-const DAY_CLASS_BASE = "text-lg font-bold uppercase italic";
+const DAY_CLASS_BASE = "text-base md:text-lg font-bold uppercase italic";
 const DAY_CLASS_TODAY = "text-red-600";
 const DAY_CLASS_DEFAULT = "text-black";
 
-const HOUR_CLASS_BASE = "text-xl font-black tracking-tighter";
+const HOUR_CLASS_BASE = "text-lg md:text-xl font-black tracking-tighter";
 const HOUR_CLASS_TODAY = "text-red-600";
 const HOUR_CLASS_DEFAULT = "text-black";
 
@@ -51,18 +51,18 @@ export default function BusinessHours() {
     }
 
     return (
-        <section id="oteviraci-doba" className="py-16 md:py-24 bg-zinc-100 text-black px-4 sm:px-6 overflow-hidden">
+        <section id="oteviraci-doba" className="py-12 md:py-24 bg-zinc-100 text-black px-4 sm:px-6 overflow-hidden">
             <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-16" data-aos="fade-up">
+                <div className="text-center mb-8 md:mb-16" data-aos="fade-up">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Provozní doba</h2>
                 </div>
 
                 <div
-                    className="bg-white border border-zinc-200 rounded-3xl p-8 md:p-12 shadow-sm"
+                    className="bg-white border border-zinc-200 rounded-3xl p-4 sm:p-8 md:p-12 shadow-sm"
                     data-aos="fade-up"
                     data-aos-delay="100"
                 >
-                    <div className="flex items-center mb-10 pb-6 border-b border-zinc-100">
+                    <div className="flex items-center mb-6 md:mb-10 pb-4 md:pb-6 border-b border-zinc-100">
                         <div className="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-red-600/20">
                             <Clock className="text-white" size={28} />
                         </div>
@@ -72,7 +72,7 @@ export default function BusinessHours() {
                         </div>
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="space-y-1 sm:space-y-4">
                         {openingHours.map((item) => {
                             const isToday = item.day.toLowerCase() === today.toLowerCase();
 
@@ -80,13 +80,13 @@ export default function BusinessHours() {
                                 <div
                                     key={item.day}
                                     className={cn(
-                                        "flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl transition-all duration-300",
+                                        "flex flex-col sm:flex-row sm:items-center justify-between p-3 md:p-4 rounded-2xl transition-all duration-300",
                                         isToday
                                             ? "bg-red-50 border border-red-200 scale-[1.02] shadow-sm"
                                             : "border border-transparent"
                                     )}
                                 >
-                                    <div className="flex items-center mb-2 sm:mb-0">
+                                    <div className="flex items-center mb-1 sm:mb-0">
                                         <Calendar
                                             size={18}
                                             className={cn("mr-3", isToday ? "text-red-600" : "text-zinc-400")}

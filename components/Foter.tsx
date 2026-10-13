@@ -48,9 +48,9 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-zinc-100 text-black pt-16 pb-8 px-4 sm:px-6 border-t border-zinc-200">
+        <footer className="bg-zinc-100 text-black pt-10 md:pt-16 pb-6 md:pb-8 px-4 sm:px-6 border-t border-zinc-200">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
 
                     <div className="space-y-6">
                         <div className="flex items-center gap-2">
@@ -79,7 +79,7 @@ export default function Footer() {
 
                     {sections.map((section) => (
                         <div key={section.title}>
-                            <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-red-600">
+                            <h4 className="text-sm font-bold uppercase tracking-widest mb-4 md:mb-6 text-red-600">
                                 {section.title}
                             </h4>
                             <ul className="space-y-4">
@@ -101,7 +101,7 @@ export default function Footer() {
                     ))}
 
                     <div>
-                        <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-red-600">
+                        <h4 className="text-sm font-bold uppercase tracking-widest mb-4 md:mb-6 text-red-600">
                             Otevírací doba
                         </h4>
                         <div className="space-y-4">
@@ -121,7 +121,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-400">
+                <div className="pt-6 md:pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-400">
                     <p>© {currentYear} Bulldog Gym Most</p>
                     <p className="flex items-center gap-2">
                         Vytvořili

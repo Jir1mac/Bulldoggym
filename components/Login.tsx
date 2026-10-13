@@ -46,12 +46,12 @@ export default function LoginPage() {
         <div className="min-h-screen bg-zinc-100 flex items-center justify-center p-4 font-sans">
             <div className="max-w-md w-full">
                 <div className="text-center mb-8">
-                    <h1 className="text-5xl font-black uppercase italic tracking-tighter">
+                    <h1 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter">
                         Admin <span className="text-red-600">Bulldog</span>
                     </h1>
                 </div>
 
-                <div className="bg-white p-8 rounded-3xl border border-zinc-200 shadow-2xl relative overflow-hidden">
+                <div className="bg-white p-6 md:p-8 rounded-3xl border border-zinc-200 shadow-2xl relative overflow-hidden">
                     <div className="absolute -top-10 -right-10 text-zinc-50 opacity-10 pointer-events-none">
                         <ShieldCheck size={200} />
                     </div>
