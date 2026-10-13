@@ -139,18 +139,18 @@ export default function Gallery() {
     return (
         <>
             <Navbar />
-            <section id="galerie" className="py-16 md:py-24 bg-zinc-100 px-4 sm:px-6">
+            <section id="galerie" className="pt-28 pb-12 md:py-24 bg-zinc-100 px-4 sm:px-6">
                 <div className="max-w-7xl mx-auto">
-                    <div className="mb-12">
-                        <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">
+                    <div className="mb-8 md:mb-12">
+                        <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">
                             Fotogalerie
                         </h2>
-                        <h3 className="text-4xl md:text-5xl font-black uppercase text-black mb-6 leading-tight">
+                        <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-black mb-4 md:mb-6 leading-tight">
                             Nahlédněte do <span className="text-red-600">Bulldog Gymu</span>
                         </h3>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                         {images.map((image, index) => (
                             <div
                                 key={image.id}
@@ -168,7 +168,7 @@ export default function Gallery() {
                                     <Maximize2 className="text-white mb-2" size={32} />
                                     <span className="text-white font-bold uppercase tracking-wider text-sm">{image.category}</span>
                                 </div>
-                                <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent">
+                                <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 bg-gradient-to-t from-black/80 to-transparent">
                                     <p className="text-white font-bold">{image.alt}</p>
                                 </div>
                             </div>
@@ -182,7 +182,7 @@ export default function Gallery() {
                         onClick={closeModal}
                     >
                         <button
-                            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[10000] p-2 cursor-pointer"
+                            className="absolute top-3 right-3 md:top-6 md:right-6 text-white/70 hover:text-white transition-colors z-[10000] p-2 cursor-pointer"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 closeModal();

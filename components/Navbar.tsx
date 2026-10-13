@@ -56,10 +56,10 @@ export default function Navbar() {
     const Logo = () => (
         <Link
             href="/"
-            className="flex items-center gap-4 active:scale-95 transition-transform flex-shrink-0"
+            className="flex items-center gap-3 md:gap-4 active:scale-95 transition-transform flex-shrink-0"
             onClick={handleLinkClick}
         >
-            <div className="relative w-14 h-14 flex-shrink-0">
+            <div className="relative w-11 h-11 md:w-14 md:h-14 flex-shrink-0">
                 <Image
                     src="/bulldog.png"
                     alt="Bulldog Logo"
@@ -69,7 +69,7 @@ export default function Navbar() {
                 />
             </div>
             <span className={cn(
-                "text-2xl md:text-3xl font-black uppercase italic tracking-tighter transition-colors whitespace-nowrap",
+                "text-xl md:text-3xl font-black uppercase italic tracking-tighter transition-colors whitespace-nowrap",
                 isScrolled ? "text-black" : "text-black lg:text-zinc-900"
             )}>
                 Bulldog<span className="text-red-600">Gym</span>
@@ -136,7 +136,7 @@ export default function Navbar() {
                 mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             )}>
                 <div className="flex flex-col h-full">
-                    <div className="flex items-center justify-between p-6 border-b border-zinc-200">
+                    <div className="flex items-center justify-between p-4 md:p-6 border-b border-zinc-200">
                         <Logo />
                         <button
                             onClick={() => setMobileMenuOpen(false)}

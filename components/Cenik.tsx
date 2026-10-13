@@ -89,17 +89,17 @@ export default function Pricing() {
     }
 
     return (
-        <section id="cenik" className="py-16 md:py-24 min-h-screen flex items-center bg-zinc-100 px-4 sm:px-6 overflow-hidden">
+        <section id="cenik" className="py-12 md:py-24 md:min-h-screen flex items-center bg-zinc-100 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-[1500px] mx-auto w-full">
 
-                <div className="text-center mb-16" data-aos="fade-up">
-                    <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Ceník Bulldog Gym</h2>
-                    <h3 className="text-5xl md:text-6xl font-black uppercase text-black mb-6">Investuj do <span className="text-red-600">sebe</span></h3>
+                <div className="text-center mb-8 md:mb-16" data-aos="fade-up">
+                    <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">Ceník Bulldog Gym</h2>
+                    <h3 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-black mb-4 md:mb-6">Investuj do <span className="text-red-600">sebe</span></h3>
                 </div>
 
-                <div className="mt-8 mb-12 text-center"></div>
+                <div className="mt-8 mb-12 text-center hidden md:block"></div>
 
-                <div className="flex flex-wrap justify-center items-stretch gap-6 xl:gap-8">
+                <div className="flex flex-wrap justify-center items-stretch gap-4 sm:gap-6 xl:gap-8">
                     {pricingPlans.map((plan, index) => {
                         const details = planStaticDetails[plan.title] || { description: "", features: [] };
 
@@ -108,19 +108,19 @@ export default function Pricing() {
                                 key={index}
                                 data-aos="fade-up"
                                 data-aos-delay={(index % 4) * 100}
-                                className="relative p-6 sm:p-8 rounded-3xl border w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(33%-2rem)] xl:w-[calc(25%-2rem)] min-w-[280px] flex flex-col border-red-600 bg-zinc-900 shadow-[0_0_30px_rgba(220,38,38,0.12)] z-10"
+                                className="relative p-5 sm:p-8 rounded-3xl border w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(33%-2rem)] xl:w-[calc(25%-2rem)] min-w-0 sm:min-w-[280px] flex flex-col border-red-600 bg-zinc-900 shadow-[0_0_30px_rgba(220,38,38,0.12)] z-10"
                             >
                                 <div className="flex flex-col h-full w-full">
-                                    <div className="flex flex-col flex-grow-0 h-[100px] mb-4">
-                                        <h4 className="text-2xl font-bold text-white mb-2 leading-tight">{plan.title}</h4>
+                                    <div className="flex flex-col flex-grow-0 sm:h-[100px] mb-3 sm:mb-4">
+                                        <h4 className="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2 leading-tight">{plan.title}</h4>
                                         <p className="text-zinc-500 text-sm leading-snug">{details.description}</p>
                                     </div>
 
-                                    <div className="flex flex-col flex-grow-0 justify-end h-[120px] border-b border-zinc-800 pb-6 mb-6">
+                                    <div className="flex flex-col flex-grow-0 justify-end sm:h-[120px] border-b border-zinc-800 pb-4 sm:pb-6 mb-4 sm:mb-6">
                                         <div className="flex justify-between items-center text-zinc-400 mb-4">
                                             <span className="text-xs uppercase font-bold tracking-wider">Základní</span>
                                             <div className="flex items-baseline whitespace-nowrap">
-                                                <span className="text-3xl font-bold text-white">{plan.priceNormal}</span>
+                                                <span className="text-2xl sm:text-3xl font-bold text-white">{plan.priceNormal}</span>
                                                 <span className="ml-1 text-sm">Kč</span>
                                             </div>
                                         </div>
@@ -132,16 +132,16 @@ export default function Pricing() {
                                                     <span className="text-[10px] font-black uppercase leading-none whitespace-nowrap">Do 18 let*</span>
                                                 </div>
                                                 <div className="flex items-baseline text-red-600 whitespace-nowrap font-black">
-                                                    <span className="text-3xl">{plan.priceDiscount}</span>
+                                                    <span className="text-2xl sm:text-3xl">{plan.priceDiscount}</span>
                                                     <span className="ml-1 text-sm">Kč</span>
                                                 </div>
                                             </div>
                                         ) : (
-                                            <div className="h-[46px]"></div>
+                                            <div className="hidden sm:block h-[46px]"></div>
                                         )}
                                     </div>
 
-                                    <ul className="space-y-4 flex-grow">
+                                    <ul className="space-y-3 sm:space-y-4 flex-grow">
                                         {details.features.map((feature, i) => (
                                             <li key={i} className="flex items-start text-zinc-300 text-sm">
                                                 <Check className="text-red-600 mr-3 mt-1 flex-shrink-0" size={16} />
@@ -155,7 +155,7 @@ export default function Pricing() {
                     })}
                 </div>
 
-                <div className="mt-16 text-center" data-aos="fade-up" data-aos-offset="0">
+                <div className="mt-8 md:mt-16 text-center" data-aos="fade-up" data-aos-offset="0">
                     <p className="text-zinc-500 text-sm italic">
                         * Cena pro osoby do 18 let platí i pro seniory nad 60 let a držitele průkazu ZTP.
                     </p>
