@@ -6,6 +6,7 @@ import {
     History,
     Users,
     CreditCard,
+    CalendarDays,
     MapPin,
     Phone,
     Mail,
@@ -27,6 +28,7 @@ export default function Footer() {
                 { name: "O nás", href: "/#o-nas", icon: <History size={14} /> },
                 { name: "Trenéři", href: "/#trainers", icon: <Users size={14} /> },
                 { name: "Ceník", href: "/#cenik", icon: <CreditCard size={14} /> },
+                { name: "Akce", href: "/akce", icon: <CalendarDays size={14} /> },
             ]
         },
         {
