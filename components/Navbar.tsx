@@ -13,6 +13,7 @@ const navLinks = [
     { name: 'Ceník', href: '/#cenik' },
     { name: 'Kdy cvičit?', href: '/#oteviraci-doba' },
     { name: 'Kontakt', href: '/#kontakt' },
+    { name: 'Akce', href: '/akce' },
     { name: 'Galerie', href: '/gallery' },
 
 ];
@@ -88,7 +89,7 @@ export default function Navbar() {
                 )}>
                     <Logo />
 
-                    <div className="hidden lg:flex items-center gap-8">
+                    <div className="hidden xl:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
@@ -100,7 +101,7 @@ export default function Navbar() {
                         ))}
                     </div>
                     <button
-                        className="lg:hidden relative w-10 h-10 flex items-center justify-center text-black z-[102] flex-shrink-0"
+                        className="xl:hidden relative w-10 h-10 flex items-center justify-center text-black z-[102] flex-shrink-0"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         aria-label={mobileMenuOpen ? "Zavřít menu" : "Otevřít menu"}
                     >
@@ -124,14 +125,14 @@ export default function Navbar() {
 
             {mobileMenuOpen && (
                 <div
-                    className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[101] lg:hidden transition-opacity duration-300 animate-in fade-in"
+                    className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[101] xl:hidden transition-opacity duration-300 animate-in fade-in"
                     onClick={() => setMobileMenuOpen(false)}
                     aria-hidden="true"
                 />
             )}
 
             <div className={cn(
-                "fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white z-[102] lg:hidden shadow-2xl transition-transform duration-300 ease-out",
+                "fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white z-[102] xl:hidden shadow-2xl transition-transform duration-300 ease-out",
                 mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             )}>
                 <div className="flex flex-col h-full">

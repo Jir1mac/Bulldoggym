@@ -26,3 +26,13 @@ model Settings {
   entry10     String @default("1 100")
   entrySingle String @default("130")
 }
+
+model Flyer {
+  id        Int      @id @default(autoincrement())
+  position  Int      @default(0)
+  mimeType  String
+  width     Int
+  height    Int
+  data      Bytes
+  createdAt DateTime @default(now())
+}
