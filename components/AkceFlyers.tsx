@@ -1,13 +1,10 @@
 'use client';
 
 import React, { useCallback, useEffect, useState } from 'react';
-import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export interface FlyerItem {
-    id: number;
-    width: number;
-    height: number;
+    src: string;
 }
 
 export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
@@ -49,18 +46,17 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
                 {flyers.map((flyer, index) => (
                     <button
-                        key={flyer.id}
+                        key={flyer.src}
                         type="button"
                         onClick={() => setSelected(index)}
                         className="block w-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm hover:shadow-lg hover:border-red-600 transition-all cursor-pointer"
                         aria-label={`Zvětšit leták ${index + 1}`}
                     >
-                        <Image
-                            src={`/api/akce/${flyer.id}/image`}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={flyer.src}
                             alt={`Leták akce ${index + 1}`}
-                            width={flyer.width}
-                            height={flyer.height}
-                            unoptimized
+                            loading="lazy"
                             className="w-full h-auto"
                         />
                     </button>
@@ -99,12 +95,10 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
                     )}
 
                     <div className="flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
-                        <Image
-                            src={`/api/akce/${current.id}/image`}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={current.src}
                             alt={`Leták akce ${selected + 1}`}
-                            width={current.width}
-                            height={current.height}
-                            unoptimized
                             className="w-auto h-auto max-w-full max-h-[85vh] select-none"
                         />
                         {flyers.length > 1 && (
