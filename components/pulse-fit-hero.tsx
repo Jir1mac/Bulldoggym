@@ -151,8 +151,8 @@ export function PulseFitHero({
                         style={{ gap: "24px", paddingLeft: "24px" }}
                     >
                         {[...programs, ...programs].map((program, index) => (
-                            <div key={index} className="flex-shrink-0 w-[350px] h-[450px] rounded-[24px] relative overflow-hidden group shadow-lg border border-zinc-200">
-                                <Image src={program.image} alt={program.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                            <div key={index} className="flex-shrink-0 w-[350px] h-[450px] rounded-[24px] relative overflow-hidden shadow-lg border border-zinc-200">
+                                <Image src={program.image} alt={program.title} fill className="object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
                                     <span className="text-red-600 font-black uppercase tracking-widest text-sm mb-1">{program.category}</span>
                                     <h3 className="text-2xl font-black text-white uppercase italic leading-none">{program.title}</h3>

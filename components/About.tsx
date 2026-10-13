@@ -1,8 +1,7 @@
 import React from 'react';
 import { Dumbbell, Trophy, HandHeart } from 'lucide-react';
 
-const cardClass =
-    "h-full bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-md";
+const cardClass = "bg-zinc-100 border border-zinc-800 p-6 md:p-8 lg:p-12 rounded-2xl";
 
 export default function About() {
     return (
@@ -30,28 +29,22 @@ export default function About() {
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6">
-                        <div data-aos="fade-up" data-aos-delay="100">
-                            <div className={cardClass}>
-                                <Dumbbell className="text-red-600 mb-4" size={38} />
-                                <h4 className="text-black font-bold text-xl mb-2">90 stanovišť</h4>
-                                <p className="text-zinc-500 text-sm">5 sálů s širokou škálou strojů pro procvičení každého svalu na těle.</p>
-                            </div>
+                        <div data-aos="fade-up" data-aos-delay="100" className={cardClass}>
+                            <Dumbbell className="text-red-600 mb-4" size={38} />
+                            <h4 className="text-black font-bold text-xl mb-2">90 stanovišť</h4>
+                            <p className="text-zinc-500 text-sm">5 sálů s širokou škálou strojů pro procvičení každého svalu na těle.</p>
                         </div>
 
-                        <div data-aos="fade-up" data-aos-delay="200">
-                            <div className={cardClass}>
-                                <Trophy className="text-red-600 mb-4" size={38} />
-                                <h4 className="text-black font-bold text-xl mb-2">Špičkové vybavení</h4>
-                                <p className="text-zinc-500 text-sm">Stroje značek CYBEX, TUFF STUFF, TECHNOGYM, IMPULSE, HOIST a NAUTILUS.</p>
-                            </div>
+                        <div data-aos="fade-up" data-aos-delay="200" className={cardClass}>
+                            <Trophy className="text-red-600 mb-4" size={38} />
+                            <h4 className="text-black font-bold text-xl mb-2">Špičkové vybavení</h4>
+                            <p className="text-zinc-500 text-sm">Stroje značek CYBEX, TUFF STUFF, TECHNOGYM, IMPULSE, HOIST a NAUTILUS.</p>
                         </div>
 
-                        <div data-aos="fade-up" data-aos-delay="300">
-                            <div className={cardClass}>
-                                <HandHeart className="text-red-600 mb-4" size={38} />
-                                <h4 className="text-black font-bold text-xl mb-2">Masáže</h4>
-                                <p className="text-zinc-500 text-sm">Také si u nás můžete dopřát odpočinek v podobě masáže nebo rázové vlny. <a className="hover:text-red-700 text-red-500 transition-colors duration-300" href="https://most-masaze.cz/">Více informací</a></p>
-                            </div>
+                        <div data-aos="fade-up" data-aos-delay="300" className={cardClass}>
+                            <HandHeart className="text-red-600 mb-4" size={38} />
+                            <h4 className="text-black font-bold text-xl mb-2">Masáže</h4>
+                            <p className="text-zinc-500 text-sm">Také si u nás můžete dopřát odpočinek v podobě masáže nebo rázové vlny. <a className="hover:text-red-700 text-red-500 transition-colors duration-300" href="https://most-masaze.cz/">Více informací</a></p>
                         </div>
                     </div>
 

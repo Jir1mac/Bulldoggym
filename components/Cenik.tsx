@@ -108,10 +108,7 @@ export default function Pricing() {
                                 key={index}
                                 data-aos="fade-up"
                                 data-aos-delay={(index % 4) * 100}
-                                className="w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(33%-2rem)] xl:w-[calc(25%-2rem)] min-w-[280px] flex"
-                            >
-                            <div
-                                className="relative p-6 sm:p-8 rounded-3xl border transition-all duration-500 ease-out w-full flex flex-col border-red-600 bg-zinc-900 shadow-[0_0_30px_rgba(220,38,38,0.12)] z-10 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(220,38,38,0.2)]"
+                                className="relative p-6 sm:p-8 rounded-3xl border w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(33%-2rem)] xl:w-[calc(25%-2rem)] min-w-[280px] flex flex-col border-red-600 bg-zinc-900 shadow-[0_0_30px_rgba(220,38,38,0.12)] z-10"
                             >
                                 <div className="flex flex-col h-full w-full">
                                     <div className="flex flex-col flex-grow-0 h-[100px] mb-4">
@@ -153,7 +150,6 @@ export default function Pricing() {
                                         ))}
                                     </ul>
                                 </div>
-                            </div>
                             </div>
                         );
                     })}

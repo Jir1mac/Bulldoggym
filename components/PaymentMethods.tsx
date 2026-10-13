@@ -39,9 +39,11 @@ export default function PaymentMethods() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {paymentMethods.map((method, index) => (
-                        <div key={method.title} data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
                         <div
-                            className="h-full flex flex-col bg-zinc-50 border border-zinc-200 rounded-2xl p-8 transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-md"
+                            key={method.title}
+                            data-aos="fade-up"
+                            data-aos-delay={(index % 3) * 100}
+                            className="flex flex-col bg-zinc-50 border border-zinc-200 rounded-2xl p-8"
                         >
                             <div className="flex items-center justify-center mb-6 overflow-hidden bg-white rounded-xl border border-zinc-100">
                                 <div className="relative w-full aspect-[1.6/1]">
@@ -65,7 +67,6 @@ export default function PaymentMethods() {
                                     {method.description}
                                 </p>
                             )}
-                        </div>
                         </div>
                     ))}
                 </div>

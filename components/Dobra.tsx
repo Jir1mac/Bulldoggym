@@ -83,7 +83,7 @@ export default function BusinessHours() {
                                         "flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl transition-all duration-300",
                                         isToday
                                             ? "bg-red-50 border border-red-200 scale-[1.02] shadow-sm"
-                                            : "hover:bg-zinc-50 border border-transparent"
+                                            : "border border-transparent"
                                     )}
                                 >
                                     <div className="flex items-center mb-2 sm:mb-0">

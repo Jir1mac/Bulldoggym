@@ -62,7 +62,7 @@ export default function Trainers() {
                             key={trainer.id}
                             data-aos="fade-up"
                             data-aos-delay={index * 100}
-                            className="group w-full md:w-[calc((100%-3rem)/2)] lg:w-[calc((100%-6rem)/3)] bg-zinc-150 rounded-2xl overflow-hidden shadow-sm border border-zinc-800 flex flex-col"
+                            className="w-full md:w-[calc((100%-3rem)/2)] lg:w-[calc((100%-6rem)/3)] bg-zinc-150 rounded-2xl overflow-hidden shadow-sm border border-zinc-800 flex flex-col"
                         >
                             <div className="relative h-96 w-full overflow-hidden flex-shrink-0 bg-zinc-200">
                                 {trainer.imageUrl && (
@@ -70,7 +70,7 @@ export default function Trainers() {
                                         src={trainer.imageUrl}
                                         alt={trainer.name}
                                         fill
-                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                                        className="object-cover"
                                     />
                                 )}
                             </div>

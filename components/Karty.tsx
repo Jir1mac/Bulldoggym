@@ -47,9 +47,11 @@ export default function AcceptedCards() {
 
                 <div className="grid md:grid-cols-3 gap-6">
                     {cardTypes.map((card, index) => (
-                        <div key={card.name} data-aos="fade-up" data-aos-delay={index * 100}>
                         <div
-                            className="h-full bg-zinc-100 border border-zinc-300 p-8 rounded-2xl transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-md"
+                            key={card.name}
+                            data-aos="fade-up"
+                            data-aos-delay={index * 100}
+                            className="bg-zinc-100 border border-zinc-300 p-8 rounded-2xl"
                         >
                             <div className="flex items-center justify-center mb-8">
                                 <div className="relative w-full aspect-[1.6/1]">
@@ -69,7 +71,6 @@ export default function AcceptedCards() {
                             <p className="text-zinc-500 text-sm leading-relaxed">
                                 {card.description}
                             </p>
-                        </div>
                         </div>
                     ))}
                 </div>
