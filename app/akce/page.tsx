@@ -34,7 +34,7 @@ export default async function AkcePage() {
             <Navbar />
             <main className="bg-white px-5 sm:px-8 pt-32 md:pt-44 pb-20 md:pb-32 min-h-[70vh]">
                 <div className="max-w-6xl mx-auto">
-                    <header className="mb-12 md:mb-16 animate-in fade-in slide-in-from-bottom-2 duration-700 motion-reduce:animate-none">
+                    <header className="mb-12 md:mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700 motion-reduce:animate-none">
                         <p className="text-xs font-semibold tracking-[0.25em] uppercase text-red-600 mb-3">
                             Aktuálně
                         </p>

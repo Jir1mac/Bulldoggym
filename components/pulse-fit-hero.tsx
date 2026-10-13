@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from 'next/image';
-import { motion } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface ProgramCard {
@@ -47,6 +47,7 @@ export function PulseFitHero({
                                  children,
                              }: PulseFitHeroProps) {
     return (
+        <MotionConfig reducedMotion="user">
         <section
             className={cn(
                 "relative w-full min-h-screen flex flex-col overflow-hidden pt-[60px] bg-zinc-150", // Tvoje barva pozadí
@@ -61,9 +62,9 @@ export function PulseFitHero({
             ) : (
                 <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-20">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                        transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                         className="flex flex-col items-center text-center max-w-4xl"
                         style={{ gap: "32px" }}
                     >
@@ -95,16 +96,16 @@ export function PulseFitHero({
 
                         {(primaryAction || secondaryAction) && (
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.6, delay: 0.4 }}
+                                initial={{ opacity: 0, y: 12 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                                 className="flex flex-col sm:flex-row items-center gap-4"
                             >
                                 {primaryAction && (
                                     <a
                                         href={primaryAction.href}
                                         onClick={primaryAction.onClick}
-                                        className="flex flex-row items-center gap-2 px-10 py-5 rounded-xl transition-all hover:scale-105 cursor-pointer uppercase font-black italic shadow-xl bg-red-600 text-white hover:bg-red-700"
+                                        className="flex flex-row items-center gap-2 px-10 py-5 rounded-xl transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-pointer uppercase font-black italic shadow-lg hover:shadow-xl bg-red-600 text-white hover:bg-red-700"
                                     >
                                         {primaryAction.label}
                                     </a>
@@ -114,7 +115,7 @@ export function PulseFitHero({
                                     <a
                                         href={secondaryAction.href}
                                         onClick={secondaryAction.onClick}
-                                        className="px-10 py-5 rounded-xl border-2 border-zinc-900 transition-all hover:bg-zinc-900 hover:text-white cursor-pointer uppercase font-black italic"
+                                        className="px-10 py-5 rounded-xl border-2 border-zinc-900 transition-all duration-300 ease-out hover:bg-zinc-900 hover:text-white cursor-pointer uppercase font-black italic"
                                     >
                                         {secondaryAction.label}
                                     </a>
@@ -150,8 +151,8 @@ export function PulseFitHero({
                         style={{ gap: "24px", paddingLeft: "24px" }}
                     >
                         {[...programs, ...programs].map((program, index) => (
-                            <div key={index} className="flex-shrink-0 w-[350px] h-[450px] rounded-[24px] relative overflow-hidden group shadow-2xl border border-zinc-200">
-                                <Image src={program.image} alt={program.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <div key={index} className="flex-shrink-0 w-[350px] h-[450px] rounded-[24px] relative overflow-hidden group shadow-lg border border-zinc-200">
+                                <Image src={program.image} alt={program.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
                                     <span className="text-red-600 font-black uppercase tracking-widest text-sm mb-1">{program.category}</span>
                                     <h3 className="text-2xl font-black text-white uppercase italic leading-none">{program.title}</h3>
@@ -162,5 +163,6 @@ export function PulseFitHero({
                 </motion.div>
             )}
         </section>
+        </MotionConfig>
     );
 }

@@ -154,15 +154,17 @@ export default function Gallery() {
                         {images.map((image, index) => (
                             <div
                                 key={image.id}
+                                data-aos="fade-up"
+                                data-aos-delay={(index % 3) * 100}
                                 className="group relative cursor-pointer overflow-hidden rounded-2xl bg-zinc-800 aspect-[4/3]"
                                 onClick={() => openModal(index)}
                             >
                                 <img
                                     src={image.src}
                                     alt={image.alt}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:opacity-50"
+                                    className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.04] group-hover:opacity-60"
                                 />
-                                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out">
                                     <Maximize2 className="text-white mb-2" size={32} />
                                     <span className="text-white font-bold uppercase tracking-wider text-sm">{image.category}</span>
                                 </div>
@@ -176,7 +178,7 @@ export default function Gallery() {
 
                 {selectedImage !== null && (
                     <div
-                        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4 md:p-10 touch-none"
+                        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 md:p-10 touch-none animate-in fade-in duration-300 motion-reduce:animate-none"
                         onClick={closeModal}
                     >
                         <button
@@ -187,7 +189,7 @@ export default function Gallery() {
                             }}
                             type="button"
                         >
-                            <X size={40} />
+                            <X size={28} strokeWidth={1.5} />
                         </button>
 
                         <button
@@ -195,7 +197,7 @@ export default function Gallery() {
                             onClick={prevImage}
                             type="button"
                         >
-                            <ChevronLeft size={60} />
+                            <ChevronLeft size={44} strokeWidth={1.25} />
                         </button>
 
                         <div
@@ -203,9 +205,10 @@ export default function Gallery() {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <img
+                                key={images[selectedImage].src}
                                 src={images[selectedImage].src}
                                 alt={images[selectedImage].alt}
-                                className="max-w-full max-h-[80vh] object-contain select-none"
+                                className="max-w-full max-h-[80vh] object-contain select-none rounded-lg animate-in fade-in zoom-in-95 duration-300 motion-reduce:animate-none"
                             />
                             <div className="absolute bottom-[-60px] left-0 right-0 text-center">
                                 <p className="text-white text-lg font-medium">
@@ -222,7 +225,7 @@ export default function Gallery() {
                             onClick={nextImage}
                             type="button"
                         >
-                            <ChevronRight size={60} />
+                            <ChevronRight size={44} strokeWidth={1.25} />
                         </button>
                     </div>
                 )}

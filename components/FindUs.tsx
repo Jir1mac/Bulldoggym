@@ -7,7 +7,7 @@ export default function FindUs() {
         <section id="kontakt" className="py-16 md:py-24 bg-zinc-150 text-black px-4 sm:px-6 overflow-hidden">
             <div className="max-w-[1200px] mx-auto text-center">
 
-                <div data-aos="fade-down">
+                <div data-aos="fade-up">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Kontakt</h2>
                     <h3 className="text-5xl md:text-6xl font-black uppercase text-black mb-16">
                         Kde nás <span className="text-red-600">najdete</span>
@@ -17,9 +17,9 @@ export default function FindUs() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     <div
-                        data-aos="fade-right"
-                        data-aos-delay="200"
-                        className="w-full h-[400px] lg:h-[550px] rounded-lg overflow-hidden shadow-lg border border-zinc-800"
+                        data-aos="fade-up"
+                        data-aos-delay="100"
+                        className="w-full h-[400px] lg:h-[550px] rounded-lg overflow-hidden shadow-sm border border-zinc-800"
                     >
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.3868026240475!2d13.65197937776204!3d50.508369371603315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470a204933bc8dc1%3A0xe86660d22ad3770a!2sBulldog%20Gym!5e0!3m2!1scs!2scz!4v1768640947169!5m2!1scs!2scz"
@@ -34,8 +34,8 @@ export default function FindUs() {
                     </div>
 
                     <div
-                        data-aos="fade-left"
-                        data-aos-delay="400"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
                         className="flex flex-col items-center lg:items-start text-center lg:text-left"
                     >
                         <h4 className="text-4xl font-bold mb-6">Bulldog Gym Most</h4>

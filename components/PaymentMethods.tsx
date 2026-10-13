@@ -28,7 +28,7 @@ export default function PaymentMethods() {
     return (
         <section className="py-16 md:py-24 bg-white px-4 sm:px-6">
             <div className="max-w-7xl mx-auto">
-                <div className="mb-12">
+                <div className="mb-12" data-aos="fade-up">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">
                         Způsoby platby
                     </h2>
@@ -38,10 +38,10 @@ export default function PaymentMethods() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {paymentMethods.map((method) => (
+                    {paymentMethods.map((method, index) => (
+                        <div key={method.title} data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
                         <div
-                            key={method.title}
-                            className="flex flex-col bg-zinc-50 border border-zinc-200 rounded-2xl p-8"
+                            className="h-full flex flex-col bg-zinc-50 border border-zinc-200 rounded-2xl p-8 transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-md"
                         >
                             <div className="flex items-center justify-center mb-6 overflow-hidden bg-white rounded-xl border border-zinc-100">
                                 <div className="relative w-full aspect-[1.6/1]">
@@ -65,6 +65,7 @@ export default function PaymentMethods() {
                                     {method.description}
                                 </p>
                             )}
+                        </div>
                         </div>
                     ))}
                 </div>

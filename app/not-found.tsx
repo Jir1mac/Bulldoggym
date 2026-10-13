@@ -2,11 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Dumbbell, ArrowLeft, TriangleAlert } from 'lucide-react';
+import { motion, MotionConfig } from 'framer-motion';
+import { Dumbbell, ArrowLeft } from 'lucide-react';
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function BulldogNotFound() {
     return (
+        <MotionConfig reducedMotion="user">
         <section className="min-h-screen flex items-center justify-center bg-zinc-100 px-4 overflow-hidden">
             <div className="container mx-auto max-w-3xl text-center relative">
 
@@ -17,22 +20,19 @@ export default function BulldogNotFound() {
                 </div>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease }}
                 >
                     <div className="flex justify-center mb-8">
                         <motion.div
-                            animate={{
-                                y: [0, -20, 0],
-                                rotate: [0, 5, -5, 0]
-                            }}
+                            animate={{ y: [0, -8, 0] }}
                             transition={{
-                                duration: 2,
+                                duration: 4,
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }}
-                            className="bg-red-600 p-6 rounded-full shadow-[0_0_50px_rgba(220,38,38,0.3)] text-white"
+                            className="bg-red-600 p-6 rounded-full shadow-[0_0_40px_rgba(220,38,38,0.15)] text-white"
                         >
                             <Dumbbell size={64} strokeWidth={2.5} />
                         </motion.div>
@@ -49,10 +49,10 @@ export default function BulldogNotFound() {
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                         <Link
                             href="/"
-                            className="group relative px-10 py-5 bg-zinc-900 text-white font-black uppercase tracking-widest rounded-xl transition-all hover:bg-red-600 hover:shadow-[0_0_30px_rgba(220,38,38,0.4)] overflow-hidden"
+                            className="group relative px-10 py-5 bg-zinc-900 text-white font-black uppercase tracking-widest rounded-xl transition-all duration-300 ease-out hover:bg-red-600 hover:shadow-lg overflow-hidden"
                         >
                             <span className="relative z-10 flex items-center gap-2">
-                                <ArrowLeft size={20} />
+                                <ArrowLeft size={20} className="transition-transform duration-300 group-hover:-translate-x-1" />
                                 Zpět do fitka
                             </span>
                         </Link>
@@ -63,7 +63,7 @@ export default function BulldogNotFound() {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}
                     className="mt-20 border-t border-zinc-200 pt-8"
                 >
                     <p className="text-zinc-400 font-black uppercase text-sm tracking-[0.2em]">
@@ -72,5 +72,6 @@ export default function BulldogNotFound() {
                 </motion.div>
             </div>
         </section>
+        </MotionConfig>
     );
 }

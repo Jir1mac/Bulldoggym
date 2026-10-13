@@ -129,3 +129,23 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* Jemné odkrývání při scrollu (AOS): krátká dráha místo výchozích 100 px. */
+html [data-aos='fade-up'] {
+  transform: translate3d(0, 16px, 0);
+}
+
+/* Omezený pohyb v systému: prvky se rovnou zobrazí bez animace.
+   Řešeno v CSS, protože část obsahu (ceník, provozní doba) se vykresluje až po načtení dat. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    pointer-events: auto !important;
+  }
+}

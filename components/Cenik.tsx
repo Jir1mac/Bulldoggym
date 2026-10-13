@@ -92,13 +92,12 @@ export default function Pricing() {
         <section id="cenik" className="py-16 md:py-24 min-h-screen flex items-center bg-zinc-100 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-[1500px] mx-auto w-full">
 
-                <div className="text-center mb-16" data-aos="fade-down">
+                <div className="text-center mb-16" data-aos="fade-up">
                     <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Ceník Bulldog Gym</h2>
                     <h3 className="text-5xl md:text-6xl font-black uppercase text-black mb-6">Investuj do <span className="text-red-600">sebe</span></h3>
                 </div>
 
-                <div className="mt-8 mb-12 text-center" data-aos="zoom-in" data-aos-delay="200">
-                </div>
+                <div className="mt-8 mb-12 text-center"></div>
 
                 <div className="flex flex-wrap justify-center items-stretch gap-6 xl:gap-8">
                     {pricingPlans.map((plan, index) => {
@@ -108,8 +107,11 @@ export default function Pricing() {
                             <div
                                 key={index}
                                 data-aos="fade-up"
-                                data-aos-delay={index * 150}
-                                className="relative p-6 sm:p-8 rounded-3xl border transition-all duration-300 w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(33%-2rem)] xl:w-[calc(25%-2rem)] min-w-[280px] flex flex-col border-red-600 bg-zinc-900 shadow-[0_0_30px_rgba(220,38,38,0.15)] z-10"
+                                data-aos-delay={(index % 4) * 100}
+                                className="w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(33%-2rem)] xl:w-[calc(25%-2rem)] min-w-[280px] flex"
+                            >
+                            <div
+                                className="relative p-6 sm:p-8 rounded-3xl border transition-all duration-500 ease-out w-full flex flex-col border-red-600 bg-zinc-900 shadow-[0_0_30px_rgba(220,38,38,0.12)] z-10 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(220,38,38,0.2)]"
                             >
                                 <div className="flex flex-col h-full w-full">
                                     <div className="flex flex-col flex-grow-0 h-[100px] mb-4">
@@ -151,6 +153,7 @@ export default function Pricing() {
                                         ))}
                                     </ul>
                                 </div>
+                            </div>
                             </div>
                         );
                     })}

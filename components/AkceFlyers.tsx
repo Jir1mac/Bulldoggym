@@ -50,7 +50,7 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
                         type="button"
                         onClick={() => setSelected(index)}
                         style={{ animationDelay: `${Math.min(index, 8) * 90}ms` }}
-                        className="group block w-full min-h-56 overflow-hidden rounded-xl bg-zinc-100 ring-1 ring-black/5 shadow-sm cursor-pointer animate-in fade-in slide-in-from-bottom-3 duration-700 fill-mode-backwards motion-reduce:animate-none transition-[box-shadow,transform] ease-out hover:-translate-y-1 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/40"
+                        className="group block w-full min-h-56 overflow-hidden rounded-xl bg-zinc-100 ring-1 ring-black/5 shadow-sm cursor-pointer animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-backwards motion-reduce:animate-none transition-[box-shadow,translate] ease-out hover:-translate-y-1 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/40"
                         aria-label={`Zvětšit leták ${index + 1}`}
                     >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
