@@ -1,22 +1,26 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Foter from '@/components/Foter';
 import AkceFlyers from '@/components/AkceFlyers';
-import { prisma } from '@/lib/db';
-
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: 'Akce | Bulldog gym',
     description: 'Aktuální akce a letáky Bulldog Gymu v Mostě.',
 };
 
+// Letáky stačí nahrát do složky public/letaky. Zobrazí se podle názvu souboru,
+// takže pořadí jde určit číslem na začátku (01-vanoce.jpg, 02-nabor.jpg ...).
+const IMAGE_EXT = /\.(jpe?g|png|webp|avif)$/i;
+
 async function getFlyers() {
     try {
-        return await prisma.flyer.findMany({
-            select: { id: true, width: true, height: true },
-            orderBy: [{ position: 'asc' }, { id: 'asc' }],
-        });
+        const files = await fs.readdir(path.join(process.cwd(), 'public', 'letaky'));
+        return files
+            .filter((file) => IMAGE_EXT.test(file))
+            .sort((a, b) => a.localeCompare(b, 'cs', { numeric: true }))
+            .map((file) => ({ src: `/letaky/${encodeURIComponent(file)}` }));
     } catch {
         return [];
     }

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Save, Tag, Clock, Loader2, Ticket } from 'lucide-react';
-import FlyerManager from '@/components/admin/FlyerManager';
 
 interface HourRow {
     day: string;
@@ -189,8 +188,6 @@ export default function AdminPage() {
                             ))}
                         </div>
                     </section>
-
-                    <FlyerManager />
 
                 </div>
             </div>
