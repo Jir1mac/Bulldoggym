@@ -43,13 +43,14 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
 
     return (
         <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 items-start">
                 {flyers.map((flyer, index) => (
                     <button
                         key={flyer.src}
                         type="button"
                         onClick={() => setSelected(index)}
-                        className="block w-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm hover:shadow-lg hover:border-red-600 transition-all cursor-pointer"
+                        style={{ animationDelay: `${Math.min(index, 8) * 90}ms` }}
+                        className="group block w-full min-h-56 overflow-hidden rounded-xl bg-zinc-100 ring-1 ring-black/5 shadow-sm cursor-pointer animate-in fade-in slide-in-from-bottom-3 duration-700 fill-mode-backwards motion-reduce:animate-none transition-[box-shadow,transform] ease-out hover:-translate-y-1 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/40"
                         aria-label={`Zvětšit leták ${index + 1}`}
                     >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -57,7 +58,7 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
                             src={flyer.src}
                             alt={`Leták akce ${index + 1}`}
                             loading="lazy"
-                            className="w-full h-auto"
+                            className="w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                         />
                     </button>
                 ))}
@@ -65,7 +66,7 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
 
             {current && selected !== null && (
                 <div
-                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4 md:p-10"
+                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 md:p-10 animate-in fade-in duration-300 motion-reduce:animate-none"
                     onClick={close}
                     role="dialog"
                     aria-modal="true"
@@ -74,10 +75,10 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
                     <button
                         type="button"
                         onClick={close}
-                        className="absolute top-4 right-4 md:top-6 md:right-6 p-2 text-white/70 hover:text-white transition-colors cursor-pointer"
+                        className="absolute top-4 right-4 md:top-6 md:right-6 p-2 text-white/60 hover:text-white transition-colors duration-300 cursor-pointer"
                         aria-label="Zavřít"
                     >
-                        <X size={36} />
+                        <X size={28} strokeWidth={1.5} />
                     </button>
 
                     {flyers.length > 1 && (
@@ -87,22 +88,24 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
                                 e.stopPropagation();
                                 prev();
                             }}
-                            className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white transition-colors cursor-pointer"
+                            className="absolute left-1 md:left-5 top-1/2 -translate-y-1/2 p-2 text-white/40 hover:text-white transition-colors duration-300 cursor-pointer"
                             aria-label="Předchozí leták"
                         >
-                            <ChevronLeft className="w-9 h-9 md:w-14 md:h-14" />
+                            <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" strokeWidth={1.25} />
                         </button>
                     )}
 
                     <div className="flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+                        {/* key přenastaví animaci při přepnutí na další leták */}
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
+                            key={current.src}
                             src={current.src}
                             alt={`Leták akce ${selected + 1}`}
-                            className="w-auto h-auto max-w-full max-h-[85vh] select-none"
+                            className="w-auto h-auto max-w-full max-h-[85vh] rounded-lg shadow-2xl select-none animate-in fade-in zoom-in-95 duration-300 motion-reduce:animate-none"
                         />
                         {flyers.length > 1 && (
-                            <p className="mt-3 text-sm text-zinc-400">
+                            <p className="mt-4 text-xs tracking-widest text-white/50">
                                 {selected + 1} / {flyers.length}
                             </p>
                         )}
@@ -115,10 +118,10 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
                                 e.stopPropagation();
                                 next();
                             }}
-                            className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white transition-colors cursor-pointer"
+                            className="absolute right-1 md:right-5 top-1/2 -translate-y-1/2 p-2 text-white/40 hover:text-white transition-colors duration-300 cursor-pointer"
                             aria-label="Další leták"
                         >
-                            <ChevronRight className="w-9 h-9 md:w-14 md:h-14" />
+                            <ChevronRight className="w-8 h-8 md:w-10 md:h-10" strokeWidth={1.25} />
                         </button>
                     )}
                 </div>

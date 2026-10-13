@@ -32,14 +32,16 @@ export default async function AkcePage() {
     return (
         <>
             <Navbar />
-            <main className="bg-zinc-100 px-4 sm:px-6 pt-32 md:pt-44 pb-16 md:pb-24 min-h-[70vh]">
-                <div className="max-w-7xl mx-auto">
-                    <p className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">
-                        Aktuálně
-                    </p>
-                    <h1 className="text-4xl md:text-5xl font-black uppercase text-black mb-12 leading-tight">
-                        Akce v <span className="text-red-600">Bulldog Gymu</span>
-                    </h1>
+            <main className="bg-white px-5 sm:px-8 pt-32 md:pt-44 pb-20 md:pb-32 min-h-[70vh]">
+                <div className="max-w-6xl mx-auto">
+                    <header className="mb-12 md:mb-16 animate-in fade-in slide-in-from-bottom-2 duration-700 motion-reduce:animate-none">
+                        <p className="text-xs font-semibold tracking-[0.25em] uppercase text-red-600 mb-3">
+                            Aktuálně
+                        </p>
+                        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900">
+                            Akce v Bulldog Gymu
+                        </h1>
+                    </header>
 
                     <AkceFlyers flyers={flyers} />
                 </div>
