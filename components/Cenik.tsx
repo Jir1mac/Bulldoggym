@@ -1,7 +1,6 @@
-"use client";
-
-import React, { useState, useEffect } from 'react';
-import { Check, Users, Loader2 } from 'lucide-react';
+import React from 'react';
+import { Check, Users } from 'lucide-react';
+import type { SiteContent } from '@/lib/content';
 
 const MassageIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -44,57 +43,24 @@ interface PricePlan {
     priceDiscount?: string;
 }
 
-export default function Pricing() {
-    const [pricingPlans, setPricingPlans] = useState<PricePlan[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchPricing = async () => {
-            try {
-                const res = await fetch('/api/content');
-                const data = await res.json();
-
-                let fetchedPlans = data.pricing || [];
-
-                fetchedPlans = fetchedPlans.map((plan: PricePlan) => ({
-                    ...plan,
-                    title: plan.title.replace("členství", "permanentka")
-                }));
-
-                const entrySingle = data.entrySingle || "130";
-                const entry10 = data.entry10 || "1 100";
-
-                const additionalPlans: PricePlan[] = [
-                    { title: "Jednorázové vstupné", priceNormal: entrySingle },
-                    { title: "Permanentka na 10 vstupů", priceNormal: entry10 }
-                ];
-
-                setPricingPlans([...additionalPlans, ...fetchedPlans]);
-
-            } catch (error) {
-                console.error("Chyba při načítání ceníku:", error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchPricing();
-    }, []);
-
-    if (isLoading) {
-        return (
-            <div className="min-h-screen bg-zinc-100 flex items-center justify-center">
-                <Loader2 className="animate-spin text-red-600" size={48} />
-            </div>
-        );
-    }
+// Ceny přicházejí ze serveru, takže jsou přímo v HTML a vyhledávače je indexují.
+export default function Pricing({ content }: { content: SiteContent }) {
+    const pricingPlans: PricePlan[] = [
+        { title: "Jednorázové vstupné", priceNormal: content.entrySingle || "130" },
+        { title: "Permanentka na 10 vstupů", priceNormal: content.entry10 || "1 100" },
+        ...content.pricing.map((plan) => ({
+            ...plan,
+            title: plan.title.replace("členství", "permanentka"),
+        })),
+    ];
 
     return (
         <section id="cenik" className="py-12 md:py-24 md:min-h-screen flex items-center bg-zinc-100 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-[1500px] mx-auto w-full">
 
                 <div className="text-center mb-8 md:mb-16" data-aos="fade-up">
-                    <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">Ceník Bulldog Gym</h2>
-                    <h3 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-black mb-4 md:mb-6">Investuj do <span className="text-red-600">sebe</span></h3>
+                    <p className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">Ceník posilovny Bulldog Gym Most</p>
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-black mb-4 md:mb-6">Investuj do <span className="text-red-600">sebe</span></h2>
                 </div>
 
                 <div className="mt-8 mb-12 text-center hidden md:block"></div>
@@ -112,7 +78,7 @@ export default function Pricing() {
                             >
                                 <div className="flex flex-col h-full w-full">
                                     <div className="flex flex-col flex-grow-0 sm:h-[100px] mb-3 sm:mb-4">
-                                        <h4 className="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2 leading-tight">{plan.title}</h4>
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2 leading-tight">{plan.title}</h3>
                                         <p className="text-zinc-500 text-sm leading-snug">{details.description}</p>
                                     </div>
 

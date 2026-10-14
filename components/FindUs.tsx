@@ -8,10 +8,10 @@ export default function FindUs() {
             <div className="max-w-[1200px] mx-auto text-center">
 
                 <div data-aos="fade-up">
-                    <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">Kontakt</h2>
-                    <h3 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-black mb-8 md:mb-16">
+                    <p className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">Kontakt</p>
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-black mb-8 md:mb-16">
                         Kde nás <span className="text-red-600">najdete</span>
-                    </h3>
+                    </h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -38,7 +38,7 @@ export default function FindUs() {
                         data-aos-delay="200"
                         className="flex flex-col items-center lg:items-start text-center lg:text-left"
                     >
-                        <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">Bulldog Gym Most</h4>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">Bulldog Gym Most</h3>
                         <p className="text-zinc-400 mb-6 md:mb-8 max-w-md lg:max-w-none">
                             Přijďte nás navštívit do naší největší posilovny v Mostě! Najdete nás v budově Sever, kde na vás čeká 1000 m² plochy, špičkové stroje a přátelská atmosféra.
                         </p>
@@ -56,7 +56,7 @@ export default function FindUs() {
                                 <Phone className="text-red-600 mr-4 flex-shrink-0" size={24} />
                                 <div>
                                     <p className="font-semibold text-black text-lg">Telefon:</p>
-                                    <a href="tel:+420 777656367" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">+420 777 656 367</a>
+                                    <a href="tel:+420777656367" className="text-zinc-400 hover:text-red-600 transition-colors font-medium cursor-pointer">+420 777 656 367</a>
                                 </div>
                             </div>
                             <div className="flex items-center justify-center lg:justify-start text-zinc-300">

@@ -31,12 +31,12 @@ export default function AcceptedCards() {
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-4 md:gap-6" data-aos="fade-up">
                     <div>
-                        <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">
+                        <p className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">
                             Benefity a karty
-                        </h2>
-                        <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-black leading-tight">
+                        </p>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-black leading-tight">
                             Podporujeme vaše <br /> <span className="text-red-600">benefity</span>
-                        </h3>
+                        </h2>
                     </div>
                     <div className="max-w-md">
                         <p className="text-zinc-600 text-base md:text-lg">
@@ -57,17 +57,16 @@ export default function AcceptedCards() {
                                 <div className="relative w-full aspect-[1.6/1]">
                                     <Image
                                         src={card.image}
-                                        alt={card.name}
+                                        alt={`Karta ${card.name} – platba v posilovně Bulldog Gym Most`}
                                         fill
                                         sizes="(max-width: 768px) 100vw, 33vw"
                                         className="object-cover rounded-xl shadow-sm"
-                                        priority
                                     />
                                 </div>
                             </div>
-                            <h4 className="text-black font-bold text-xl md:text-2xl mb-2 md:mb-3 uppercase tracking-tight">
+                            <h3 className="text-black font-bold text-xl md:text-2xl mb-2 md:mb-3 uppercase tracking-tight">
                                 {card.name}
-                            </h4>
+                            </h3>
                             <p className="text-zinc-500 text-sm leading-relaxed">
                                 {card.description}
                             </p>

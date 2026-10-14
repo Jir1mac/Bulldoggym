@@ -1,14 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { Clock, Calendar, Loader2 } from 'lucide-react';
+import React, { useSyncExternalStore } from 'react';
+import { Clock, Calendar } from 'lucide-react';
 import { cn } from "@/lib/utils";
-
-interface HourRow {
-    day: string;
-    hours: string;
-    note: string;
-}
+import type { HourRow } from "@/lib/content";
 
 const DAY_CLASS_BASE = "text-base md:text-lg font-bold uppercase italic";
 const DAY_CLASS_TODAY = "text-red-600";
@@ -18,43 +13,20 @@ const HOUR_CLASS_BASE = "text-lg md:text-xl font-black tracking-tighter";
 const HOUR_CLASS_TODAY = "text-red-600";
 const HOUR_CLASS_DEFAULT = "text-black";
 
-export default function BusinessHours() {
-    const [openingHours, setOpeningHours] = useState<HourRow[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+const subscribe = () => () => {};
+const getToday = () => new Intl.DateTimeFormat('cs-CZ', { weekday: 'long' }).format(new Date());
+const getServerToday = () => null;
 
-    const today = new Intl.DateTimeFormat('cs-CZ', { weekday: 'long' }).format(new Date());
-
-    useEffect(() => {
-        const fetchHours = async () => {
-            try {
-                const res = await fetch('/api/content');
-                const data = await res.json();
-                if (data.hours) {
-                    setOpeningHours(data.hours);
-                }
-            } catch (error) {
-                console.error("Chyba při načítání otevírací doby:", error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchHours();
-    }, []);
-
-    if (isLoading) {
-        return (
-            <div className="py-24 flex justify-center items-center bg-zinc-100">
-                <Loader2 className="animate-spin text-red-600" size={32} />
-            </div>
-        );
-    }
+// Otevírací doba přichází ze serveru, takže je přímo v HTML (Google i Seznam ji vidí).
+// Zvýraznění dnešního dne se dopočítá až v prohlížeči, aby odpovídalo skutečnému dni návštěvníka.
+export default function BusinessHours({ hours: openingHours }: { hours: HourRow[] }) {
+    const today = useSyncExternalStore(subscribe, getToday, getServerToday);
 
     return (
         <section id="oteviraci-doba" className="py-12 md:py-24 bg-zinc-100 text-black px-4 sm:px-6 overflow-hidden">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-8 md:mb-16" data-aos="fade-up">
-                    <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Provozní doba</h2>
+                    <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Otevírací doba posilovny</h2>
                 </div>
 
                 <div
@@ -74,7 +46,7 @@ export default function BusinessHours() {
 
                     <div className="space-y-1 sm:space-y-4">
                         {openingHours.map((item) => {
-                            const isToday = item.day.toLowerCase() === today.toLowerCase();
+                            const isToday = today !== null && item.day.toLowerCase() === today.toLowerCase();
 
                             return (
                                 <div

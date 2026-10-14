@@ -48,12 +48,12 @@ export default function Trainers() {
         <section id="trainers" className="md:min-h-screen flex items-center py-12 md:py-24 bg-zinc-150 px-4 sm:px-6 overflow-hidden">
             <div className="max-w-7xl mx-auto text-center w-full">
                 <div data-aos="fade-up">
-                    <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm md:text-base mb-3 md:mb-4">
-                        Náš tým
-                    </h2>
-                    <h3 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-black mb-8 md:mb-16 leading-tight">
+                    <p className="text-red-600 font-bold tracking-widest uppercase text-sm md:text-base mb-3 md:mb-4">
+                        Osobní trenéři v Mostě
+                    </p>
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-black mb-8 md:mb-16 leading-tight">
                         Poznej náš tým
-                    </h3>
+                    </h2>
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-8 md:gap-12 text-left">
@@ -68,14 +68,15 @@ export default function Trainers() {
                                 {trainer.imageUrl && (
                                     <Image
                                         src={trainer.imageUrl}
-                                        alt={trainer.name}
+                                        alt={`${trainer.name} – ${trainer.specialization?.toLowerCase() ?? 'trenér'}, Bulldog Gym Most`}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                         className="object-cover"
                                     />
                                 )}
                             </div>
                             <div className="p-5 sm:p-6 md:p-8 flex flex-col flex-grow">
-                                <h4 className="text-black font-bold text-2xl md:text-3xl mb-1 md:mb-2">{trainer.name}</h4>
+                                <h3 className="text-black font-bold text-2xl md:text-3xl mb-1 md:mb-2">{trainer.name}</h3>
                                 <p className="text-red-600 text-base md:text-lg font-semibold mb-3 md:mb-4">{trainer.specialization ?? "\u00A0"}</p>
                                 {trainer.bio && (
                                     <p className="text-zinc-800 text-sm leading-relaxed mb-4 md:mb-6 flex-grow whitespace-pre-line">{trainer.bio}</p>

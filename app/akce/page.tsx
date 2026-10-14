@@ -4,10 +4,19 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Foter from '@/components/Foter';
 import AkceFlyers from '@/components/AkceFlyers';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbJsonLd } from '@/lib/structured-data';
+import { pageOpenGraph } from '@/lib/site';
+
+const title = 'Akce a slevy';
+const description =
+    'Aktuální akce, slevy a letáky posilovny Bulldog Gym v Mostě. Zvýhodněné permanentky, tréninky a novinky z fitka.';
 
 export const metadata: Metadata = {
-    title: 'Akce | Bulldog gym',
-    description: 'Aktuální akce a letáky Bulldog Gymu v Mostě.',
+    title,
+    description,
+    alternates: { canonical: '/akce' },
+    openGraph: pageOpenGraph('/akce', title, description),
 };
 
 // Letáky stačí nahrát do složky public/letaky. Zobrazí se podle názvu souboru,
@@ -20,7 +29,11 @@ async function getFlyers() {
         return files
             .filter((file) => IMAGE_EXT.test(file))
             .sort((a, b) => a.localeCompare(b, 'cs', { numeric: true }))
-            .map((file) => ({ src: `/letaky/${encodeURIComponent(file)}` }));
+            .map((file) => ({
+                src: `/letaky/${encodeURIComponent(file)}`,
+                // "02-letni-akce.jpg" -> "letni akce" (popis obrázku pro vyhledávače)
+                alt: file.replace(IMAGE_EXT, '').replace(/^\d+[-_ ]*/, '').replace(/[-_]+/g, ' ').trim(),
+            }));
     } catch {
         return [];
     }
@@ -31,6 +44,7 @@ export default async function AkcePage() {
 
     return (
         <>
+            <JsonLd data={breadcrumbJsonLd([{ name: 'Akce', path: '/akce' }])} />
             <Navbar />
             <main className="bg-white px-5 sm:px-8 pt-32 md:pt-44 pb-20 md:pb-32 min-h-[70vh]">
                 <div className="max-w-6xl mx-auto">
@@ -39,7 +53,7 @@ export default async function AkcePage() {
                             Aktuálně
                         </p>
                         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900">
-                            Akce v Bulldog Gymu
+                            Akce v Bulldog Gymu Most
                         </h1>
                     </header>
 

@@ -5,6 +5,7 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export interface FlyerItem {
     src: string;
+    alt?: string;
 }
 
 export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
@@ -56,7 +57,7 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                             src={flyer.src}
-                            alt={`Leták akce ${index + 1}`}
+                            alt={flyer.alt ? `Leták akce: ${flyer.alt} – Bulldog Gym Most` : `Leták akce ${index + 1} – Bulldog Gym Most`}
                             loading="lazy"
                             className="w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                         />
@@ -101,7 +102,7 @@ export default function AkceFlyers({ flyers }: { flyers: FlyerItem[] }) {
                         <img
                             key={current.src}
                             src={current.src}
-                            alt={`Leták akce ${selected + 1}`}
+                            alt={current.alt ? `Leták akce: ${current.alt}` : `Leták akce ${selected + 1}`}
                             className="w-auto h-auto max-w-full max-h-[85vh] rounded-lg shadow-2xl select-none animate-in fade-in zoom-in-95 duration-300 motion-reduce:animate-none"
                         />
                         {flyers.length > 1 && (
