@@ -42,9 +42,9 @@ export default function Footer() {
     ];
 
     const socialLinks = [
-        { icon: <Instagram size={20} />, href: "https://www.instagram.com/bulldoggym.most" },
-        { icon: <Facebook size={20} />, href: "https://www.facebook.com/profile.php?id=100057360913960" },
-        { icon: <Youtube size={20} />, href: "https://www.youtube.com/channel/UCDtv1fhz07WQ5O2lVJWg0zg" },
+        { label: "Instagram Bulldog Gym", icon: <Instagram size={20} />, href: "https://www.instagram.com/bulldoggym.most" },
+        { label: "Facebook Bulldog Gym", icon: <Facebook size={20} />, href: "https://www.facebook.com/profile.php?id=100057360913960" },
+        { label: "YouTube Bulldog Gym", icon: <Youtube size={20} />, href: "https://www.youtube.com/channel/UCDtv1fhz07WQ5O2lVJWg0zg" },
     ];
 
     return (
@@ -67,6 +67,8 @@ export default function Footer() {
                                     key={i}
                                     href={social.href}
                                     target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={social.label}
                                     className="p-2 bg-white border border-zinc-200 rounded-lg hover:bg-red-600 transition-all group"
                                 >
                                     <span className="text-zinc-600 group-hover:text-white">

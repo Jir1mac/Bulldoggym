@@ -62,8 +62,9 @@ export default function Navbar() {
             <div className="relative w-11 h-11 md:w-14 md:h-14 flex-shrink-0">
                 <Image
                     src="/bulldog.png"
-                    alt="Bulldog Logo"
+                    alt="Bulldog Gym Most – logo"
                     fill
+                    sizes="56px"
                     className="object-contain"
                     priority
                 />

@@ -10,12 +10,12 @@ export default function About() {
                 <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
 
                     <div data-aos="fade-up">
-                        <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">
-                            Příběh Bulldog Gymu
-                        </h2>
-                        <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-black mb-4 md:mb-6 leading-tight">
+                        <p className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">
+                            Posilovna a fitness v Mostě od roku 2013
+                        </p>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-black mb-4 md:mb-6 leading-tight">
                             Více než 10 let zkušeností <br /> v srdci <span className="text-red-600">Mostu</span>
-                        </h3>
+                        </h2>
                         <div className="space-y-4 text-zinc-600 text-base md:text-xl leading-relaxed">
                             <p>
                                 Od roku 2013 budujeme v Mostě místo, které neustále modernizujeme, abyste u nás našli to nejlepší pro svůj trénink.
@@ -31,19 +31,19 @@ export default function About() {
                     <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
                         <div data-aos="fade-up" data-aos-delay="100" className={cardClass}>
                             <Dumbbell className="text-red-600 mb-3 md:mb-4 w-8 h-8 md:w-[38px] md:h-[38px]" size={38} />
-                            <h4 className="text-black font-bold text-lg md:text-xl mb-1 md:mb-2">90 stanovišť</h4>
+                            <h3 className="text-black font-bold text-lg md:text-xl mb-1 md:mb-2">90 stanovišť</h3>
                             <p className="text-zinc-500 text-sm">5 sálů s širokou škálou strojů pro procvičení každého svalu na těle.</p>
                         </div>
 
                         <div data-aos="fade-up" data-aos-delay="200" className={cardClass}>
                             <Trophy className="text-red-600 mb-3 md:mb-4 w-8 h-8 md:w-[38px] md:h-[38px]" size={38} />
-                            <h4 className="text-black font-bold text-lg md:text-xl mb-1 md:mb-2">Špičkové vybavení</h4>
+                            <h3 className="text-black font-bold text-lg md:text-xl mb-1 md:mb-2">Špičkové vybavení</h3>
                             <p className="text-zinc-500 text-sm">Stroje značek CYBEX, TUFF STUFF, TECHNOGYM, IMPULSE, HOIST a NAUTILUS.</p>
                         </div>
 
                         <div data-aos="fade-up" data-aos-delay="300" className={cardClass}>
                             <HandHeart className="text-red-600 mb-3 md:mb-4 w-8 h-8 md:w-[38px] md:h-[38px]" size={38} />
-                            <h4 className="text-black font-bold text-lg md:text-xl mb-1 md:mb-2">Masáže</h4>
+                            <h3 className="text-black font-bold text-lg md:text-xl mb-1 md:mb-2">Masáže</h3>
                             <p className="text-zinc-500 text-sm">Také si u nás můžete dopřát odpočinek v podobě masáže nebo rázové vlny. <a className="hover:text-red-700 text-red-500 transition-colors duration-300" href="https://most-masaze.cz/">Více informací</a></p>
                         </div>
                     </div>

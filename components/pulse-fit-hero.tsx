@@ -13,6 +13,7 @@ interface ProgramCard {
 }
 
 interface PulseFitHeroProps {
+    eyebrow?: string;
     title: string;
     subtitle: string;
     primaryAction?: {
@@ -36,6 +37,7 @@ interface PulseFitHeroProps {
 }
 
 export function PulseFitHero({
+                                 eyebrow,
                                  title = "Tvůj limit je v hlavě. Překonej ho u nás.",
                                  subtitle = "Největší posilovna v Mostě na ploše 1000 m². Špičkové vybavení značek Cybex a Nautilus.",
                                  primaryAction,
@@ -77,6 +79,11 @@ export function PulseFitHero({
                                 color: "#000000",
                             }}
                         >
+                            {eyebrow && (
+                                <span className="block mb-4 md:mb-6 text-xs md:text-sm font-bold not-italic tracking-[0.25em] text-red-600" style={{ lineHeight: 1.4 }}>
+                                    {eyebrow}
+                                </span>
+                            )}
                             {title}
                         </h1>
 
@@ -151,10 +158,17 @@ export function PulseFitHero({
                     >
                         {[...programs, ...programs].map((program, index) => (
                             <div key={index} className="flex-shrink-0 w-[240px] h-[320px] md:w-[350px] md:h-[450px] rounded-[24px] relative overflow-hidden shadow-lg border border-zinc-200">
-                                <Image src={program.image} alt={program.title} fill className="object-cover" />
+                                <Image
+                                    src={program.image}
+                                    alt={index < programs.length ? `${program.category.toLowerCase()} – ${program.title.trim()}, Bulldog Gym Most` : ""}
+                                    aria-hidden={index >= programs.length || undefined}
+                                    fill
+                                    sizes="(max-width: 768px) 240px, 350px"
+                                    className="object-cover"
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-5 md:p-8">
                                     <span className="text-red-600 font-black uppercase tracking-widest text-sm mb-1">{program.category}</span>
-                                    <h3 className="text-xl md:text-2xl font-black text-white uppercase italic leading-none">{program.title}</h3>
+                                    <p className="text-xl md:text-2xl font-black text-white uppercase italic leading-none">{program.title}</p>
                                 </div>
                             </div>
                         ))}
